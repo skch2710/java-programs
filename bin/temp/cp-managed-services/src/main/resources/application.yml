@@ -1,0 +1,61 @@
+server:
+  port: 5005
+  forward-headers-strategy: framework
+ 
+app:
+ url: ${MANAGED_SERVICES_SERVER_URL}
+ public-key: |
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7+lMmYV8o1ClJx7Ja7cy
+    Bxk6AIwhBfdPMmpKcNox4yeRvVK//293+fQU+db5kjXoYOgfOI3RVEgy/CHA5JYa
+    +yAAHD+JuhABLKA/XuEnfKeePwXqP62tDjkWMH/TRB/6hPm2wXq9jKcfNuxgKTTj
+    ZsLD/FegB3RJwA1yUcTnW4B9zNam3nIfKESD1C+4H4x15L/9IGU08fcH1+XlK/S1
+    3gS3cbK9HTvAPt0GyUhqrX/Jxran+Nyc5g74R+u9Vy4Gb9VQIJtWxxL+lAD5nieG
+    7ehfuL+YYYM4OOfNrvT075/YYoCVsmEgc2A/yrIo9eZ0r/SWFCAGyWHOdDin8xJj
+    YQIDAQAB
+    -----END PUBLIC KEY-----
+  
+security:
+  oauth2:
+    client:
+      clientId: 340bdirectplus
+      clientSecret: password
+      accessTokenUri: ${AUTH-SERVICE-ENDPOINT}/oauth/token
+      user-authorization-uri: ${AUTH-SERVICE-ENDPOINT}/oauth/authorize
+    resource:
+      token-info-uri: ${AUTH-SERVICE-ENDPOINT}/oauth/check_token
+      user-info-uri:  ${AUTH-SERVICE-ENDPOINT}/userinfo
+    resourceserver:
+      jwt:
+        issuer-uri: ${AUTH-SERVICE-ENDPOINT}/oauth/token
+      
+spring:
+  datasource:
+    password: ${DB_PASSWORD}
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: ${DB_USERNAME}
+    url: ${JDBC_CONNECTION_STRING}
+    hikari:
+      minimum-idle: 25
+      maximum-pool-size: 200
+      idle-timeout: 30000
+      pool-name: SpringBootJPAHikariCP
+      connection-timeout: 30000
+  jpa:
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        dialect: org.hibernate.dialect.SQLServer2016Dialect
+        format_sql: true
+    hibernate:
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
+springfox:
+  documentation:
+    auto-startup: false
+#logging:
+#  level:
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type: TRACE
