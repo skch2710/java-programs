@@ -4,6 +4,14 @@ import java.math.BigDecimal;
 
 /**
  * @author sathish
+ * 
+ *    ===>>    A Java data type is a classification that defines the type of a value
+ *         that can be stored in a variable.
+ *         
+ *         Java has two categories of data
+ *         types: primitive (e.g. int, double) and reference (e.g. String,
+ *         Array). Primitive data types store simple values, while reference
+ *         data types store references to objects in memory.
  *
  *         Data Types are Two types 1. Primitive 2.Non-Primitive
  *
