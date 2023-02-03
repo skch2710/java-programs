@@ -1,10 +1,10 @@
-package dateFormat;
+package regex;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Utility {
+public class Regex {
 
 	/**
 	 * method to check date validation.
@@ -40,5 +40,21 @@ public class Utility {
 			return false;
 		}
 		return true;
+	}
+	
+	public static Boolean isAlphabets(String name) {
+		return name != null && name.matches("^[a-zA-Z\\s]*$");
+	}
+	
+	public static Boolean isAlphaNumeric(String name) {
+		return name != null && name.matches("^[a-zA-Z0-9]*$");
+	}
+	
+	public static Boolean isAlphaNumericWithSpace(String name) {
+		return name != null && name.matches("^[a-zA-Z0-9\\s]*$");
+	}
+	
+	public static Boolean isNumeric(String number) {
+		return number != null && number.matches("^[0-9]*$");
 	}
 }
