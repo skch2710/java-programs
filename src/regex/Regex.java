@@ -4,6 +4,20 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 
+ * @author sathish.ch
+ *
+ *         Java regular expressions, or "regex," allow you to match a pattern of
+ *         text in a string. You create a pattern using special characters and
+ *         constructs, and then use it to search for matches in an input string.
+ *         For example, you could use a pattern to find all email addresses in a
+ *         string, or to replace all occurrences of a specific word with another
+ *         word. Java provides built-in support for regular expressions through
+ *         the java.util.regex package, which makes it easy to use regex in your
+ *         Java applications.
+ */
+
 public class Regex {
 
 	/**
