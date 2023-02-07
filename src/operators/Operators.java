@@ -11,7 +11,7 @@ package operators;
  *		iii.Decrement(--) [ pre & post ]
  *	3.Assignment Operators ( = , +=,-= )
  *	4.Relational Operators ( == , < , <= , >= ,!= )
- *	5.Logical Operators ( && , 
+ *	5.Logical Operators ( && - and , || - or, ! - not)
  */
 public class Operators {
 
