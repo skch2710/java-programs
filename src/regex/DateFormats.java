@@ -2,6 +2,8 @@ package regex;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +42,12 @@ public class DateFormats {
         System.out.println(Regex.checkEmailInjection("SKCH2710@GMAIL.com or 1"));
         
         System.out.println(Regex.isNumeric("123"));
+        
+        
+        String input = "12/28/2023";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDate date = LocalDate.parse(input, formatter);
+        System.out.println("Local Date formatter ( "+date+")");
         
 	}
 
