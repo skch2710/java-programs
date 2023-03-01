@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 
 public class Streams {
 
+	/**
+	 * List of Objects to List of Long
+	 */
 	public static void main(String[] args) {
 
 		MyObject myObject = new MyObject();
