@@ -49,6 +49,9 @@ public class DateFormats {
         LocalDate date = LocalDate.parse(input, formatter);
         System.out.println("Local Date formatter ( "+date+")");
         
+        
+        System.out.println("Date Check :: "+Regex.checkDate("10/27/1995"));
+        
 	}
 
 }

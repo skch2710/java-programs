@@ -71,4 +71,15 @@ public class Regex {
 	public static Boolean isNumeric(String number) {
 		return number != null && number.matches("^[0-9]*$");
 	}
+	
+	public static Boolean checkDate(String date) {
+		String datePattern = "^(0[1-9]|1[0-2])/(0[1-9]|1\\d|2\\d|3[01])/\\d{4}$";
+		Pattern p = Pattern.compile(datePattern);
+		Matcher m = p.matcher(date);
+		if (date != null && !date.isEmpty() && !m.matches()) {
+			return false;
+		}
+		return true;
+	}
+	
 }
