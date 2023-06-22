@@ -11,11 +11,11 @@ public class ListGroup {
 
 		List<Sathish> sTotal = new ArrayList<>();
 
-		Sathish s1 = new Sathish(1L, "s1");
-		Sathish s2 = new Sathish(2L, "s2");
-		Sathish s3 = new Sathish(3L, "s3");
-		Sathish s4 = new Sathish(1L, "s4");
-		Sathish s5 = new Sathish(1L, "s5");
+		Sathish s1 = new Sathish(1L, "s1","sk");
+		Sathish s2 = new Sathish(2L, "s2","ss");
+		Sathish s3 = new Sathish(3L, "s3","ch");
+		Sathish s4 = new Sathish(1L, "s4","sk");
+		Sathish s5 = new Sathish(1L, "s5","sk");
 
 		sTotal.add(s1);
 		sTotal.add(s2);
@@ -41,15 +41,21 @@ public class ListGroup {
 //			sathishGroupedList.add(sathishGrouped);
 //		});
 		
-		List<SathishGroupedList> sathishGroupedList = classByGroupId.entrySet().stream()
-				.map(innerEntry -> {
-			SathishGroupedList sathishGrouped = new SathishGroupedList();
-			List<Sathish> groupedInnerList = innerEntry.getValue();
-			sathishGrouped.setId(groupedInnerList.get(0).getId());
-			sathishGrouped.setGroupedList(groupedInnerList);
-			return sathishGrouped;
-		}).collect(Collectors.toList());
+//		List<SathishGroupedList> sathishGroupedList = classByGroupId.entrySet().stream()
+//				.map(innerEntry -> {
+//			SathishGroupedList sathishGrouped = new SathishGroupedList();
+//			List<Sathish> groupedInnerList = innerEntry.getValue();
+//			sathishGrouped.setId(groupedInnerList.get(0).getId());
+//			sathishGrouped.setGroupedList(groupedInnerList);
+//			return sathishGrouped;
+//		}).collect(Collectors.toList());
 		
+		List<SathishGroupedList> sathishGroupedList = sTotal.stream()
+			    .collect(Collectors.groupingBy(Sathish::getId))
+			    .entrySet().stream()
+			    .map(entry -> new SathishGroupedList(entry.getKey(),entry.getValue().get(0).getEmail(), entry.getValue()))
+			    .collect(Collectors.toList());
+
 		System.out.println(sathishGroupedList);
 		
 		/**
