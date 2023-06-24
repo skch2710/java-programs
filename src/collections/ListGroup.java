@@ -41,20 +41,21 @@ public class ListGroup {
 //			sathishGroupedList.add(sathishGrouped);
 //		});
 		
-//		List<SathishGroupedList> sathishGroupedList = classByGroupId.entrySet().stream()
-//				.map(innerEntry -> {
-//			SathishGroupedList sathishGrouped = new SathishGroupedList();
-//			List<Sathish> groupedInnerList = innerEntry.getValue();
-//			sathishGrouped.setId(groupedInnerList.get(0).getId());
-//			sathishGrouped.setGroupedList(groupedInnerList);
-//			return sathishGrouped;
-//		}).collect(Collectors.toList());
+		List<SathishGroupedList> sathishGroupedList = classByGroupId.entrySet().stream()
+				.map(innerEntry -> {
+			SathishGroupedList sathishGrouped = new SathishGroupedList();
+			List<Sathish> groupedInnerList = innerEntry.getValue();
+			sathishGrouped.setId(groupedInnerList.get(0).getId());
+			sathishGrouped.setEmail(groupedInnerList.get(0).getEmail());
+			sathishGrouped.setGroupedList(groupedInnerList);
+			return sathishGrouped;
+		}).collect(Collectors.toList());
 		
-		List<SathishGroupedList> sathishGroupedList = sTotal.stream()
-			    .collect(Collectors.groupingBy(Sathish::getId))
-			    .entrySet().stream()
-			    .map(entry -> new SathishGroupedList(entry.getKey(),entry.getValue().get(0).getEmail(), entry.getValue()))
-			    .collect(Collectors.toList());
+//		List<SathishGroupedList> sathishGroupedList = sTotal.stream()
+//			    .collect(Collectors.groupingBy(Sathish::getId))
+//			    .entrySet().stream()
+//			    .map(entry -> new SathishGroupedList(entry.getKey(),entry.getValue().get(0).getEmail(), entry.getValue()))
+//			    .collect(Collectors.toList());
 
 		System.out.println(sathishGroupedList);
 		
