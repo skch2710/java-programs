@@ -1,6 +1,7 @@
 package collections;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -50,6 +51,10 @@ public class ListGroup {
 			sathishGrouped.setGroupedList(groupedInnerList);
 			return sathishGrouped;
 		}).collect(Collectors.toList());
+		
+//		sathishGroupedList.sort(Comparator.comparing(SathishGroupedList::getEmail));
+		
+		sathishGroupedList.sort(Comparator.comparing(SathishGroupedList::getEmail).reversed());
 		
 //		List<SathishGroupedList> sathishGroupedList = sTotal.stream()
 //			    .collect(Collectors.groupingBy(Sathish::getId))
