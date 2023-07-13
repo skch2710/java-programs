@@ -30,16 +30,20 @@ public class ListColumnComp {
 		gifList.add(g3);
 		gifList.add(g4);
 
-		int count = 0;
+//		int count = 0;
 
 		String input = "aaa" + "-" + "bbb";
-
-		for (Gif gif : gifList) {
-			String out = gif.getCol1() + "-" + gif.getCol2();
-			if (out.equalsIgnoreCase(input)) {
-				count++;
-			}
-		}
+//
+//		for (Gif gif : gifList) {
+//			String out = gif.getCol1() + "-" + gif.getCol2();
+//			if (out.equalsIgnoreCase(input)) {
+//				count++;
+//			}
+//		}
+		
+		long count = gifList.stream()
+				  .filter(gif -> (gif.getCol1() + "-" + gif.getCol2()).equalsIgnoreCase(input))
+				  .count();
 
 		System.out.println(count);
 
