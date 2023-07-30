@@ -21,13 +21,17 @@ public class TimeDiff {
 	}
 	
 	private static Boolean timeCalc(Long hours, Date userLoginDate) {
-		Long curentLoginTime = System.currentTimeMillis();
-		Long userLoginTime = userLoginDate.getTime();
+		if (userLoginDate != null) {
+			Long curentLoginTime = System.currentTimeMillis();
+			Long userLoginTime = userLoginDate.getTime();
 
-		Long diff = curentLoginTime - userLoginTime;
+			Long diff = curentLoginTime - userLoginTime;
 
-		if (Math.abs(diff) < hours * 3600000) {
-			return false;
+			if (Math.abs(diff) < hours * 3600000) {
+				return false;
+			} else {
+				return true;
+			}
 		} else {
 			return true;
 		}
@@ -35,7 +39,7 @@ public class TimeDiff {
 
 	public static void main(String[] args) throws ParseException {
 
-		Date userLoginTime = dateConvert("2023-07-28 7:50 PM");
+		Date userLoginTime = dateConvert("2023-07-29 7:50 AM");
 
 		System.out.println("More than 12 hr :: "+timeCalc(12L,userLoginTime));
 	}
