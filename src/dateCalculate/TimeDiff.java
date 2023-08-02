@@ -2,6 +2,8 @@ package dateCalculate;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
@@ -20,27 +22,34 @@ public class TimeDiff {
 		return dateTime;
 	}
 	
-	private static Boolean timeCalc(Long hours, Date userLoginDate) {
-		if (userLoginDate != null) {
-			Long curentLoginTime = System.currentTimeMillis();
-			Long userLoginTime = userLoginDate.getTime();
+	public static Boolean checkLoginTime(Long hours, Date userLoginDate) {
+	    if (userLoginDate != null) {
+	        long currentTime = System.currentTimeMillis();
+	        long userLoginTime = userLoginDate.getTime();
+	        long differenceInMillis = Math.abs(currentTime - userLoginTime);
+	        long maxAllowedDurationInMillis = hours * 3600000;
+	        return differenceInMillis > maxAllowedDurationInMillis;
+	    }
+	    return true;
+	}
+	
+	public static boolean checkLoginTime(long hours, Date userLoginDate) {
+	    if (userLoginDate != null) {
+	        Instant currentTime = Instant.now();
+	        Instant userLoginTime = userLoginDate.toInstant();
 
-			Long diff = curentLoginTime - userLoginTime;
+	        Duration timeDifference = Duration.between(userLoginTime, currentTime);
 
-			if (Math.abs(diff) < hours * 3600000) {
-				return false;
-			} else {
-				return true;
-			}
-		} else {
-			return true;
-		}
+	        return timeDifference.toHours() >= hours;
+	    } else {
+	        return true;
+	    }
 	}
 
 	public static void main(String[] args) throws ParseException {
 
-		Date userLoginTime = dateConvert("2023-07-29 7:50 AM");
+		Date userLoginTime = dateConvert("2023-08-01 7:50 AM");
 
-		System.out.println("More than 12 hr :: "+timeCalc(12L,userLoginTime));
+		System.out.println("More than 12 hr :: "+checkLoginTime(12L,userLoginTime));
 	}
 }
