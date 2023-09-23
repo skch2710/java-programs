@@ -39,7 +39,11 @@ public class Operators {
 	
 	public static void main(String[] args) {
 		
+		Long count = 0L;
 		
+		count++;
+		
+		System.out.println(count);
 		
 	}
 }

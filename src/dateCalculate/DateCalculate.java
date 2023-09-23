@@ -43,6 +43,12 @@ public class DateCalculate {
 		String date1 = dateObj.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
 
 		System.out.println(date1);
+		
+		LocalDate today = LocalDate.now();
+		
+		LocalDate minsOneDay = today.minusDays(1);
+		
+		System.out.println(minsOneDay);
 	}
 
 }
