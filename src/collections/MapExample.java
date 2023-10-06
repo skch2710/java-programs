@@ -12,6 +12,13 @@ public class MapExample {
 		
 		System.out.println(map.get("type").toString());
 		System.out.println(map.get("fileName").toString());
+		
+		Map<String,String> values = new HashMap<>();
+		map.put("type", "application/zip");
+		map.put("fileName", "ex.zip");
+		
+		System.out.println(map.get("type"));
+		System.out.println(map.get("fileName"));
 	}
 
 }
