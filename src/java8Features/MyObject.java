@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class MyObject {
 
 	private Long id;
+	private String name;
 
 }
