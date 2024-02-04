@@ -1,0 +1,73 @@
+
+	JAVA Topics :
+	---------------
+	1. Introduction to Languages and Java
+	2. Featurs of Java
+	3. Input and Output
+	4. Comments
+	5. Varable ( Swaping )
+	6. First Program and Compilation Flow and Process
+	7. Data Types ( type casting )
+	8. Operators
+	9. Control Statements
+	10. Loops
+	11. Arrays
+	12.String , StringBuffer , StringBuilder
+	13. OOps (Object Oriented Programing )
+	14. Encapsulation , Inheritance , Polymorphism , Data Abstraction ,
+		Class and Object
+	15. Methods ( method overloading)
+	16. Static Bolck , Block , Constructor
+	17. Static Varable and static method
+	18. Abstract Class
+	19. Interface
+	20. Super Keyword
+	21. Multiple Inheritance
+	22. Method overloading , overriding
+	23. Wrapper Class ( Boxing , UpBoxing)
+	24. Access Modifiers
+	25. Packages
+	26. Final Keyword
+	27. Exception Handling
+	28. Muti Threading
+	29. Inner Class
+	30. Object Class Methods (toString, hashCode , equals )
+	31. Collections (List , Queue , set  Map )
+	31. Comparable , Comparator 
+	32. Enum
+	33. Lambda Expression
+	34. Functional Interface
+	35. Predicate
+	36. Function
+	37. Stream 
+	38. Files
+	39. Serialization and Deserialization
+	40. JDBC Connection
+	41. Regex
+	42. Dates , Math 
+	43. Encode And Decode
+	44. Random and UUID
+	
+	
+	Spring And Spring Boot Topics :
+	-------------------------------
+	1. CRUD Operation with JPA
+	2. Lombok and Logs
+	3. Exception
+	4. DTO
+	5. Email
+	6. Mapper
+	7. File Upload and Download
+	8. Excel download and Upload Data
+	9. Pdf
+	10. function / SP
+	11. Spring Security
+	12. Oauth2.0 (JWT)
+	13. Login And OTP
+	14. RestTempalte and RestClient
+	15. Async and CompletableFuture
+	16. SchedulerJob
+	17. Mapping (OneToOne , Many)
+	18. Genaric Specification
+	
+	
