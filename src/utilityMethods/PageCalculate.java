@@ -1,4 +1,4 @@
-package pagecalc;
+package utilityMethods;
 
 public class PageCalculate {
 	

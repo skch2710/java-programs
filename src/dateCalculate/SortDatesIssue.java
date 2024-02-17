@@ -1,4 +1,4 @@
-package sortDates;
+package dateCalculate;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

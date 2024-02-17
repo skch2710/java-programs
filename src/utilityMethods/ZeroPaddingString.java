@@ -1,4 +1,4 @@
-package maskingnumber;
+package utilityMethods;
 
 public class ZeroPaddingString {
 	
@@ -22,6 +22,8 @@ public class ZeroPaddingString {
 	
 
 	public static void main(String[] args) {
+		
+		System.out.println(paddingFormat("3201"));
 		
 		System.out.println(paddingFormat1("3201"));
 		

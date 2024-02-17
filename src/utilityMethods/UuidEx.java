@@ -1,4 +1,4 @@
-package uuidEx;
+package utilityMethods;
 
 import java.util.UUID;
 

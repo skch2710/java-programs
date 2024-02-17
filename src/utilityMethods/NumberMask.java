@@ -1,4 +1,4 @@
-package maskingnumber;
+package utilityMethods;
 
 public class NumberMask {
 	

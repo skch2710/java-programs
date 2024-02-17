@@ -1,8 +1,8 @@
-package encodeDecode;
+package utilityMethods;
 
 import java.util.Base64;
 
-public class Test {
+public class EncodeDecode {
 
 	public static void main(String[] args) {
 		

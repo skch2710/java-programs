@@ -1,4 +1,4 @@
-package maskingnumber;
+package utilityMethods;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
