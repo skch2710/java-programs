@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
@@ -59,5 +60,25 @@ public class DateUtil {
 			e.printStackTrace();
 		}
 		return output;
+	}
+	
+	public static LocalDate toLocalDate(Date date) {
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		return localDate;
+	}
+	
+	public static LocalDateTime toLocalDateTime(Date date) {
+		LocalDateTime localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+		return localDate;
+	}
+	
+	public static Date toDate(LocalDate localDate) {
+		Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		return date;
+	}
+	
+	public static Date toDate(LocalDateTime localDateTime) {
+		Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+		return date;
 	}
 }

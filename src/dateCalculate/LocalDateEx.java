@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
@@ -83,5 +84,20 @@ public class LocalDateEx {
 		System.out.println(dateOne.isAfter(dateTwo));
 		System.out.println(dateOne.isBefore(dateTwo));
 		System.out.println(dateOne.isEqual(dateTwo));
+		
+		Date date = new Date();
+		LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDateTime localDateTime = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+		
+		System.out.println("Date To LocalDate : "+localDate);
+		System.out.println("Date To LocalDateTime : "+localDateTime);
+		
+		Date dateConv = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
+		Date dateConvt = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
+		
+		System.out.println("LocalDate To Date : "+dateConv);
+		System.out.println("LocalDateTime To Date : "+dateConvt);
+		
 	}
 }
