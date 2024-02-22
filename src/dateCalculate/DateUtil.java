@@ -22,6 +22,7 @@ public class DateUtil {
 	 * MMM d, yyyy
 	 * MMM dd, yyyy
 	 * MMMM dd, yyyy
+	 * yyyy-MM-dd h:mm a -- 2023-08-01 7:50 AM 
 	 */
 
 	public static String dateToString(LocalDateTime date, String format) {
