@@ -1,0 +1,68 @@
+
+Def : Java is a high-level, object-oriented , platform-independent and Secure programming language.
+
+--> 1991: The initial concept for Java began to take shape within Sun Microsystems,
+ under the leadership of James Gosling. The Green project team envisioned a programming language 
+ that would allow developers to write code that could run on any device,
+  regardless of its architecture or operating system.
+
+--> 1992: The Green project team, which included Gosling, Naughton, and Sheridan,
+ began work on developing a new programming language. Initially called "Oak," 
+ the language was designed with features like portability, security, and simplicity in mind.
+
+--> 1994: Oak was renamed "Java" due to trademark issues. 
+The name was inspired by the team's love for coffee and the fact that 
+Java was the name of a type of coffee bean. The first version of Java, known as JDK 1.0,
+ was released to the public on January 23, 1996.
+ 
+--> 2010: Oracle Corporation acquired Sun Microsystems.
+
+
+Features :
+----------
+
+--> Platform Independence,Object-Oriented,Secure , Portable ,Automatic Memory Management (Garbage Collection)
+
+1. Platform Independence: Java programs are compiled into bytecode, which is platform-independent.
+ This bytecode can be executed on any device with a JVM, making Java applications highly portable.
+
+2. Object-Oriented: Java is built on the principles of object-oriented programming (OOP),
+ which emphasizes the use of objects to model real-world entities. 
+ This makes it easier to organize and structure complex code, 
+ leading to more manageable and scalable applications.
+
+3. Simple and Familiar Syntax: Java syntax is similar to that of other C-style languages such as C++ and C#, 
+making it relatively easy for developers to learn and use. 
+Its syntax is also designed to be readable and straightforward, promoting code clarity and maintainability.
+
+4. Automatic Memory Management (Garbage Collection): Java features automatic memory management 
+through garbage collection, which relieves developers from managing memory manually. 
+The JVM automatically deallocates memory for objects that are no longer in use, 
+reducing the risk of memory leaks and memory-related bugs.
+
+5. Robust and Secure: Java's strong type system, exception handling mechanisms, 
+and runtime environment contribute to its robustness. 
+Additionally, Java's security features, such as sandboxing and bytecode verification, 
+help prevent unauthorized access and malicious code execution, 
+making it a popular choice for building secure applications.
+
+6. Rich Standard Library: Java comes with a comprehensive standard library (Java API) 
+that provides pre-built modules and classes for common programming tasks, 
+such as file I/O, networking, data structures, and more. 
+This extensive library saves developers time and effort by providing ready-made solutions to common problems.
+
+7. Multi-threading Support: Java offers built-in support for multithreading, 
+allowing developers to create concurrent and parallel applications easily. 
+Multithreading enables programs to perform multiple tasks simultaneously, 
+improving performance and responsiveness, especially in applications 
+that require handling multiple concurrent operations.
+
+8. High Performance: While Java is often criticized for its performance compared to low-level languages 
+like C or C++, modern JVM implementations have significantly improved Java's performance. 
+Just-in-time (JIT) compilation, adaptive optimization, and other runtime optimizations 
+help Java applications achieve competitive performance levels.
+
+9. JAVA Uses Both Compiler and Interpreter
+
+Compiler -- Compiles whole program at a time
+Interpreter -- Compile line by line
