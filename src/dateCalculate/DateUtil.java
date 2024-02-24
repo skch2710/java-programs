@@ -16,6 +16,7 @@ public class DateUtil {
 	 * yyyy-MM-dd HH:mm:ss a
 	 * yyyy-MM-dd
 	 * MM/dd/yyyy
+	 * MMddyyyy
 	 * MM.dd
 	 * HH:mm a MMMM dd, yyyy  -- 15:05
 	 * hh:mm a MMMM dd, yyyy  -- 03:05
