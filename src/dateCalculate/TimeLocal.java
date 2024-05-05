@@ -22,7 +22,7 @@ public class TimeLocal {
 		System.out.println(DateUtil.dateToString(LocalDateTime.now(),"yyyy-MM-dd HH:mm:ss a"));
 		System.out.println(DateUtil.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss a"));
 		
-		TimeZone.setDefault(TimeZone.getTimeZone("America/New_York"));
+		TimeZone.setDefault(TimeZone.getTimeZone("MST7MDT"));
 		System.out.println(DateUtil.dateToString(LocalDateTime.now(),"yyyy-MM-dd HH:mm:ss a"));
 		System.out.println(DateUtil.dateToString(new Date(),"yyyy-MM-dd HH:mm:ss a"));
 	}
