@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.IsoFields;
 import java.util.Date;
 
 public class DateUtil {
@@ -82,5 +83,20 @@ public class DateUtil {
 	public static Date toDate(LocalDateTime localDateTime) {
 		Date date = Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
 		return date;
+	}
+	
+	public static LocalDate getMQ(LocalDate input, String type) {
+		LocalDate result = null;
+		if (type.equals("M")) {
+			result = input.plusMonths(1).withDayOfMonth(14);
+		} else if (type.equals("Q")) {
+			int quater = input.get(IsoFields.QUARTER_OF_YEAR);
+			if (quater == 4) {
+				result = input.plusYears(1).withMonth(1).withDayOfMonth(14);
+			} else {
+				result = input.withMonth((quater * 3) + 1).withDayOfMonth(14);
+			}
+		}
+		return result;
 	}
 }

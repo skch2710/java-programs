@@ -31,6 +31,10 @@ public class DateExMain {
 		
 		String dateN = DateUtil.dateToString(new Date(), "hh:mm a MMM d, yyyy");
 		System.out.println(dateN);
+		
+		LocalDate input = LocalDate.of(2024, 10, 18);
+		System.out.println(DateUtil.getMQ(input, "M"));
+		System.out.println(DateUtil.getMQ(input, "Q"));
 	}
 
 }

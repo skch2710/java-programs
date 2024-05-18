@@ -26,6 +26,20 @@ public class MapDoubleGroup {
 				System.out.println("  idTwo: " + idTwo + " -> " + models);
 			});
 		});
+		
+		// Using streams to print the grouped map
+        groupedByIdOneAndIdTwo.entrySet().stream()
+            .forEach(entryOne -> {
+                Long idOne = entryOne.getKey();
+                Map<Long, List<Ex>> map = entryOne.getValue();
+                System.out.println("idOne: " + idOne + " " + map);
+                map.entrySet().stream()
+                    .forEach(entryTwo -> {
+                        Long idTwo = entryTwo.getKey();
+                        List<Ex> models = entryTwo.getValue();
+                        System.out.println("  idTwo: " + idTwo + " -> " + models);
+                    });
+            });
 	}
 }
 
