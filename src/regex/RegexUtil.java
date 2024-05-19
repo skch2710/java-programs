@@ -107,6 +107,24 @@ public class RegexUtil {
 		return "";
 	}
 	
+	public static String capitalizeNew(String input) {
+        if (input == null || input.isEmpty()) {
+            return "";
+        }
+        String[] words = input.trim().split("\\s+");
+        String output = "";
+
+        for (String word : words) {
+            if (!word.isEmpty()) {
+            	output = output.concat(word.substring(0, 1).toUpperCase())
+//                      .concat(word.substring(1).toLowerCase())
+                      .concat(word.substring(1))
+                      .concat(" ");
+            }
+        }
+        return output.trim();
+    }
+	
 	public static String applyBrace(String input) {
 		String result = "";
 		if (input != null && !input.isEmpty() && input.length() == 10) {
