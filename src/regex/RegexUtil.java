@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  *         Java applications.
  */
 
-public class Regex {
+public class RegexUtil {
 
 	/**
 	 * method to check date validation.
@@ -86,4 +86,36 @@ public class Regex {
 		return true;
 	}
 	
+	public static String getDBColumn(String input) {
+		return input!=null && !input.isBlank() ? 
+				input.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase() : "";
+	}
+	
+	public static String capitalize(String input) {
+		if (input != null && !input.isEmpty()) {
+			Pattern pattern = Pattern.compile("(\\b\\w)(\\w*)");
+			Matcher matcher = pattern.matcher(input);
+			StringBuilder output = new StringBuilder();
+			while (matcher.find()) {
+//				output.append(matcher.group(1).toUpperCase()).append(matcher.group(2)).append(" ");
+				output.append(matcher.group(1).toUpperCase())
+				.append(matcher.group(2).toLowerCase())
+				.append(" ");
+			}
+			return output.toString().trim();
+		}
+		return "";
+	}
+	
+	public static String applyBrace(String input) {
+		String result = "";
+		if (input != null && !input.isEmpty() && input.length() == 10) {
+			Pattern pattern = Pattern.compile("(\\d{3})(\\d{3})(\\d{4})");
+			Matcher matcher = pattern.matcher(input);
+			while (matcher.find()) {
+				result = "(" + matcher.group(1) + ") " + matcher.group(2) + "-" + matcher.group(3);
+			}
+		}
+		return result;
+	}
 }
