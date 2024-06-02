@@ -1,0 +1,45 @@
+1. What is Java ?
+	 Java is a high-level, object-oriented , platform-independent, Secure and Robust programming language.
+
+2. Features of Java ?
+	Platform Independence,Object-Oriented, Automatic Memory Management (Garbage Collection),
+	Simple and Familiar Syntax,Robust and Secure,Multi-threading Support
+	
+3. What is Data Type ? What are they ?
+	data type is a classification that defines the type of a value that can be stored in a variable.
+	
+	Two Types: 
+	1. Primitive (8)
+		byte,short,int,long,float,double,char,boolean
+	2. Non-Primitive (reference)
+		String,Array,Class,object,interface......
+
+4. What is variable and Types of Variables?
+ 	variable is a container that holds/store data.
+ 	
+ 	Local Variables: These are declared within a method, constructor, 
+ 	or block of code and can only be accessed within that particular scope.
+
+	Instance Variables (or Member Variables): These are declared within a class but outside any method,
+	 constructor, or block. Each instance of the class (i.e., each object) 
+	 has its own copy of these variables.
+
+	Class Variables (or Static Variables): These are declared with the static keyword within
+	 a class but outside any method, constructor, or block. 
+	 Unlike instance variables, there's only one copy of a class variable per class,
+	  shared by all instances of the class.
+ 	
+
+5. Difference Between Encode and Encryption ?
+	Encoding is used to convert data from one format to another.
+		Base64 Encoding, URL Encoding ,Character Encoding
+	Encryption is used to protect data by converting it into an unreadable format 
+	that can only be reversed with the correct decryption key.
+		Symmetric Encryption: AES (Advanced Encryption Standard), DES (Data Encryption Standard).
+		Asymmetric Encryption: RSA (Rivest-Shamir-Adleman), ECC (Elliptic Curve Cryptography).
+
+
+
+
+ 	
+ 
