@@ -5,6 +5,11 @@ package operators;
  * @author sathish
  *
  *         1.Arithmetic Operators ( +,-,*,/,% ) 
+ *         	+ : Addition
+			- : Subtraction
+ 			* : Multiplication
+			/ : Division
+			% : Modulus (remainder of division)
  *         2.Unary Operators 
  *         		i.unary minus(-) 
  *         		ii.Increment(++) [ pre & post ] 

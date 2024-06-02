@@ -1,0 +1,202 @@
+Control statements in Java are used to control the flow of execution in a program. 
+They allow you to make decisions, repeat operations, and branch to different parts of the code. 
+Control statements can be categorized into three main types: 
+selection/Conditional statements, iteration statements, and jump statements.
+
+### 1. Selection/Conditional Statements
+These statements allow the program to choose different paths of execution 
+based on the outcome of an expression or condition.
+
+#### a. `if` Statement
+Executes a block of code if the specified condition is true.
+
+```java
+if (condition) {
+    // code to be executed if condition is true
+}
+```
+
+#### b. `if-else` Statement
+Executes one block of code if the condition is true, and another block if the condition is false.
+
+```java
+if (condition) {
+    // code to be executed if condition is true
+} else {
+    // code to be executed if condition is false
+}
+```
+
+#### c. `if-else-if` Ladder
+Allows multiple conditions to be tested sequentially.
+When the if block executes, the program does not check the other conditions (else if and else).
+
+```java
+if (condition1) {
+    // code to be executed if condition1 is true
+} else if (condition2) {
+    // code to be executed if condition2 is true
+} else {
+    // code to be executed if all conditions are false
+}
+```
+
+#### d. `switch` Statement
+Selects a block of code to execute from multiple options based on the value of an expression.
+
+```java
+switch (expression) {
+    case value1:
+        // code to be executed if expression == value1
+        break;
+    case value2:
+        // code to be executed if expression == value2
+        break;
+    // more cases
+    default:
+    	break;
+        // code to be executed if none of the cases match
+}
+```
+
+### 2. Iteration Statements
+These statements allow the program to execute a block of code repeatedly.
+
+#### a. `for` Loop
+Executes a block of code a specific number of times.
+
+```java
+for (initialization; condition; update) {
+    // code to be executed
+}
+```
+
+Example:
+```java
+for (int i = 0; i < 5; i++) {
+    System.out.println(i);
+}
+```
+
+#### b. Enhanced `for` Loop (for-each Loop)
+Used for iterating over arrays or collections.
+
+```java
+for (type element : array) {
+    // code to be executed
+}
+```
+
+Example:
+```java
+int[] numbers = {1, 2, 3, 4, 5};
+for (int number : numbers) {
+    System.out.println(number);
+}
+```
+
+#### c. `while` Loop
+Executes a block of code as long as the specified condition is true.
+
+```java
+while (condition) {
+    // code to be executed
+}
+```
+
+Example:
+```java
+int i = 0;
+while (i < 5) {
+    System.out.println(i);
+    i++;
+}
+```
+
+#### d. `do-while` Loop
+Executes a block of code at least once and then repeatedly executes 
+it as long as the specified condition is true.
+
+```java
+do {
+    // code to be executed
+} while (condition);
+```
+
+Example:
+```java
+int i = 0;
+do {
+    System.out.println(i);
+    i++;
+} while (i < 5);
+```
+
+### 3. Jump Statements
+These statements allow the program to jump to different parts of the code.
+
+#### a. `break` Statement
+Terminates the loop or switch statement and transfers control to 
+the statement immediately following the loop or switch.
+
+```java
+for (int i = 0; i < 10; i++) {
+    if (i == 5) {
+        break;
+    }
+    System.out.println(i);
+}
+```
+
+#### b. `continue` Statement
+Skips the current iteration of the loop and proceeds to the next iteration.
+
+```java
+for (int i = 0; i < 10; i++) {
+    if (i == 5) {
+        continue;
+    }
+    System.out.println(i);
+}
+```
+
+#### c. `return` Statement
+Exits from the current method and returns a value if applicable.
+
+```java
+public int sum(int a, int b) {
+    return a + b;
+}
+```
+
+#### d. `try-catch-finally` Block (Exception Handling)
+Used for handling exceptions, allowing the program to continue running even if an error occurs.
+
+```java
+try {
+    // code that may throw an exception
+} catch (ExceptionType1 e1) {
+    // code to handle ExceptionType1
+} catch (ExceptionType2 e2) {
+    // code to handle ExceptionType2
+} finally {
+    // code to be executed regardless of whether an exception occurs
+}
+```
+
+Example:
+```java
+try {
+    int[] arr = new int[5];
+    arr[10] = 50; // This will throw ArrayIndexOutOfBoundsException
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Array index out of bounds!");
+} finally {
+    System.out.println("This block is always executed.");
+}
+```
+
+In summary, control statements in Java enable the execution flow of 
+a program to be altered based on conditions, repeated actions, 
+and exceptional situations. Understanding these statements is crucial 
+for writing effective and efficient Java programs.

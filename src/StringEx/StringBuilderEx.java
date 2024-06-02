@@ -1,6 +1,6 @@
 package StringEx;
 
-public class StringBuolderEx {
+public class StringBuilderEx {
 	
 	public static void main(String[] args) {
 		StringBuilder errorMessage = new StringBuilder();
