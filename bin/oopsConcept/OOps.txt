@@ -1,0 +1,196 @@
+OOPs (Object-Oriented Programming) in Java is a programming that uses objects and classes.
+
+Four fundamental concepts of OOP in Java:
+1. Encapsulation 
+2.Inheritance 
+3.Polymorphism 
+4.Abstraction
+
+
+### 1. **Classes and Objects**
+- **Class:** A blueprint or template for creating objects. 
+	It defines properties (attributes) and behaviors (methods) 
+	that the objects created from the class will have.
+- **Object:** An instance of a class. 
+	It is a real-world entity that has state (attributes) and behavior (methods).
+
+### Example:
+```java
+class Car {
+    // Attributes
+    String color;
+    String model;
+
+    // Constructor
+    Car(String color, String model) {
+        this.color = color;
+        this.model = model;
+    }
+
+    // Method
+    void displayDetails() {
+        System.out.println("Car model: " + model + ", Color: " + color);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects
+        Car car1 = new Car("Red", "Toyota");
+        Car car2 = new Car("Blue", "Honda");
+
+        // Accessing methods
+        car1.displayDetails();
+        car2.displayDetails();
+    }
+}
+```
+
+### 2. **Encapsulation**
+- Encapsulation is the mechanism of wrapping the variables and methods together as a single unit.
+	In Java, this is achieved using access modifiers like private, protected, and public.
+- It helps in data hiding and provides a way to restrict access to certain components.
+
+### Example:
+```java
+class Account {
+    // Private data member
+    private double balance;
+
+    // Public method to access private data
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        if(amount > 0) {
+            balance += amount;
+        }
+    }
+}
+```
+
+### 3. **Inheritance**
+- Inheritance is a mechanism where one class acquires the properties and behaviors of another class. 
+	It allows for code reusability and the creation of hierarchical relationships.
+- The class that inherits is called the subclass (or derived class), 
+and the class from which it inherits is called the superclass (or base class).
+
+### Example:
+```java
+// Superclass
+class Animal {
+    void eat() {
+        System.out.println("This animal eats food.");
+    }
+}
+
+// Subclass
+class Dog extends Animal {
+    void bark() {
+        System.out.println("The dog barks.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat(); // Inherited method
+        dog.bark();
+    }
+}
+```
+
+### 4. **Polymorphism**
+- Polymorphism means "many forms", and it allows one interface to be used for a general class of actions. 
+The specific action is determined by the exact nature of the situation.
+- It is of two types: Compile-time polymorphism (method overloading) 
+and runtime polymorphism (method overriding).
+
+### Example:
+#### Method Overloading (Compile-time polymorphism):
+```java
+class MathOperation {
+    // Method with 2 parameters
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    // Method with 3 parameters
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+```
+
+#### Method Overriding (Runtime polymorphism):
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal myCat = new Cat(); // Upcasting
+        myCat.sound(); // Calls the overridden method in Cat
+    }
+}
+```
+
+### 5. **Abstraction**
+- Abstraction is the concept of hiding the complex implementation details 
+and showing only the essential features of the object.
+- It can be achieved using abstract classes and interfaces.
+
+### Example:
+#### Abstract Class:
+```java
+abstract class Shape {
+    abstract void draw();
+}
+
+class Circle extends Shape {
+    void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape shape = new Circle();
+        shape.draw();
+    }
+}
+```
+
+#### Interface:
+```java
+interface Animal {
+    void eat();
+}
+
+class Dog implements Animal {
+    public void eat() {
+        System.out.println("Dog eats bones");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat();
+    }
+}
+```
+
+These principles form the foundation of OOP in Java, 
+enabling developers to create well-structured and maintainable code.

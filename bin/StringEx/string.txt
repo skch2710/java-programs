@@ -1,0 +1,83 @@
+In Java, `String`, `StringBuilder`, and `StringBuffer` are classes used to handle and manipulate strings. 
+Each has different characteristics and is used in different scenarios 
+based on the requirements of the application. Here’s a detailed comparison of these classes:
+
+### 1. `String`
+- **Immutability**: Strings in Java are immutable, meaning once a `String` object is created, 
+		it cannot be changed. Any modification to a `String` creates a new `String` object.
+- **Performance**: Due to immutability, any operation that modifies a string, 
+		such as concatenation, results in the creation of new `String` objects, which can be less efficient.
+- **Thread Safety**: `String` objects are inherently thread-safe due to their immutability.
+- **Usage**: Ideal for scenarios where strings do not change frequently. 
+		Suitable for read-only operations.
+
+```java
+String str = "Hello";
+str = str + " World"; // Creates a new String object
+```
+
+### 2. `StringBuilder`
+- **Mutability**: `StringBuilder` objects are mutable, meaning they can be modified 
+		after they are created without creating new objects.
+- **Performance**: More efficient for string modifications as it does not create new objects. 
+	It uses a dynamic array of characters to store the string, and the capacity can increase as needed.
+- **Thread Safety**: Not thread-safe. Use it in a single-threaded environment or 
+		ensure proper synchronization in a multithreaded context.
+- **Usage**: Ideal for scenarios where strings are frequently modified. 
+		Suitable for single-threaded applications.
+
+```java
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World"); // Modifies the existing object
+```
+
+### 3. `StringBuffer`
+- **Mutability**: Like `StringBuilder`, `StringBuffer` objects are mutable.
+- **Performance**: Slightly less efficient than `StringBuilder` due to the overhead of synchronization.
+- **Thread Safety**: Thread-safe as all public methods are synchronized. 
+		Suitable for use in multithreaded environments.
+- **Usage**: Ideal for scenarios where strings are frequently modified and thread safety is required.
+
+```java
+StringBuffer sbf = new StringBuffer("Hello");
+sbf.append(" World"); // Modifies the existing object in a thread-safe manner
+```
+
+### Comparison Summary
+- **Immutability**: `String` is immutable, `StringBuilder` and `StringBuffer` are mutable.
+- **Performance**: `StringBuilder` is generally faster than `StringBuffer` 
+		due to the lack of synchronization. Both are faster than `String` for modification operations.
+- **Thread Safety**: `String` is inherently thread-safe, `StringBuffer` is thread-safe due to 
+		synchronized methods, and `StringBuilder` is not thread-safe.
+- **Use Cases**:
+  - `String`: Use when the string is constant or changes infrequently.
+  - `StringBuilder`: Use in a single-threaded environment where the string is modified frequently.
+  - `StringBuffer`: Use in a multithreaded environment where the string is modified frequently.
+
+### Example Usage
+Here is an example demonstrating the differences between `String`, `StringBuilder`, and `StringBuffer`:
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        // Using String
+        String str = "Hello";
+        str = str + " World"; // Concatenation creates a new String object
+        System.out.println("String: " + str);
+
+        // Using StringBuilder
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(" World"); // Modifies the existing object
+        System.out.println("StringBuilder: " + sb.toString());
+
+        // Using StringBuffer
+        StringBuffer sbf = new StringBuffer("Hello");
+        sbf.append(" World"); // Modifies the existing object in a thread-safe manner
+        System.out.println("StringBuffer: " + sbf.toString());
+    }
+}
+```
+
+In summary, choose `String` for immutable string handling, `StringBuilder` for mutable 
+string handling in a single-threaded context, and `StringBuffer` for mutable 
+string handling in a multithreaded context.
