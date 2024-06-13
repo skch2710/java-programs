@@ -1,4 +1,4 @@
-package StringEx;
+package stringEx;
 
 public class StringBuilderEx {
 	
