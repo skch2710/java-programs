@@ -1,5 +1,7 @@
 package arraysEx;
 
+import java.util.Arrays;
+
 public class ArraysMain {
 	
 	//--> Used to store Collection of Similar datatype values (Homogenous).
@@ -22,10 +24,16 @@ public class ArraysMain {
 		
 		String extwo[] = {"One","Two"};
 		
+		String extwod[] = {"One","Two"};
+		
 		for (String value : extwo) {
 			System.out.println(value);
 			
 		}
+		
+		
+		System.out.println("Compare Two Arrays as same data types: "+Arrays.equals(extwo ,extwod));
+		
 	}
 
 }
