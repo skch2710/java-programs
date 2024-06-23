@@ -1,0 +1,21 @@
+Memory management in Java involves a number of techniques to ensure 
+efficient allocation and deallocation of memory, 
+primarily through the use of an automatic garbage collection system. 
+
+**Heap Memory**: 
+	This is where all the objects are stored. 
+
+**Stack Memory**: 
+	This is used for execution of threads. 
+	Each thread has its own stack, 
+	which stores local variables, method calls, and partial results.
+
+### **Garbage Collection (GC)**
+Java manages memory using an automatic garbage collector 
+which periodically checks for and frees up memory that is no longer being used by the program.
+
+### **Memory Leaks in Java**
+Even though Java handles memory management automatically, 
+memory leaks can still occur if objects are unintentionally referenced for longer than necessary, 
+preventing the garbage collector from reclaiming memory.
+
