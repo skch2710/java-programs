@@ -91,6 +91,15 @@ public class RegexUtil {
 				input.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase() : "";
 	}
 	
+	public static String titleCase(String input) {
+        if (input == null || input.isBlank()) {
+            return "";
+        }
+        String result = input.replaceAll("([a-z])([A-Z])", "$1 $2");
+        result = result.substring(0, 1).toUpperCase() + result.substring(1);
+        return result;
+    }
+	
 	public static String capitalize(String input) {
 		if (input != null && !input.isEmpty()) {
 			Pattern pattern = Pattern.compile("(\\b\\w)(\\w*)");
