@@ -1,5 +1,8 @@
 package stringEx;
 
+import java.util.Arrays;
+import java.util.List;
+
 import regex.RegexUtil;
 
 public class StringMain {
@@ -11,6 +14,15 @@ public class StringMain {
 		
 		System.out.println(camelCase("Sathish Kumar Ch"));
 		
+		List<String> stringList = Arrays.asList("A","b");
+		
+		List<Long> longList = Arrays.asList(1L,2L);
+		
+		System.out.println(String.join(", ", stringList));
+		
+		System.out.println(longList.getFirst());
+		
+		System.out.println(longList.getLast());
 		
 	}
 	
