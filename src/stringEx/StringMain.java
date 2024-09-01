@@ -24,6 +24,15 @@ public class StringMain {
 		
 		System.out.println(longList.getLast());
 		
+		System.out.println(">>>>> "+cleanName("sa.t'h\"i\"sh.xlsx"));
+		
+		String name = "Sathish";
+		int number = 32;
+
+		// Using String.format
+		String result = String.format("String Format %s = %d", name, number);
+		System.out.println(result);
+		
 	}
 	
 	public static String titleCase(String input) {
@@ -44,4 +53,11 @@ public class StringMain {
         return result;
     }
 
+	public static String cleanName(String input) {
+		String result = "";
+		result = input.replaceAll("\\.(csv|xlsx|xls)", "")  // Removing the file extension
+                .replaceAll("[.,:;'\"]", "");    // removing [.,:;'"]
+		return result;
+	}
+	
 }
