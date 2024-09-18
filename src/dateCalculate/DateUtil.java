@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.IsoFields;
 import java.util.Date;
 
@@ -98,5 +99,23 @@ public class DateUtil {
 			}
 		}
 		return result;
+	}
+	
+//	public static Boolean compareDate(LocalDateTime source, LocalDateTime target) {
+//		return source.equals(target) ? true : false;
+//	}
+	
+	public static Boolean compareDate(LocalDateTime source, LocalDateTime target) {
+		if (source.truncatedTo(ChronoUnit.SECONDS).equals(target.truncatedTo(ChronoUnit.SECONDS))) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static Boolean compareDateMinutes(LocalDateTime source, LocalDateTime target) {
+		if (source.truncatedTo(ChronoUnit.MINUTES).equals(target.truncatedTo(ChronoUnit.MINUTES))) {
+			return true;
+		}
+		return false;
 	}
 }

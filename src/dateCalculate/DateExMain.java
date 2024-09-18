@@ -15,7 +15,7 @@ public class DateExMain {
 		return outputFormat.format(date);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		String mmdd = DateUtil.dateToString(LocalDate.now(), "MM.dd");
 		System.out.println(mmdd);
@@ -35,6 +35,18 @@ public class DateExMain {
 		LocalDate input = LocalDate.of(2024, 10, 18);
 		System.out.println(DateUtil.getMQ(input, "M"));
 		System.out.println(DateUtil.getMQ(input, "Q"));
+		
+		LocalDateTime source = LocalDateTime.now();
+		Thread.sleep(200);
+		LocalDateTime target = LocalDateTime.now();
+		
+		System.out.println(source);
+		System.out.println(target);
+		
+		System.out.println(DateUtil.compareDate(source, target));
+		
+		System.out.println(DateUtil.compareDateMinutes(source, target));
+		
 	}
 
 }
