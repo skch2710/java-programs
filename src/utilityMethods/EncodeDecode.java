@@ -1,6 +1,7 @@
 package utilityMethods;
 
 import java.util.Base64;
+import java.util.UUID;
 
 public class EncodeDecode {
 
@@ -14,9 +15,17 @@ public class EncodeDecode {
 		
 		System.out.println(decode);
 		
-		System.out.println(AESUtils.encrypt("Sathish"));
+		String uuid = UUID.randomUUID().toString().split("-")[0];
 		
-		System.out.println(AESUtils.decrypt("jesihJvv44ZbTgAV0pg4UA=="));
+		System.out.println(uuid);
+		
+		Long timeMilli = System.currentTimeMillis();
+		
+		String link = "https://localhost:8080/createPassword?uuid="+ AESUtils.encrypt("00f135bc#1730022844021");
+		
+		System.out.println(link);
+		
+		System.out.println(AESUtils.decrypt("2z7sie8zKWrRVnt8bYqT33TsnIMZBoVXnNpwGRILOs+QIHmeBxgPUU9RLw2VGJWFB8g="));
 		
 	}
 
