@@ -25,7 +25,7 @@ public class EncodeDecode {
 		
 		System.out.println(link);
 		
-		System.out.println(AESUtils.decrypt("2z7sie8zKWrRVnt8bYqT33TsnIMZBoVXnNpwGRILOs+QIHmeBxgPUU9RLw2VGJWFB8g="));
+		System.out.println(AESUtils.decrypt("Re5gKylnPQkejtqN4bKOwzNPr6ZBZLqd9PjCSNQH7fod1N4="));
 		
 	}
 

@@ -40,3 +40,21 @@ implementations in Java and their performance characteristics:
 In conclusion, if you are looking for the fastest map in a typical scenario without 
 any specific requirements for ordering or sorting, `HashMap` is the best choice due to its O(1) 
 average time complexity for basic operations. For concurrent access, prefer `ConcurrentHashMap`.
+
+
+****************-----HashMap and HashTable------------***********************
+
+The primary differences between `HashMap` and `Hashtable` in Java lie in their synchronization,
+ null handling, and performance. Here's a detailed comparison:
+
+| **Aspect**               | **HashMap**                                                                                               | **Hashtable**                                                                                         |
+|---------------------------|----------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| **Synchronization**      | Not synchronized, making it **not thread-safe**.                                                        | Synchronized, making it **thread-safe** for single-threaded environments.                            |
+| **Performance**          | Faster due to the lack of synchronization.                                                              | Slower because of synchronization overhead.                                                          |
+| **Null Handling**        | Allows **one null key** and multiple **null values**.                                                   | Does **not allow null keys** or **null values**.                                                     |
+| **Usage**                | Preferred for **non-thread-safe** environments or when external synchronization is used.                | Used in **thread-safe** environments, although `ConcurrentHashMap` is preferred in modern applications. |
+| **Default Capacity**     | Default initial capacity is **16**, and the load factor is **0.75**.                                     | Default initial capacity is **11**, and it resizes by doubling its size + 1.                         |
+
+### Key Takeaways:
+- Use **HashMap** for better performance in **single-threaded** applications.
+- Use **Hashtable** only if legacy code requires it, though in modern multithreaded applications, consider **ConcurrentHashMap** as a better alternative.
