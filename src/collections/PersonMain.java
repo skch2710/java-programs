@@ -18,7 +18,8 @@ public class PersonMain {
 				new Person("Charlie", 25), new Person("Bob", 38));
 
 		List<Person> filteredSortedList = people.stream().filter(p -> p.age > 30)
-				.sorted(Comparator.comparing(Person::getName).thenComparingInt(Person::getAge))
+				.sorted(Comparator.comparing(Person::getName).thenComparing(Person::getAge))
+//				.sorted(Comparator.comparing(Person::getName).thenComparingInt(Person::getAge))
 				.collect(Collectors.toList());
 
 		filteredSortedList.forEach(System.out::println);
