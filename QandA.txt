@@ -100,7 +100,8 @@ You said:
 FunctionalInterFace and Interface
 ChatGPT said:
 ChatGPT
-A functional interface has exactly one abstract method and can be used with lambda expressions, while a regular interface can have multiple abstract methods.
+A functional interface has exactly one abstract method and can be used with lambda expressions, 
+while a regular interface can have multiple abstract methods.
 
 
 
@@ -179,59 +180,29 @@ Streams in Java allow concise and readable code, enable parallel processing, and
 
 
 
-
-You said:
-Lamda in java
-ChatGPT said:
-ChatGPT
-Lambda expressions in Java provide a concise way to represent anonymous functions or methods, enabling functional programming features like passing behavior as parameters.
+Lamda in java:
+---------------
+Lambda expressions in Java provide a concise way to represent anonymous functions or methods, enabling functional programming features.
 
 
+Comparator and Compararing:
+---------------------------
+Comparator is an interface used to define custom sorting logic, 
+while Comparable is an interface used to define the natural order of objects for sorting.
 
 
-
-
-
-You said:
-Comparator and Compararing
-ChatGPT said:
-ChatGPT
-Comparator is an interface used to define custom sorting logic, while Comparable is an interface used to define the natural order of objects for sorting.
-
-
-
-
-
-
-
-You said:
-Class loader in java
-ChatGPT said:
-ChatGPT
+Class loader in java:
+----------------------
 A ClassLoader in Java is responsible for loading classes into the JVM at runtime, enabling dynamic class loading and managing the classpath.
 
 
-
-
-
-
-
-You said:
-API and Microservice
-ChatGPT said:
-ChatGPT
+API and Microservice:
+------------------------
 An API is a set of protocols for communication between software components, while a microservice is an architectural style where an application is broken into small, independently deployable services, each having its own API.
 
 
-
-
-
-
-
-You said:
-Solid Principles
-ChatGPT said:
-ChatGPT
+Solid Principles:
+-----------------
 The SOLID principles are five design principles aimed at making software more understandable, flexible, and maintainable:
 
 S - Single Responsibility Principle
@@ -241,35 +212,16 @@ I - Interface Segregation Principle
 D - Dependency Inversion Principle
 
 
-
-
-
-
-You said:
-Circuit Breaker
-ChatGPT said:
-ChatGPT
+Circuit Breaker:
+-------------------
 A Circuit Breaker is a design pattern used to prevent system failure by detecting and isolating faults in a service or component, allowing it to recover gracefully.
 
 
-
-
-
-
-
-You said:
-Garbage collection
-ChatGPT said:
-ChatGPT
+Garbage collection:
+--------------------
 Garbage collection in Java is the automatic process of reclaiming memory by removing unused or unreachable objects from the heap.
 
 
-
-
-
-
-
-You said:
 heap and hash memory
 ChatGPT said:
 ChatGPT
@@ -390,7 +342,7 @@ An exception in Java is an event that disrupts the normal flow of program execut
 
 
 You said:
-GlobalExcption in sprin bott
+GlobalExcption in sprin boot
 ChatGPT said:
 ChatGPT
 @ControllerAdvice in Spring Boot is used to handle global exceptions across all controllers, allowing centralized exception handling with @ExceptionHandler methods.
@@ -490,7 +442,8 @@ You said:
 Method Overloading and Ovverriding
 ChatGPT said:
 ChatGPT
-Method overloading occurs when multiple methods with the same name have different parameters, while method overriding happens when a subclass provides a specific implementation of a method already defined in its superclass.
+Method overloading occurs when multiple methods with the same name have different parameters, 
+while method overriding happens when a subclass provides a specific implementation of a method already defined in its superclass.
 
 
 
@@ -507,17 +460,8 @@ Constructor overloading occurs when multiple constructors with the same name but
 
 
 
-
-
-
-You said:
 Flow of exusion in java class .... method , controctor, block ..
-ChatGPT said:
-ChatGPT
+-------------------
 In Java, the flow of execution is:
-
-Static blocks are executed first when the class is loaded.
-Then, the instance variables are initialized.
-Next, the constructor is called when an object is created.
-After that, any instance initialization blocks (if present) are executed.
-Finally, methods are invoked when called within the program.
+	1. Static blocks, 2. the instance variables are initialized ,
+	3. constructor , 4. blocks , 5. methods are invoked
