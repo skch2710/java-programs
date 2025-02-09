@@ -18,9 +18,18 @@ public class PersonMain {
 				new Person("Bob", 40), new Person("Alice", 32),
 				new Person("Charlie", 25), new Person("Bob", 38));
 
+		System.out.println(people);
+		
 		List<Person> filteredSortedList = people.stream().filter(p -> p.age > 30)
 				.sorted(Comparator.comparing(Person::getName).thenComparing(Person::getAge))
 //				.sorted(Comparator.comparing(Person::getName).thenComparingInt(Person::getAge))
+//				.map(obj -> {
+//					obj.setName("Greater");
+//					return obj;
+//				})
+				.peek(obj -> {
+					obj.setName("Greater");
+				})
 				.collect(Collectors.toList());
 
 		filteredSortedList.forEach(System.out::println);
@@ -42,6 +51,18 @@ public class PersonMain {
 		Optional<Integer> max2 = num.stream().max(Comparator.naturalOrder());
 
         System.out.println(result);
+        
+        
+        
+        List<String> strList = Arrays.asList("bb","dd","aa");
+        
+        List<String> strUpper = strList.stream()
+        			.map(String::toUpperCase)
+        			.sorted(Comparator.reverseOrder())
+        			.collect(Collectors.toList());
+        
+        System.out.println(strUpper);
+        
 	}
 
 }
