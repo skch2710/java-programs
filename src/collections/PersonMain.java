@@ -23,6 +23,20 @@ public class PersonMain {
 				.collect(Collectors.toList());
 
 		filteredSortedList.forEach(System.out::println);
+		
+		List<Integer> num = Arrays.asList(1, 2, 5, 6);
+
+        List<Integer> result = num.stream()
+                .filter(n -> n % 2 == 0)
+                .map(n -> n * n)
+                .collect(Collectors.toList());
+        
+		num.stream().filter(n -> n % 2 == 0)
+					.forEach(n -> {
+						System.out.println(n * n);
+					});
+
+        System.out.println(result);
 	}
 
 }
