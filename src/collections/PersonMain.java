@@ -3,6 +3,7 @@ package collections;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
@@ -35,6 +36,10 @@ public class PersonMain {
 					.forEach(n -> {
 						System.out.println(n * n);
 					});
+		
+		Optional<Integer> max = num.stream().max(Integer::compareTo);
+		Optional<Integer> max1 = num.stream().max(Comparator.comparing(n -> n));
+		Optional<Integer> max2 = num.stream().max(Comparator.naturalOrder());
 
         System.out.println(result);
 	}
