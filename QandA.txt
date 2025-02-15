@@ -10,12 +10,15 @@ Are you using Spring Security with JWT for this?
 
 String , String Buffer and String Builder :
 --------------------------------------------
-String is immutable, StringBuffer is mutable and thread-safe (synchronized), while StringBuilder is mutable but not thread-safe (faster performance).
+String is immutable, StringBuffer is mutable and thread-safe (synchronized), 
+while StringBuilder is mutable but not thread-safe (faster performance).
 
 
 final , finally and finalized :
 ---------------------------------
-final is a keyword for constants, method overriding prevention, and inheritance restriction; finally is a block in exception handling that always executes; finalize() is a method called by the garbage collector before object destruction.
+final is a keyword for constants, method overriding prevention, and inheritance restriction; 
+finally is a block in exception handling that always executes; 
+finalize() is a method called by the garbage collector before object destruction.
 
 final class and final method :
 -------------------------------
@@ -29,21 +32,19 @@ In Java threads, final variables ensure thread safety by making variables immuta
 
 IOC:
 -----
-Inversion of Control (IoC) is a design principle where the control of object creation and dependency management is transferred from the program to a container or framework (e.g., Spring IoC Container).
+Inversion of Control (IoC) is a design principle where the control of object creation and dependency management.
 
 
 What is Dependency Injection:
 --------------------------------
-This is a technique to implement IoC, where an object's dependencies are provided to it, typically via constructor injection, setter injection, or field injection
+This is a technique to implement IoC, where an object's dependencies are provided to it, 
+typically via constructor injection, setter injection, or field injection
 Dependency Injection (DI) is a design pattern that provides an object's dependencies from external sources rather than creating them within the object, promoting loose coupling and easier maintainability.
 
 
-
-You said:
-Unique and Comsite Constatints in SQL 
-ChatGPT said:
-ChatGPT
-In SQL, constraints help enforce data integrity. Two important types are Unique Constraints and Composite Constraints:
+Unique and Comsite Constatints in SQL :
+-----------------------------------------
+Constraints help enforce data integrity. Two important types are Unique Constraints and Composite Constraints:
 
 1. Unique Constraint
 Ensures that a column (or a set of columns) contains unique values across all rows.
