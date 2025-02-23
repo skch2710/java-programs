@@ -2,29 +2,29 @@
 	JAVA Topics :
 	---------------
 	1. Introduction to Languages and Java
-	2. Featurs of Java
+	2. Features of Java
 	3. Input and Output
 	4. Comments
-	5. Varable ( Swaping )
+	5. Variable ( Swapping )
 	6. First Program and Compilation Flow and Process
 	7. Data Types ( type casting )
 	8. Operators
 	9. Control Statements
 	10. Loops
 	11. Arrays
-	12.String , StringBuffer , StringBuilder
-	13. OOps (Object Oriented Programing )
+	12.String , String Buffer , StringBuilder
+	13. Oops (Object Oriented Programing )
 	14. Encapsulation , Inheritance , Polymorphism , Data Abstraction ,
 		Class and Object
 	15. Methods ( method overloading)
-	16. Static Bolck , Block , Constructor
-	17. Static Varable and static method
+	16. Static Block , Block , Constructor
+	17. Static Variable and static method
 	18. Abstract Class
 	19. Interface
 	20. Super Keyword
 	21. Multiple Inheritance
 	22. Method overloading , overriding
-	23. Wrapper Class ( Boxing , UpBoxing)
+	23. Wrapper Class ( Boxing , Unboxings)
 	24. Access Modifiers
 	25. Packages
 	26. Final Keyword
@@ -32,7 +32,7 @@
 	28. Muti Threading
 	29. Inner Class
 	30. Object Class Methods (toString, hashCode , equals )
-	31. Collections (List , Queue , set  Map )
+	31. Collections (List , Queue , set , Map )
 	31. Comparable , Comparator 
 	32. Enum
 	33. Lambda Expression
@@ -64,10 +64,396 @@
 	11. Spring Security
 	12. Oauth2.0 (JWT)
 	13. Login And OTP
-	14. RestTempalte and RestClient
+	14. RestTempalte and RestClient and RetryTemplate
 	15. Async and CompletableFuture
 	16. SchedulerJob
-	17. Mapping (OneToOne , Many)
-	18. Genaric Specification
+	17. Mapping (OneToOne , Many , ...)
+	18. Generic Specification
+	19. Validator
+	20. Kafka , GSON
+	21. Cache (Google Cache)
+
+
+
+
+### **1. Java Basics**
+- **Introduction to Java**
+  - History of Java
+  - Features of Java (e.g., platform independence, object-oriented, robust)
+  - Java Virtual Machine (JVM), Java Runtime Environment (JRE), and Java Development Kit (JDK)
+  - Installing and setting up the Java environment
+  - Writing your first Java program ("Hello World")
+  - Java compilation process (`.java` to `.class` files)
+
+- **Syntax and Structure**
+  - Java program structure (class, main method)
+  - Comments in Java (single-line, multi-line, Javadoc)
+  - Identifiers and naming conventions
+  - Keywords in Java
+  - Case sensitivity
+
+- **Variables and Data Types**
+  - Primitive data types (byte, short, int, long, float, double, char, boolean)
+  - Type casting (implicit and explicit)
+  - Variable declaration and initialization
+  - Scope of variables (local, instance, static)
+  - Constants (using `final` keyword)
+
+- **Operators**
+  - Arithmetic operators (+, -, *, /, %)
+  - Relational operators (==, !=, >, <, >=, <=)
+  - Logical operators (&&, ||, !)
+  - Bitwise operators (&, |, ^, ~, <<, >>, >>>)
+  - Assignment operators (=, +=, -=, *=, /=, %=)
+  - Unary operators (++, --, +, -, !)
+  - Ternary operator (? :)
+  - Operator precedence
+
+- **Input and Output**
+  - Using `System.out` (print, println, printf)
+  - Reading input with `Scanner` class
+  - Formatting output (String.format, printf)
+
+---
+
+### **2. Control Flow**
+- **Conditional Statements**
+  - `if` statement
+  - `if-else` statement
+  - Nested `if` statements
+  - `else if` ladder
+  - `switch` statement (including enhanced switch in Java 17)
+
+- **Loops**
+  - `for` loop (traditional and enhanced `for` loop)
+  - `while` loop
+  - `do-while` loop
+  - Nested loops
+  - Loop control statements (`break`, `continue`, `return`)
+
+---
+
+### **3. Object-Oriented Programming (OOP)**
+- **Classes and Objects**
+  - Defining a class
+  - Creating objects
+  - Constructors (default, parameterized)
+  - `this` keyword
+  - Instance variables vs. local variables
+  - Static variables and methods
+
+- **Methods**
+  - Method declaration and definition
+  - Method parameters and return types
+  - Method overloading
+  - Passing arguments (by value)
+  - `static` methods vs. instance methods
+
+- **Encapsulation**
+  - Access modifiers (`public`, `private`, `protected`, `default`)
+  - Getters and setters
+  - Data hiding
+
+- **Inheritance**
+  - Extending classes (`extends` keyword)
+  - Single inheritance in Java
+  - `super` keyword
+  - Method overriding
+  - Dynamic method dispatch
+  - `final` keyword (for classes, methods, variables)
+
+- **Polymorphism**
+  - Compile-time polymorphism (method overloading)
+  - Runtime polymorphism (method overriding)
+  - Upcasting and downcasting
+
+- **Abstraction**
+  - Abstract classes
+  - Interfaces (including default and static methods in interfaces from Java 8+)
+  - Difference between abstract classes and interfaces
+  - Functional interfaces (Java 8+)
+
+- **Association**
+  - Aggregation
+  - Composition
+
+---
+
+### **4. Arrays and Strings**
+- **Arrays**
+  - Single-dimensional arrays
+  - Multi-dimensional arrays
+  - Jagged arrays
+  - Array initialization and declaration
+  - Array length
+  - Array copying (manual, `Arrays.copyOf`, `System.arraycopy`)
+  - Enhanced `for` loop with arrays
+
+- **Strings**
+  - String class (immutability)
+  - String literals vs. `new String()`
+  - String methods (e.g., `length()`, `charAt()`, `substring()`, `toLowerCase()`, `toUpperCase()`)
+  - String concatenation (+ operator, `concat()`)
+  - String comparison (`equals()`, `compareTo()`, `==`)
+  - StringBuilder and StringBuffer (mutable strings)
+  - String formatting (`String.format()`, `printf()`)
+  - String tokenization (`split()`)
+
+---
+
+### **5. Exception Handling**
+- **Basics**
+  - What is an exception?
+  - Exception hierarchy (`Throwable`, `Error`, `Exception`)
+  - Checked vs. unchecked exceptions
+
+- **Handling Exceptions**
+  - `try` and `catch` blocks
+  - Multiple `catch` blocks
+  - `finally` block
+  - `throw` keyword
+  - `throws` keyword
+
+- **Custom Exceptions**
+  - Creating custom exception classes
+  - Throwing custom exceptions
+
+- **New Features**
+  - Try-with-resources (Java 7+)
+  - Multi-catch (Java 7+)
+
+---
+
+### **6. Java Collections Framework**
+- **Core Interfaces**
+  - `Collection`
+  - `List`
+  - `Set`
+  - `Map`
+  - `Queue` and `Deque`
+
+- **List Implementations**
+  - `ArrayList`
+  - `LinkedList`
+  - `Vector`
+  - `Stack`
+
+- **Set Implementations**
+  - `HashSet`
+  - `LinkedHashSet`
+  - `TreeSet`
+
+- **Map Implementations**
+  - `HashMap`
+  - `LinkedHashMap`
+  - `TreeMap`
+  - `Hashtable`
+
+- **Queue Implementations**
+  - `PriorityQueue`
+  - `ArrayDeque`
+
+- **Utilities**
+  - `Collections` class (e.g., `sort()`, `reverse()`, `shuffle()`, `max()`, `min()`)
+  - Iterators (`Iterator`, `ListIterator`)
+  - `forEach` loop with collections
+  - Comparators and Comparable interfaces
+
+---
+
+### **7. Multithreading**
+- **Basics**
+  - What is a thread?
+  - Thread lifecycle
+  - Main thread
+
+- **Creating Threads**
+  - Extending `Thread` class
+  - Implementing `Runnable` interface
+  - Lambda expressions with threads (Java 8+)
+
+- **Thread Management**
+  - Thread methods (`start()`, `run()`, `sleep()`, `join()`, `yield()`)
+  - Thread priority
+  - Daemon threads
+
+- **Synchronization**
+  - `synchronized` keyword (methods and blocks)
+  - Deadlock prevention
+  - `volatile` keyword
+
+- **Concurrency Utilities (Java 5+)**
+  - `ExecutorService`
+  - `ThreadPool`
+  - `Callable` and `Future`
+  - `CountDownLatch`
+  - `CyclicBarrier`
+  - `Semaphore`
+  - `Lock` interface and `ReentrantLock`
+
+---
+
+### **8. Java I/O**
+- **Byte Streams**
+  - `InputStream` and `OutputStream`
+  - `FileInputStream` and `FileOutputStream`
+  - `BufferedInputStream` and `BufferedOutputStream`
+
+- **Character Streams**
+  - `Reader` and `Writer`
+  - `FileReader` and `FileWriter`
+  - `BufferedReader` and `BufferedWriter`
+
+- **File Handling**
+  - `File` class
+  - Creating, reading, writing, and deleting files
+  - File permissions
+
+- **Serialization**
+  - `Serializable` interface
+  - Object serialization (`ObjectOutputStream`, `ObjectInputStream`)
+  - Transient keyword
+
+- **NIO (New I/O, Java 4+)**
+  - Channels and Buffers
+  - `Path` and `Files` classes (Java 7+)
+  - Asynchronous I/O
+
+---
+
+### **9. Java 8+ Features**
+- **Lambda Expressions**
+  - Syntax and use cases
+  - Functional interfaces (`Predicate`, `Function`, `Consumer`, `Supplier`)
+
+- **Stream API**
+  - Creating streams
+  - Intermediate operations (`filter`, `map`, `sorted`)
+  - Terminal operations (`collect`, `forEach`, `reduce`)
+  - Parallel streams
+
+- **Optional Class**
+  - Avoiding NullPointerException
+  - Methods (`of`, `ofNullable`, `orElse`, `ifPresent`)
+
+- **Default and Static Methods in Interfaces**
+- **Method References**
+  - Types of method references (`::`)
+
+- **New Date and Time API (Java 8)**
+  - `LocalDate`, `LocalTime`, `LocalDateTime`
+  - `ZonedDateTime`
+  - `Period` and `Duration`
+  - Formatting dates (`DateTimeFormatter`)
+
+---
+
+### **10. Advanced Java**
+- **Generics**
+  - Generic classes and methods
+  - Type parameters
+  - Bounded types
+  - Wildcards (`? extends`, `? super`)
+
+- **Annotations**
+  - Built-in annotations (`@Override`, `@Deprecated`, `@SuppressWarnings`)
+  - Custom annotations
+  - Annotation processing
+
+- **Reflection**
+  - `Class` class
+  - Inspecting classes, methods, and fields
+  - Invoking methods dynamically
+
+- **JDBC (Java Database Connectivity)**
+  - Connecting to a database
+  - `Statement`, `PreparedStatement`, `CallableStatement`
+  - ResultSet
+  - Transaction management
+
+- **JavaFX (GUI)**
+  - Basics of JavaFX
+  - Scene graph
+  - Event handling
+  - FXML
+
+- **Networking**
+  - `Socket` and `ServerSocket`
+  - URL and HttpURLConnection
+  - TCP/IP and UDP basics
+
+---
+
+### **11. Java Ecosystem and Tools**
+- **Build Tools**
+  - Maven (POM file, dependencies, lifecycle)
+  - Gradle (build.gradle, tasks)
+
+- **Testing**
+  - JUnit (annotations, assertions)
+  - TestNG
+  - Mocking frameworks (Mockito)
+
+- **Logging**
+  - `java.util.logging`
+  - Log4j
+  - SLF4J
+
+- **Frameworks**
+  - Spring (Core, MVC, Boot)
+  - Hibernate (ORM)
+  - Java EE (Servlets, JSP, EJB)
+
+- **IDEs**
+  - Eclipse
+  - IntelliJ IDEA
+  - NetBeans
+
+---
+
+### **12. Miscellaneous**
+- **Enums**
+  - Defining enums
+  - Enum methods and constructors
+
+- **Inner Classes**
+  - Member inner class
+  - Static nested class
+  - Local inner class
+  - Anonymous inner class
+
+- **Garbage Collection**
+  - How JVM handles memory
+  - `finalize()` method (deprecated)
+  - `System.gc()`
+
+- **Regular Expressions**
+  - `Pattern` and `Matcher` classes
+  - Regex syntax
+
+- **Security**
+  - `SecurityManager`
+  - Cryptography basics (JCA/JCE)
+
+- **Java Modules (Java 9+)**
+  - Module declaration (`module-info.java`)
+  - `exports`, `requires`, `uses`
+
+---
+
+### **13. Best Practices and Design Patterns**
+- **Coding Standards**
+  - Naming conventions
+  - Code organization
+  - Commenting and documentation (Javadoc)
+
+- **Design Patterns**
+  - Singleton
+  - Factory
+  - Observer
+  - Strategy
+  - Decorator
+
+---
 	
 	
