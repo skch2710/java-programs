@@ -1,6 +1,6 @@
 
-								JAVA NOTES:  Sathich Kumar Ch
-							-------------------------------------
+					JAVA NOTES:  Sathich Kumar Ch
+				-------------------------------------
 	
 1. Basic of Java :
 ------------------
