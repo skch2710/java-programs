@@ -194,8 +194,6 @@ public class Hello {
 }
 ```
 
-
-
 ### **Identifiers and Naming Conventions in Java**  
 Identifiers are names used for variables, methods, classes, and other Java elements. They:  
 - **Must begin** with a letter (A-Z, a-z), underscore `_`, or dollar sign `$`.  
@@ -456,6 +454,106 @@ System.out.println(s1.compareTo(s2)); // Negative (-ve) → "Apple" is smaller t
 System.out.println(s1.compareTo(s3)); // 0 → Both are equal
 System.out.println(s2.compareTo(s1)); // Positive (+ve) → "Banana" is greater than "Apple"
 ```
+
+Arrays in Java :
+-----------------
+An array in Java is a fixed-size, ordered collection of elements of the same data type. Arrays store multiple values in contiguous memory locations and provide fast access using an index.
+
+**Types of Arrays: **
+(a) One-Dimensional Array : A single row of elements stored sequentially.
+(b) Two-Dimensional Array (Matrix) : An array of arrays, often used to represent tables or grids.
+(c) Multi-Dimensional Array : Arrays with more than two dimensions (e.g., 3D arrays).
+
+**Limitations of Arrays:**
+	Fixed Size – Cannot resize dynamically.
+	No Built-in Methods – Unlike ArrayList, arrays lack utility methods.
+	
+**array examples**:  
+
+```java
+import java.util.Arrays;
+import java.util.ArrayList;
+
+public class ArrayExamples {
+    public static void main(String[] args) {
+        // 1. One-Dimensional Array
+        int[] numbers = {10, 20, 30, 40, 50};
+        System.out.println("First element: " + numbers[0]);
+
+        // 2. Two-Dimensional Array
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+        System.out.println("Matrix element at [1][2]: " + matrix[1][2]);
+
+        // 3. Looping through an array (for loop)
+        System.out.print("Array elements: ");
+        for (int i = 0; i < numbers.length; i++) {
+            System.out.print(numbers[i] + " ");
+        }
+        System.out.println();
+
+        // 4. Enhanced for loop
+        System.out.print("Enhanced for loop: ");
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+
+        // 5. Sorting an array
+        int[] unsortedArr = {5, 2, 8, 1, 3};
+        Arrays.sort(unsortedArr);
+        System.out.println("Sorted array: " + Arrays.toString(unsortedArr));
+
+        // 6. Searching in an array (binary search)
+        int index = Arrays.binarySearch(unsortedArr, 3);
+        System.out.println("Index of 3: " + index);
+
+        // 7. Filling an array with a value
+        int[] filledArray = new int[5];
+        Arrays.fill(filledArray, 100);
+        System.out.println("Filled array: " + Arrays.toString(filledArray));
+
+        // 8. Dynamic Array (ArrayList)
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        System.out.println("ArrayList: " + list);
+    }
+}
+```
+
+### **Difference Between Array and ArrayList**  
+
+#### **1. Size**  
+- **Array:** Fixed size (cannot grow or shrink).  
+- **ArrayList:** Dynamic size (automatically resizes).  
+
+#### **2. Data Type Support**  
+- **Array:** Can store both **primitive types** and objects.  
+- **ArrayList:** Stores only **objects** (uses wrapper classes for primitives).  
+
+#### **3. Performance**  
+- **Array:** Faster as it provides direct memory access.  
+- **ArrayList:** Slightly slower due to dynamic resizing and extra operations.  
+
+#### **4. Methods & Functionality**  
+- **Array:** No built-in methods (manual operations required).  
+- **ArrayList:** Provides methods like `add()`, `remove()`, `size()`, etc.  
+
+#### **5. Memory Usage**  
+- **Array:** Uses less memory as size is fixed.  
+- **ArrayList:** Uses more memory due to dynamic resizing overhead.  
+
+#### **6. Iteration**  
+- **Array:** Uses traditional loops (`for`, `enhanced for`).  
+- **ArrayList:** Supports loops + iterators (`forEach()`).  
+
+✔ **Use Array** when size is fixed and performance is a priority.  
+✔ **Use ArrayList** when dynamic resizing and flexibility are needed. 
 
 
 
