@@ -455,6 +455,116 @@ System.out.println(s1.compareTo(s3)); // 0 → Both are equal
 System.out.println(s2.compareTo(s1)); // Positive (+ve) → "Banana" is greater than "Apple"
 ```
 
+### **Input and Output (I/O) in Java**  :
+---------------------------------------------
+
+Java provides various ways to handle **input and output (I/O)** operations for reading data from users, files, and streams.  
+
+---
+
+### **1. Standard Input (User Input)**
+#### **(a) Using `Scanner` **
+- Reads input from the console (keyboard).  
+```java
+import java.util.Scanner;
+
+public class InputExample {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
+        System.out.println("Hello, " + name);
+        sc.close();
+    }
+}
+```
+
+#### **(b) Using `BufferedReader` (Faster for large input)**
+```java
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter a number: ");
+        int num = Integer.parseInt(br.readLine());
+        System.out.println("You entered: " + num);
+    }
+}
+```
+
+---
+
+### **2. Standard Output (Console Output)**
+#### **(a) Using `System.out.print()` and `System.out.println()`**
+- `print()` – Prints without a new line.  
+- `println()` – Prints and moves to the next line.  
+```java
+System.out.print("Hello ");
+System.out.println("World"); // Output: Hello World
+```
+
+#### **(b) Using `System.out.printf()` (Formatted Output)**
+```java
+System.out.printf("Hello %s, your score is %d%n", "John", 90);
+```
+
+---
+
+### **3. File I/O (Reading & Writing Files)**
+#### **(a) Writing to a File (`FileWriter`)**
+```java
+import java.io.FileWriter;
+
+public class WriteFile {
+    public static void main(String[] args) throws Exception {
+        FileWriter writer = new FileWriter("output.txt");
+        writer.write("Hello, File!");
+        writer.close();
+    }
+}
+```
+
+#### **(b) Reading from a File (`BufferedReader`)**
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class ReadFile {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new FileReader("output.txt"));
+        String line;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+        br.close();
+    }
+}
+```
+
+---
+
+### **4. Streams (Advanced I/O)**
+- **`InputStream` / `OutputStream`** – Handles **byte streams** (e.g., images, audio).  
+- **`Reader` / `Writer`** – Handles **character streams** (e.g., text files).  
+
+---
+
+### **5. Difference Between Scanner & BufferedReader**
+| Feature         | Scanner | BufferedReader |
+|---------------|----------|----------------|
+| **Speed**      | Slower | Faster for large input |
+| **Data Type Handling** | Direct parsing (`nextInt()`, `nextLine()`) | Requires manual conversion (`Integer.parseInt()`) |
+| **Buffering**  | No internal buffering | Uses a buffer for efficiency |
+
+---
+
+✔ **Use `Scanner`** for simple console input.  
+✔ **Use `BufferedReader`** for large input handling.  
+✔ **Use `FileWriter` / `FileReader`** for file operations. 
+
+
 Arrays in Java :
 -----------------
 An array in Java is a fixed-size, ordered collection of elements of the same data type. Arrays store multiple values in contiguous memory locations and provide fast access using an index.
@@ -766,5 +876,436 @@ int result = 10 + 5 * 2; // 20 (5 * 2 is evaluated first)
 ***Note :****
 The && operator only checks the second condition if the first one is true (it stops early if the first condition is false).
 The & operator always checks both conditions, even if the first one is false.
+  
+### **Control Flow in Java**  :
+----------------------------------
+
+Control flow statements in Java determine the order in which **statements are executed** based on **conditions**.  
+
+---
+
+### **1. Conditional Statements**  
+Conditional statements allow decision-making based on conditions.  
+
+#### **(a) `if` Statement**  
+- Executes a block **only if** the condition is `true`.  
+
+#### **(b) `if-else` Statement**  
+- Executes one block if `true`, another if `false`.  
+
+#### **(c) Nested `if` Statements**  
+- An `if` inside another `if`, used for multiple conditions.  
+
+#### **(d) `else if` Ladder**  
+- Checks multiple conditions sequentially.  
+
+#### **(e) `switch` Statement**  
+- Replaces multiple `if-else` statements when checking a variable against **multiple fixed values**.  
+
+#### **(f) Enhanced `switch` (Java 17)**  
+- Supports **multiple case labels**, **arrow functions**, and **pattern matching**.  
+
+---
+
+### **Example Code (All Cases in One Class)**  
+```java
+public class ControlFlowExample {
+    public static void main(String[] args) {
+        int num = 5;
+
+        // 1. if Statement
+        if (num > 0) {
+            System.out.println("Positive number");
+        }
+
+        // 2. if-else Statement
+        if (num % 2 == 0) {
+            System.out.println("Even number");
+        } else {
+            System.out.println("Odd number");
+        }
+
+        // 3. Nested if
+        if (num > 0) {
+            if (num < 10) {
+                System.out.println("Single-digit positive number");
+            }
+        }
+
+        // 4. else-if Ladder
+        if (num < 0) {
+            System.out.println("Negative number");
+        } else if (num == 0) {
+            System.out.println("Zero");
+        } else {
+            System.out.println("Positive number");
+        }
+
+        // 5. switch Statement
+        int day = 3;
+        switch (day) {
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            default:
+                System.out.println("Invalid day");
+        }
+
+        // 6. Enhanced switch (Java 17)
+        int grade = 90;
+        String result = switch (grade) {
+            case 100, 90 -> "Excellent";
+            case 80, 70 -> "Good";
+            case 60, 50 -> "Pass";
+            default -> "Fail";
+        };
+        System.out.println("Grade Result: " + result);
+    }
+}
+```  
+
+
+### **Loops in Java**  :
+--------------------------
+
+Loops are used to execute a block of code **repeatedly** until a condition is met.  
+
+---
+
+### **1. Types of Loops**  
+
+#### **(a) `for` Loop (Traditional & Enhanced)**  
+- **Traditional `for` Loop**: Used when the number of iterations is **known**.  
+- **Enhanced `for` Loop (For-each Loop)**: Used for **arrays & collections**.  
+
+#### **(b) `while` Loop**  
+- Executes **while** a condition is `true`.  
+- Used when the number of iterations is **unknown**.  
+
+#### **(c) `do-while` Loop**  
+- Executes at **least once**, even if the condition is `false`.  
+- Condition is checked **after** the first execution.  
+
+#### **(d) Nested Loops**  
+- A loop inside another loop.  
+- Used for **matrix operations, patterns, and multi-level iterations**.  
+
+---
+
+### **2. Loop Control Statements**  
+
+#### **(a) `break` Statement**  
+- **Exits** the loop **immediately** when encountered.  
+
+#### **(b) `continue` Statement**  
+- **Skips** the current iteration and moves to the next.  
+
+#### **(c) `return` Statement**  
+- **Exits the method** entirely when encountered.  
+
+---
+
+### **Example Code**  
+
+```java
+public class LoopExamples {
+    public static void main(String[] args) {
+
+        // 1. for Loop (Traditional)
+        System.out.println("Traditional for loop:");
+        for (int i = 1; i <= 5; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println("\n");
+
+        // 2. Enhanced for Loop (For-each)
+        System.out.println("Enhanced for loop:");
+        int[] numbers = {10, 20, 30, 40, 50};
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+        System.out.println("\n");
+
+        // 3. while Loop
+        System.out.println("while loop:");
+        int count = 1;
+        while (count <= 5) {
+            System.out.print(count + " ");
+            count++;
+        }
+        System.out.println("\n");
+
+        // 4. do-while Loop
+        System.out.println("do-while loop:");
+        int num = 1;
+        do {
+            System.out.print(num + " ");
+            num++;
+        } while (num <= 5);
+        System.out.println("\n");
+
+        // 5. Nested Loops
+        System.out.println("Nested loops (Multiplication Table for 1-3):");
+        for (int i = 1; i <= 3; i++) {
+            for (int j = 1; j <= 3; j++) {
+                System.out.print(i * j + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+        // 6. break Statement
+        System.out.println("Loop with break:");
+        for (int i = 1; i <= 10; i++) {
+            if (i == 5) break; // Exit loop when i = 5
+            System.out.print(i + " ");
+        }
+        System.out.println("\n");
+
+        // 7. continue Statement
+        System.out.println("Loop with continue:");
+        for (int i = 1; i <= 5; i++) {
+            if (i == 3) continue; // Skip iteration when i = 3
+            System.out.print(i + " ");
+        }
+        System.out.println("\n");
+
+        // 8. return Statement
+        System.out.println("Loop with return:");
+        printNumbersWithReturn();
+    }
+
+    static void printNumbersWithReturn() {
+        for (int i = 1; i <= 5; i++) {
+            if (i == 4) return; // Exit method when i = 4
+            System.out.print(i + " ");
+        }
+    }
+}
+```
+
+
+### **Object-Oriented Programming (OOP) in Java**  :
+------------------------------------------------------
+
+Object-Oriented Programming (OOP) is a programming paradigm based on **objects** that contain **data (fields/attributes)** and **methods (functions)** to manipulate the data.  
+
+---
+
+## **1. Classes and Objects**  
+
+### **Classes**  
+- A **class** is a blueprint for creating objects.  
+- It defines **attributes (variables)** and **methods (functions)**.  
+
+### **Objects**  
+- An **object** is an instance of a class.  
+- Objects have **state (attributes)** and **behavior (methods)**.  
+
+### **Constructors**  
+- A **constructor** initializes an object.  
+- **Types:**
+  - **Default Constructor** – No parameters.
+  - **Parameterized Constructor** – Takes arguments to initialize fields.  
+
+### **Keywords**  
+- **`this` keyword**: Refers to the **current object**.  
+- **Instance variables vs. Local variables**:  
+  - **Instance variables**: Defined inside a class, but outside methods.  
+  - **Local variables**: Declared within a method/block.  
+- **Static variables & methods**: Belong to the **class** rather than an instance.  
+
+---
+
+## **2. Methods**  
+
+- **Method Declaration & Definition**: Define the behavior of objects.  
+- **Method Overloading**: Multiple methods with the same name but different parameters.  
+- **Passing Arguments (By Value)**: Java uses **call by value**, meaning changes inside a method **don’t affect the original value**.  
+- **Static Methods vs. Instance Methods**:  
+  - **Static methods** belong to the class, **called using class name**.  
+  - **Instance methods** belong to objects.  
+
+---
+
+## **3. Encapsulation**  
+
+- **Encapsulation**: Wrapping data and methods together in a **single unit (class)**.  
+- **Access Modifiers**:  
+  - **`private`** – Accessible only within the class.  
+  - **`public`** – Accessible from anywhere.  
+  - **`protected`** – Accessible in the same package and subclasses.  
+  - **(default)** – Accessible only within the same package.  
+- **Getters and Setters**: Used for **data hiding** and controlled access.  
+
+---
+
+## **4. Inheritance**  
+
+- **Inheritance**: Acquiring properties and behavior from a **parent class**.  
+- **`extends` keyword**: Used for inheritance.  
+- **Method Overriding**: Redefining a method in the child class.  
+- **`super` keyword**: Calls the **parent class’s constructor or method**.  
+- **Dynamic Method Dispatch**: Runtime method binding based on the object type.  
+- **`final` keyword**: Prevents method overriding or class inheritance.  
+
+---
+
+## **5. Polymorphism**  
+
+- **Compile-time Polymorphism (Method Overloading)**: Same method name, different parameters.  
+- **Runtime Polymorphism (Method Overriding)**: The method implementation is **determined at runtime**.  
+- **Upcasting**: Parent class reference holding a child class object.  
+- **Downcasting**: Converting a parent reference back to a child type.  
+
+---
+
+## **6. Abstraction**  
+
+- **Abstract Classes**: Cannot be instantiated, contains **abstract methods (without body)**.  
+- **Interfaces**: Defines behavior that other classes must implement.  
+- **Functional Interfaces (Java 8+)**: Single abstract method (used in Lambda expressions).  
+- **Abstract Class vs. Interface**:  
+  - **Abstract Class**: Can have both **implemented & abstract** methods.  
+  - **Interface**: Only **abstract methods** (before Java 8), can have **default & static methods** (Java 8+).  
+
+---
+
+## **7. Association**  
+
+- **Aggregation**: Weak relationship (child **can exist** without the parent).  
+- **Composition**: Strong relationship (child **cannot exist** without the parent).  
+
+---
+
+### **Example Code **  
+
+```java
+// 1. Class and Object
+class Person {
+    private String name;  // Encapsulation (private variable)
+    private int age;
+
+    // 2. Constructor (Default & Parameterized)
+    public Person() {
+        this.name = "Unknown";
+        this.age = 0;
+    }
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // 3. Getters and Setters (Encapsulation)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // 4. Method Overloading (Compile-time Polymorphism)
+    public void showDetails() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+
+    public void showDetails(String prefix) {
+        System.out.println(prefix + " Name: " + name + ", Age: " + age);
+    }
+}
+
+// 5. Inheritance and Method Overriding (Runtime Polymorphism)
+class Employee extends Person {
+    private String jobTitle;
+
+    public Employee(String name, int age, String jobTitle) {
+        super(name, age);  // Calls Parent Constructor
+        this.jobTitle = jobTitle;
+    }
+
+    @Override
+    public void showDetails() {
+        System.out.println("Employee: " + getName() + ", Age: " + getAge() + ", Job: " + jobTitle);
+    }
+}
+
+// 6. Interface (Abstraction)
+interface Vehicle {
+    void drive();
+}
+
+// 7. Implementing Interface
+class Car implements Vehicle {
+    @Override
+    public void drive() {
+        System.out.println("Car is driving...");
+    }
+}
+
+// 8. Abstract Class
+abstract class Animal {
+    abstract void makeSound(); // Abstract method
+
+    public void sleep() {
+        System.out.println("Sleeping...");
+    }
+}
+
+// 9. Implementing Abstract Class
+class Dog extends Animal {
+    @Override
+    void makeSound() {
+        System.out.println("Bark! Bark!");
+    }
+}
+
+// 10. Main Class to Run Everything
+public class OOPExample {
+    public static void main(String[] args) {
+        // 1. Object Creation
+        Person p1 = new Person("Alice", 25);
+        p1.showDetails();
+
+        // 2. Inheritance and Polymorphism
+        Employee e1 = new Employee("Bob", 30, "Software Engineer");
+        e1.showDetails();
+
+        // 3. Interface Implementation
+        Vehicle myCar = new Car();
+        myCar.drive();
+
+        // 4. Abstract Class Implementation
+        Animal myDog = new Dog();
+        myDog.makeSound();
+        myDog.sleep();
+    }
+}
+```
+
+---
+
+### **Key Takeaways**  
+
+✔ **Encapsulation** → Data hiding using private variables & getters/setters.  
+✔ **Inheritance** → Code reusability via parent-child relationship.  
+✔ **Polymorphism** → Different behaviors for the same method name.  
+✔ **Abstraction** → Hiding implementation details (Abstract Classes & Interfaces).  
+✔ **Association** → Objects relating to each other (Aggregation & Composition).  
 
 
