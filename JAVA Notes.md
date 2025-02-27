@@ -104,4 +104,49 @@ Java compilation process :
 Load into JVM → Convert to machine code → Execute.**
 
 
+First Program And Main Method :
+---------------------------------
 
+### Java "Hello, World!" Program
+
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+### Explanation of the `main` Method
+
+The `main` method is the entry point of any Java application. When you run a Java program, the Java Virtual Machine (JVM) looks for the `main` method to start executing the program. Here's a breakdown of the `main` method:
+
+```java
+public static void main(String[] args)
+```
+
+1. **`public`**: 
+   - The `public` keyword is an access modifier. It means that the `main` method can be called from anywhere, including from outside the class. This is necessary because the JVM needs to be able to call the `main` method to start the program.
+
+2. **`static`**:
+   - The `static` keyword means that the `main` method belongs to the class itself, rather than to any specific instance of the class. This allows the JVM to call the `main` method without creating an instance of the class.
+
+3. **`void`**:
+   - The `void` keyword indicates that the `main` method does not return any value. In Java, methods can return values of various types, but the `main` method is special because it is the starting point of the program and does not need to return anything.
+
+4. **`main`**:
+   - This is the name of the method. The JVM looks for a method named `main` to start the execution of the program. The name must be exactly `main`.
+
+5. **`String[] args`**:
+   - This is the parameter that the `main` method accepts. It is an array of `String` objects. The `args` array can be used to pass command-line arguments to the program. For example, if you run the program with `java HelloWorld arg1 arg2`, then `args[0]` will be `"arg1"` and `args[1]` will be `"arg2"`.
+
+### How the Program Works
+
+1. **Class Declaration**:
+   - `public class HelloWorld { ... }`: This declares a public class named `HelloWorld`. The name of the class must match the name of the file (i.e., the file should be named `HelloWorld.java`).
+
+2. **`main` Method**:
+   - The `main` method is where the program starts executing. When you run the program, the JVM calls the `main` method.
+
+3. **`System.out.println("Hello, World!");`**:
+   - This line prints the text "Hello, World!" to the console. `System.out` is an object that represents the standard output (usually the console), and `println` is a method that prints a line of text to the console.
