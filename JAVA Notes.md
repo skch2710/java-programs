@@ -1,6 +1,6 @@
 
 					JAVA NOTES:  Sathich Kumar Ch
-				-------------------------------------
+				-------------------------------------------
 	
 1. Basic of Java :
 ------------------
@@ -150,3 +150,49 @@ public static void main(String[] args)
 
 3. **`System.out.println("Hello, World!");`**:
    - This line prints the text "Hello, World!" to the console. `System.out` is an object that represents the standard output (usually the console), and `println` is a method that prints a line of text to the console.
+
+
+Comments in Java (single-line, multi-line, Javadoc) :
+--------------------------------------------------------
+Java supports three types of comments:
+	1. Single-line comments (`//`)
+	2. Multi-line comments (`/* ... */`)
+	3. Javadoc comments (`/** ... */`)
+
+### 1. **Single-line Comment (`//`)**  
+Used for short explanations. Everything after `//` on the same line is ignored by the compiler.  
+```java
+// This is a single-line comment
+System.out.println("Hello, World!"); // Prints a message
+```
+
+### 2. **Multi-line Comment (`/* ... */`)**  
+Used for longer explanations or to temporarily disable multiple lines of code.  
+```java
+/*
+   This is a multi-line comment.
+   It spans multiple lines.
+*/
+System.out.println("Hello, Java!");
+```
+
+### 3. **Javadoc Comment (`/** ... */`)**  
+Used for generating documentation. It supports tags like `@param`, `@return`, and `@author`.  
+```java
+/**
+ * This class demonstrates Java comments.
+ * @author Sathish
+ */
+public class Hello {
+    /**
+     * Prints a message to the console.
+     * @param args Command-line arguments
+     */
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+
+
