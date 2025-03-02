@@ -2,14 +2,14 @@
 
 **Self Introduction**
 
-Hello, my name is Sathish Kumar Chittipothula, 
-and I am a software developer with 2 years of experience.
-I have done B.Tech with the specalizaion of E.C.E in 2018.
+Hello, my name is Sathish Kumar Chittipothula , 
+and I am a software developer with 3 years of experience.
+I have done B.Tech with the specialization of E.C.E in 2018.
 
 In my current role at Encora,
-I specialize in web Developement using Java.
+I specialize in web Development using Java.
 
-My technical expertise in Java,Spring Boot,Spring Security and SQL
+My technical expertise in Java, Spring Boot, Spring Security and SQL
 I am particularly skilled in developing RESTful APIs using Spring Boot,
 using version control systems like Git.
 
