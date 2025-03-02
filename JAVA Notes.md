@@ -1309,3 +1309,21 @@ public class OOPExample {
 ✔ **Association** → Objects relating to each other (Aggregation & Composition).  
 
 
+Java Collections :
+----------------------
+
+Collections in Java are part of the **Java Collections Framework (JCF)**, which provides a set of interfaces and classes for handling groups of objects efficiently.  
+
+### **Key Interfaces in Java Collections Framework**
+1. **List** (Ordered, allows duplicates)  
+   - Implementations: `ArrayList`, `LinkedList`, `Vector`, `Stack`
+   
+2. **Set** (Unique elements, unordered)  
+   - Implementations: `HashSet`, `LinkedHashSet`, `TreeSet`
+   
+3. **Queue** (FIFO ordering)  
+   - Implementations: `PriorityQueue`, `ArrayDeque`, ConcurrentLinkedQueue, `LinkedList` (acts as Queue)
+   
+4. **Map** (Key-Value pairs, unique keys)  
+   - Implementations: `HashMap`, `LinkedHashMap`, `TreeMap`, `Hashtable`, `ConcurrentHashMap`
+
