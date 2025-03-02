@@ -7,6 +7,30 @@ Token Refresh → When the access token expires, the refresh token gets a new on
 Are you using Spring Security with JWT for this?
 
 
+REST Full Form :
+------------------
+REST stands for **Representational State Transfer**.
+
+Spring Boot Protocol Used for Emails:
+--------------------------------------
+Spring Boot uses the **Simple Mail Transfer Protocol (SMTP)** for sending emails.
+
+
+What is Rest API :
+------------------
+A **REST API (Representational State Transfer API)** is a web service that follows REST principles, allowing communication between clients and servers using standard HTTP methods like **GET, POST, PUT, DELETE**.
+
+REST (**Representational State Transfer**) principles are:  
+
+1. **Client-Server** – Separation of concerns between client and server.  
+2. **Stateless** – Each request must contain all necessary information; no session state is stored on the server.  
+3. **Cacheable** – Responses must define whether they can be cached to improve performance.  
+4. **Uniform Interface** – Consistent and standardized API design using HTTP methods (`GET`, `POST`, `PUT`, `DELETE`).  
+5. **Layered System** – The architecture can have multiple layers (e.g., security, caching, load balancing) without affecting the client.  
+6. **Code on Demand (Optional)** – Servers can send executable code (e.g., JavaScript) to clients when needed.
+
+**RESTful** refers to APIs that strictly follow **REST principles**, including statelessness, a uniform interface, and resource-based interactions.  
+**RESTless** refers to APIs that **do not fully comply** with REST principles, such as those relying on session state, RPC-like behavior, or inconsistent URL structures.
 
 String , String Buffer and String Builder :
 --------------------------------------------
