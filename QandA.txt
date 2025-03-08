@@ -280,8 +280,10 @@ ChatGPT
 Heap memory is used for dynamic memory allocation of objects at runtime, while hash memory typically refers to memory used in hash tables or hash maps for storing key-value pairs.
 
 
+Heap and Stack :
+----------------- 
 
-
+In Java, the **heap** is the memory area where objects are stored at runtime, while the **stack** is the memory area where method calls and local variables are stored.
 
 
 

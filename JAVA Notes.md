@@ -2400,4 +2400,1758 @@ public class ConcurrentHashMapExample {
 
 ---
 
+Utilities :
+-----------------
+
+Below are the details about the **Utilities** in Java, including the `Collections` class, iterators, the `forEach` loop, and comparators (`Comparator` and `Comparable` interfaces).
+
+---
+
+## **1. Collections Class**
+
+The `java.util.Collections` class provides utility methods for working with collections (e.g., `List`, `Set`, `Map`). These methods are static and can be used to perform common operations like sorting, reversing, shuffling, finding max/min, etc.
+
+### **Common Methods in Collections Class**
+1. **Sorting**:
+   - `sort(List<T> list)`: Sorts the list in natural order (elements must implement `Comparable`).
+   - `sort(List<T> list, Comparator<? super T> c)`: Sorts the list using a custom comparator.
+
+   ```java
+   List<Integer> numbers = Arrays.asList(5, 3, 8, 1);
+   Collections.sort(numbers); // Natural order: [1, 3, 5, 8]
+   Collections.sort(numbers, Collections.reverseOrder()); // Reverse order: [8, 5, 3, 1]
+   ```
+
+2. **Reversing**:
+   - `reverse(List<?> list)`: Reverses the order of elements in the list.
+
+   ```java
+   Collections.reverse(numbers); // Reversed list: [8, 5, 3, 1]
+   ```
+
+3. **Shuffling**:
+   - `shuffle(List<?> list)`: Randomly shuffles the elements in the list.
+
+   ```java
+   Collections.shuffle(numbers); // Shuffled list: Random order
+   ```
+
+4. **Finding Max/Min**:
+   - `max(Collection<? extends T> coll)`: Returns the maximum element (natural order).
+   - `min(Collection<? extends T> coll)`: Returns the minimum element (natural order).
+
+   ```java
+   int max = Collections.max(numbers); // Max: 8
+   int min = Collections.min(numbers); // Min: 1
+   ```
+
+5. **Synchronized Collections**:
+   - `synchronizedList(List<T> list)`: Returns a synchronized (thread-safe) list.
+   - `synchronizedSet(Set<T> set)`: Returns a synchronized set.
+   - `synchronizedMap(Map<K, V> map)`: Returns a synchronized map.
+
+   ```java
+   List<Integer> syncList = Collections.synchronizedList(numbers);
+   ```
+
+6. **Unmodifiable Collections**:
+   - `unmodifiableList(List<? extends T> list)`: Returns an unmodifiable view of the list.
+   - `unmodifiableSet(Set<? extends T> set)`: Returns an unmodifiable set.
+   - `unmodifiableMap(Map<? extends K, ? extends V> map)`: Returns an unmodifiable map.
+
+   ```java
+   List<Integer> unmodifiableList = Collections.unmodifiableList(numbers);
+   ```
+
+---
+
+## **2. Iterators**
+
+Iterators are used to traverse collections. The `Iterator` and `ListIterator` interfaces provide methods to iterate over elements in a collection.
+
+### **Iterator Interface**
+- Used to traverse collections like `List`, `Set`, and `Queue`.
+- Methods:
+  - `hasNext()`: Returns `true` if there are more elements.
+  - `next()`: Returns the next element.
+  - `remove()`: Removes the last element returned by the iterator.
+
+  ```java
+  List<String> fruits = Arrays.asList("Apple", "Banana", "Cherry");
+  Iterator<String> iterator = fruits.iterator();
+  while (iterator.hasNext()) {
+      System.out.println(iterator.next());
+  }
+  ```
+
+### **ListIterator Interface**
+- Used to traverse `List` collections.
+- Provides bidirectional traversal (forward and backward).
+- Methods:
+  - `hasNext()`: Returns `true` if there are more elements in the forward direction.
+  - `next()`: Returns the next element.
+  - `hasPrevious()`: Returns `true` if there are more elements in the backward direction.
+  - `previous()`: Returns the previous element.
+  - `add(E e)`: Adds an element at the current position.
+  - `set(E e)`: Replaces the last element returned by `next()` or `previous()`.
+
+  ```java
+  List<String> fruits = Arrays.asList("Apple", "Banana", "Cherry");
+  ListIterator<String> listIterator = fruits.listIterator();
+  while (listIterator.hasNext()) {
+      System.out.println(listIterator.next());
+  }
+  while (listIterator.hasPrevious()) {
+      System.out.println(listIterator.previous());
+  }
+  ```
+
+---
+
+## **3. `forEach` Loop with Collections**
+
+The `forEach` loop (introduced in Java 8) is a concise way to iterate over collections using lambda expressions or method references.
+
+### **Example**
+```java
+List<String> fruits = Arrays.asList("Apple", "Banana", "Cherry");
+
+// Using forEach with lambda expression
+fruits.forEach(fruit -> System.out.println(fruit));
+
+// Using forEach with method reference
+fruits.forEach(System.out::println);
+```
+
+---
+
+## **4. Comparators and Comparable Interfaces**
+
+### **Comparable Interface**
+- Used to define the **natural ordering** of objects.
+- The class whose objects need to be sorted must implement the `Comparable` interface and override the `compareTo()` method.
+
+  ```java
+  class Person implements Comparable<Person> {
+      String name;
+      int age;
+
+      @Override
+      public int compareTo(Person other) {
+          return this.age - other.age; // Sort by age
+      }
+  }
+
+  List<Person> people = Arrays.asList(new Person("Alice", 25), new Person("Bob", 20));
+  Collections.sort(people); // Sorts by age
+  ```
+
+### **Comparator Interface**
+- Used to define **custom ordering** of objects.
+- The `Comparator` interface is implemented in a separate class or using lambda expressions.
+- The `compare()` method is overridden to define the sorting logic.
+
+  ```java
+  // Using a separate Comparator class
+  class NameComparator implements Comparator<Person> {
+      @Override
+      public int compare(Person p1, Person p2) {
+          return p1.name.compareTo(p2.name); // Sort by name
+      }
+  }
+
+  List<Person> people = Arrays.asList(new Person("Alice", 25), new Person("Bob", 20));
+  Collections.sort(people, new NameComparator()); // Sorts by name
+
+  // Using lambda expression
+  Collections.sort(people, (p1, p2) -> p1.name.compareTo(p2.name));
+  ```
+
+---
+
+### **Key Differences Between Comparable and Comparator**
+
+| Feature                | Comparable                          | Comparator                          |
+|------------------------|-------------------------------------|-------------------------------------|
+| **Definition**         | Defines natural ordering            | Defines custom ordering             |
+| **Method**             | `compareTo()`                      | `compare()`                         |
+| **Implementation**     | Implemented by the class itself     | Implemented in a separate class or lambda |
+| **Usage**              | `Collections.sort(list)`            | `Collections.sort(list, comparator)`|
+| **Flexibility**        | Less flexible (single ordering)    | More flexible (multiple orderings)  |
+
+---
+
+
+Exception Handling :
+-------------------------
+
+Certainly! Below are the details about **Exception Handling** in Java, covering the basics, handling exceptions, custom exceptions, and new features introduced in Java 7 and later.
+
+---
+
+## **1. Basics**
+
+### **What is an Exception?**
+- An **exception** is an event that occurs during the execution of a program that disrupts the normal flow of instructions.
+- Exceptions are used to handle errors and other exceptional events in a structured way.
+
+### **Exception Hierarchy**
+- The root class of the exception hierarchy is `Throwable`.
+- The two main subclasses of `Throwable` are:
+  1. **`Error`**:
+     - Represents serious problems that applications should not try to catch (e.g., `OutOfMemoryError`, `StackOverflowError`).
+  2. **`Exception`**:
+     - Represents conditions that applications might want to catch (e.g., `IOException`, `NullPointerException`).
+     - Further divided into:
+       - **Checked Exceptions**: Must be handled at compile time (e.g., `IOException`).
+       - **Unchecked Exceptions**: Do not need to be handled at compile time (e.g., `NullPointerException`, `ArithmeticException`).
+
+---
+
+## **2. Handling Exceptions**
+
+### **`try` and `catch` Blocks**
+- Use a `try` block to enclose code that might throw an exception.
+- Use a `catch` block to handle the exception.
+
+```java
+try {
+    int result = 10 / 0; // Throws ArithmeticException
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero: " + e.getMessage());
+}
+```
+
+### **Multiple `catch` Blocks**
+- Use multiple `catch` blocks to handle different types of exceptions.
+
+```java
+try {
+    int[] arr = new int[5];
+    arr[10] = 50; // Throws ArrayIndexOutOfBoundsException
+} catch (ArithmeticException e) {
+    System.out.println("ArithmeticException: " + e.getMessage());
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("ArrayIndexOutOfBoundsException: " + e.getMessage());
+}
+```
+
+### **`finally` Block**
+- The `finally` block is executed regardless of whether an exception is thrown or not.
+- It is typically used for cleanup activities (e.g., closing resources).
+
+```java
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero: " + e.getMessage());
+} finally {
+    System.out.println("This will always execute");
+}
+```
+
+### **`throw` Keyword**
+- Use the `throw` keyword to explicitly throw an exception.
+
+```java
+if (age < 18) {
+    throw new ArithmeticException("Age must be 18 or older");
+}
+```
+
+### **`throws` Keyword**
+- Use the `throws` keyword in a method signature to declare that the method might throw an exception.
+
+```java
+public void readFile() throws IOException {
+    // Code that might throw IOException
+}
+```
+
+---
+
+## **3. Custom Exceptions**
+
+### **Creating Custom Exception Classes**
+- Create a custom exception by extending the `Exception` class (for checked exceptions) or `RuntimeException` class (for unchecked exceptions).
+
+```java
+class MyCustomException extends Exception {
+    public MyCustomException(String message) {
+        super(message);
+    }
+}
+```
+
+### **Throwing Custom Exceptions**
+- Throw custom exceptions using the `throw` keyword.
+
+```java
+public void validateAge(int age) throws MyCustomException {
+    if (age < 18) {
+        throw new MyCustomException("Age must be 18 or older");
+    }
+}
+```
+
+---
+
+## **4. New Features**
+
+### **Try-with-Resources (Java 7+)**
+- Automatically closes resources (e.g., files, sockets) that implement the `AutoCloseable` interface.
+- Resources are declared in the `try` block and closed automatically at the end.
+
+```java
+try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+    String line;
+    while ((line = br.readLine()) != null) {
+        System.out.println(line);
+    }
+} catch (IOException e) {
+    System.out.println("Error reading file: " + e.getMessage());
+}
+```
+
+### **Multi-Catch (Java 7+)**
+- Catch multiple exceptions in a single `catch` block.
+
+```java
+try {
+    int[] arr = new int[5];
+    arr[10] = 50; // Throws ArrayIndexOutOfBoundsException
+} catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+    System.out.println("Exception: " + e.getMessage());
+}
+```
+
+---
+
+## **Example: Full Exception Handling**
+
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+class MyCustomException extends Exception {
+    public MyCustomException(String message) {
+        super(message);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            validateAge(15); // Throws custom exception
+        } catch (MyCustomException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try (BufferedReader br = new BufferedReader(new FileReader("file.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        }
+
+        try {
+            int[] arr = new int[5];
+            arr[10] = 50; // Throws ArrayIndexOutOfBoundsException
+        } catch (ArithmeticException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("Exception: " + e.getMessage());
+        } finally {
+            System.out.println("This will always execute");
+        }
+    }
+
+    public static void validateAge(int age) throws MyCustomException {
+        if (age < 18) {
+            throw new MyCustomException("Age must be 18 or older");
+        }
+    }
+}
+```
+
+---
+
+## **Summary**
+
+| Feature                     | Description                                                                 |
+|-----------------------------|-----------------------------------------------------------------------------|
+| **`try` and `catch`**       | Handle exceptions using `try` and `catch` blocks.                           |
+| **Multiple `catch`**        | Handle different exceptions using multiple `catch` blocks.                  |
+| **`finally`**               | Execute cleanup code regardless of exceptions.                              |
+| **`throw`**                 | Explicitly throw an exception.                                              |
+| **`throws`**                | Declare exceptions that a method might throw.                               |
+| **Custom Exceptions**       | Create and throw custom exceptions.                                         |
+| **Try-with-Resources**      | Automatically close resources using `try-with-resources`.                   |
+| **Multi-Catch**             | Catch multiple exceptions in a single `catch` block.                        |
+
+---
+
+
+
+Multithreading :
+--------------------
+
+## **1. Basics**
+
+### **What is a Thread?**
+- A **thread** is the smallest unit of execution within a process.
+- A process can have multiple threads running concurrently, allowing for parallel execution of tasks.
+- Threads share the same memory space, making communication between threads easier but also requiring synchronization to avoid conflicts.
+
+### **Thread Lifecycle**
+A thread can be in one of the following states during its lifecycle:
+1. **New**: The thread is created but not yet started.
+2. **Runnable**: The thread is ready to run and waiting for CPU time.
+3. **Running**: The thread is executing its task.
+4. **Blocked/Waiting**: The thread is waiting for a resource or another thread to complete.
+5. **Terminated**: The thread has completed its execution.
+
+### **Main Thread**
+- When a Java program starts, the JVM creates the **main thread**, which executes the `main()` method.
+- The main thread can create and start other threads.
+
+---
+
+## **2. Creating Threads**
+
+### **Extending `Thread` Class**
+- Create a class that extends the `Thread` class and override the `run()` method.
+- Start the thread using the `start()` method.
+
+```java
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Thread is running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread thread = new MyThread();
+        thread.start(); // Starts the thread
+    }
+}
+```
+
+### **Implementing `Runnable` Interface**
+- Create a class that implements the `Runnable` interface and override the `run()` method.
+- Pass an instance of the class to a `Thread` object and start the thread.
+
+```java
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Thread is running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Thread thread = new Thread(new MyRunnable());
+        thread.start(); // Starts the thread
+    }
+}
+```
+
+### **Lambda Expressions with Threads (Java 8+)**
+- Use lambda expressions to create and start threads concisely.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Thread thread = new Thread(() -> System.out.println("Thread is running"));
+        thread.start(); // Starts the thread
+    }
+}
+```
+
+---
+
+## **3. Thread Management**
+
+### **Thread Methods**
+1. **`start()`**: Starts the thread and calls the `run()` method.
+2. **`run()`**: Contains the code to be executed by the thread.
+3. **`sleep(long millis)`**: Pauses the thread for the specified time (in milliseconds).
+4. **`join()`**: Waits for the thread to complete its execution.
+5. **`yield()`**: Pauses the current thread and allows other threads to execute.
+
+### **Thread Priority**
+- Threads have a priority ranging from `1` (lowest) to `10` (highest).
+- Use `setPriority(int priority)` to set the priority and `getPriority()` to get the priority.
+
+```java
+Thread thread = new Thread(() -> System.out.println("Thread is running"));
+thread.setPriority(Thread.MAX_PRIORITY); // Set priority to 10
+thread.start();
+```
+
+### **Daemon Threads**
+- Daemon threads are background threads that do not prevent the JVM from exiting.
+- Use `setDaemon(true)` to make a thread a daemon thread.
+
+```java
+Thread daemonThread = new Thread(() -> {
+    while (true) {
+        System.out.println("Daemon thread is running");
+    }
+});
+daemonThread.setDaemon(true); // Set as daemon thread
+daemonThread.start();
+```
+
+---
+
+## **4. Synchronization**
+
+### **`synchronized` Keyword**
+- Used to control access to shared resources by multiple threads.
+- Can be applied to methods or blocks of code.
+
+```java
+class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+```
+
+### **Deadlock Prevention**
+- Deadlock occurs when two or more threads are blocked forever, waiting for each other.
+- To prevent deadlock:
+  - Avoid nested locks.
+  - Use timeouts with `tryLock()`.
+  - Define a global order for acquiring locks.
+
+### **`volatile` Keyword**
+- Ensures that changes to a variable are visible to all threads.
+- Prevents thread caching of the variable.
+
+```java
+class SharedResource {
+    private volatile boolean flag = false;
+
+    public void setFlag() {
+        flag = true;
+    }
+
+    public boolean getFlag() {
+        return flag;
+    }
+}
+```
+
+---
+
+## **5. Concurrency Utilities (Java 5+)**
+
+### **`ExecutorService`**
+- Manages a pool of threads and executes tasks asynchronously.
+
+```java
+ExecutorService executor = Executors.newFixedThreadPool(2);
+executor.submit(() -> System.out.println("Task 1"));
+executor.submit(() -> System.out.println("Task 2"));
+executor.shutdown();
+```
+
+### **`ThreadPool`**
+- A pool of reusable threads for executing tasks.
+
+```java
+ExecutorService executor = Executors.newFixedThreadPool(5);
+for (int i = 0; i < 10; i++) {
+    executor.submit(() -> System.out.println("Task executed by " + Thread.currentThread().getName()));
+}
+executor.shutdown();
+```
+
+### **`Callable` and `Future`**
+- `Callable` is similar to `Runnable` but can return a result and throw exceptions.
+- `Future` represents the result of an asynchronous computation.
+
+```java
+Callable<Integer> task = () -> {
+    Thread.sleep(1000);
+    return 42;
+};
+
+ExecutorService executor = Executors.newSingleThreadExecutor();
+Future<Integer> future = executor.submit(task);
+
+System.out.println("Result: " + future.get()); // Blocks until the result is available
+executor.shutdown();
+```
+
+### **`CountDownLatch`**
+- Allows one or more threads to wait until a set of operations is completed.
+
+```java
+CountDownLatch latch = new CountDownLatch(3);
+
+ExecutorService executor = Executors.newFixedThreadPool(3);
+for (int i = 0; i < 3; i++) {
+    executor.submit(() -> {
+        System.out.println("Task completed");
+        latch.countDown();
+    });
+}
+
+latch.await(); // Waits until the latch count reaches 0
+System.out.println("All tasks completed");
+executor.shutdown();
+```
+
+### **`CyclicBarrier`**
+- Allows a set of threads to wait for each other to reach a common barrier point.
+
+```java
+CyclicBarrier barrier = new CyclicBarrier(3, () -> System.out.println("All threads reached the barrier"));
+
+ExecutorService executor = Executors.newFixedThreadPool(3);
+for (int i = 0; i < 3; i++) {
+    executor.submit(() -> {
+        System.out.println("Thread reached the barrier");
+        barrier.await();
+        System.out.println("Thread continued");
+    });
+}
+executor.shutdown();
+```
+
+### **`Semaphore`**
+- Controls access to a shared resource using permits.
+
+```java
+Semaphore semaphore = new Semaphore(2); // Allows 2 permits
+
+ExecutorService executor = Executors.newFixedThreadPool(4);
+for (int i = 0; i < 4; i++) {
+    executor.submit(() -> {
+        semaphore.acquire();
+        System.out.println("Thread acquired permit");
+        Thread.sleep(1000);
+        semaphore.release();
+        System.out.println("Thread released permit");
+    });
+}
+executor.shutdown();
+```
+
+### **`Lock` Interface and `ReentrantLock`**
+- Provides more flexible locking than `synchronized`.
+
+```java
+Lock lock = new ReentrantLock();
+
+ExecutorService executor = Executors.newFixedThreadPool(2);
+executor.submit(() -> {
+    lock.lock();
+    try {
+        System.out.println("Thread 1 acquired lock");
+        Thread.sleep(1000);
+    } finally {
+        lock.unlock();
+        System.out.println("Thread 1 released lock");
+    }
+});
+
+executor.submit(() -> {
+    lock.lock();
+    try {
+        System.out.println("Thread 2 acquired lock");
+        Thread.sleep(1000);
+    } finally {
+        lock.unlock();
+        System.out.println("Thread 2 released lock");
+    }
+});
+executor.shutdown();
+```
+
+---
+
+`CompletableFuture` :
+------------------------
+
+`CompletableFuture` is a powerful class introduced in Java 8 as part of the `java.util.concurrent` package. It provides a flexible and robust way to handle asynchronous programming, allowing you to write non-blocking, event-driven code. Below are the details about `CompletableFuture`, including its features, methods, and examples.
+
+---
+
+## **Key Features of CompletableFuture**
+1. **Asynchronous Execution**:
+   - Allows you to run tasks asynchronously without blocking the main thread.
+
+2. **Chaining and Combining**:
+   - Supports chaining multiple asynchronous tasks and combining their results.
+
+3. **Exception Handling**:
+   - Provides methods to handle exceptions during asynchronous execution.
+
+4. **Manual Completion**:
+   - Allows you to manually complete a `CompletableFuture` with a value or an exception.
+
+5. **Non-Blocking**:
+   - Uses callbacks and functional programming constructs to avoid blocking threads.
+
+6. **Integration with `ForkJoinPool`**:
+   - By default, tasks are executed in the common `ForkJoinPool`, but you can specify a custom `Executor`.
+
+---
+
+## **Creating a CompletableFuture**
+
+### **1. Using `supplyAsync`**
+- Runs a task asynchronously and returns a result.
+
+```java
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+    // Simulate a long-running task
+    try {
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    return "Hello, World!";
+});
+
+// Block and get the result
+String result = future.get();
+System.out.println(result); // Output: Hello, World!
+```
+
+### **2. Using `runAsync`**
+- Runs a task asynchronously without returning a result.
+
+```java
+CompletableFuture<Void> future = CompletableFuture.runAsync(() -> {
+    // Simulate a long-running task
+    try {
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    System.out.println("Task completed");
+});
+
+// Block and wait for the task to complete
+future.get();
+```
+
+---
+
+## **Chaining CompletableFuture**
+
+### **1. `thenApply`**
+- Transforms the result of a `CompletableFuture` using a function.
+
+```java
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> "Hello")
+    .thenApply(s -> s + ", World!");
+
+System.out.println(future.get()); // Output: Hello, World!
+```
+
+### **2. `thenAccept`**
+- Consumes the result of a `CompletableFuture` without returning a value.
+
+```java
+CompletableFuture<Void> future = CompletableFuture.supplyAsync(() -> "Hello")
+    .thenAccept(s -> System.out.println(s + ", World!"));
+
+future.get(); // Output: Hello, World!
+```
+
+### **3. `thenRun`**
+- Runs a task after the `CompletableFuture` completes, without using its result.
+
+```java
+CompletableFuture<Void> future = CompletableFuture.supplyAsync(() -> "Hello")
+    .thenRun(() -> System.out.println("Task completed"));
+
+future.get(); // Output: Task completed
+```
+
+---
+
+## **Combining CompletableFuture**
+
+### **1. `thenCompose`**
+- Chains two `CompletableFuture` objects sequentially.
+
+```java
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> "Hello")
+    .thenCompose(s -> CompletableFuture.supplyAsync(() -> s + ", World!"));
+
+System.out.println(future.get()); // Output: Hello, World!
+```
+
+### **2. `thenCombine`**
+- Combines the results of two independent `CompletableFuture` objects.
+
+```java
+CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> "Hello");
+CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> "World");
+
+CompletableFuture<String> combinedFuture = future1.thenCombine(future2, (s1, s2) -> s1 + ", " + s2 + "!");
+
+System.out.println(combinedFuture.get()); // Output: Hello, World!
+```
+
+### **3. `allOf`**
+- Waits for all `CompletableFuture` objects to complete.
+
+```java
+CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> "Hello");
+CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> "World");
+
+CompletableFuture<Void> allFutures = CompletableFuture.allOf(future1, future2);
+allFutures.get(); // Wait for all futures to complete
+
+System.out.println(future1.get() + ", " + future2.get() + "!"); // Output: Hello, World!
+```
+
+### **4. `anyOf`**
+- Waits for any one of the `CompletableFuture` objects to complete.
+
+```java
+CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> {
+    try {
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    return "Hello";
+});
+
+CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> "World");
+
+CompletableFuture<Object> anyFuture = CompletableFuture.anyOf(future1, future2);
+System.out.println(anyFuture.get()); // Output: World (since future2 completes first)
+```
+
+---
+
+## **Exception Handling**
+
+### **1. `exceptionally`**
+- Handles exceptions by providing a fallback value.
+
+```java
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+    throw new RuntimeException("Error occurred");
+}).exceptionally(ex -> "Fallback value");
+
+System.out.println(future.get()); // Output: Fallback value
+```
+
+### **2. `handle`**
+- Handles both success and failure cases.
+
+```java
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+    throw new RuntimeException("Error occurred");
+}).handle((result, ex) -> {
+    if (ex != null) {
+        return "Fallback value";
+    }
+    return result;
+});
+
+System.out.println(future.get()); // Output: Fallback value
+```
+
+---
+
+## **Manual Completion**
+
+### **1. `complete`**
+- Manually completes the `CompletableFuture` with a value.
+
+```java
+CompletableFuture<String> future = new CompletableFuture<>();
+future.complete("Manual completion");
+
+System.out.println(future.get()); // Output: Manual completion
+```
+
+### **2. `completeExceptionally`**
+- Manually completes the `CompletableFuture` with an exception.
+
+```java
+CompletableFuture<String> future = new CompletableFuture<>();
+future.completeExceptionally(new RuntimeException("Manual exception"));
+
+try {
+    future.get();
+} catch (Exception e) {
+    System.out.println(e.getMessage()); // Output: Manual exception
+}
+```
+
+---
+
+## **Using a Custom Executor**
+By default, `CompletableFuture` uses the common `ForkJoinPool`. You can specify a custom `Executor` for task execution.
+
+```java
+ExecutorService executor = Executors.newFixedThreadPool(2);
+
+CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+    System.out.println("Running in custom executor");
+    return "Hello, World!";
+}, executor);
+
+System.out.println(future.get()); // Output: Hello, World!
+executor.shutdown();
+```
+
+---
+
+## **Example: Chaining and Combining**
+Here’s an example that demonstrates chaining and combining `CompletableFuture`:
+
+```java
+CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> "Hello");
+CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> "World");
+
+CompletableFuture<String> combinedFuture = future1.thenCombine(future2, (s1, s2) -> s1 + ", " + s2 + "!");
+
+System.out.println(combinedFuture.get()); // Output: Hello, World!
+```
+
+---
+
+## **When to Use CompletableFuture**
+- When you need to perform asynchronous tasks and handle their results.
+- When you need to chain or combine multiple asynchronous tasks.
+- When you need fine-grained control over task execution and exception handling.
+
+---
+
+ForkJoinPool :
+-------------------
+
+ForkJoinPool is a Java class in the java.util.concurrent package used for parallel processing by dividing tasks into smaller subtasks (forking) and combining their results (joining). It follows the work-stealing algorithm, where idle threads "steal" tasks from busy threads to maximize CPU utilization.
+
+
+Lambda Expressions :
+------------------------
+
+**Lambda Expressions** were introduced in Java 8 as a way to provide clear and concise syntax for writing anonymous functions. They are a key feature of functional programming in Java and are closely tied to **Functional Interfaces**. Below are the details about lambda expressions, their syntax, use cases, and functional interfaces.
+
+---
+
+## **1. Lambda Expressions**
+
+### **Syntax**
+A lambda expression has the following syntax:
+
+```java
+(parameters) -> expression
+```
+
+or
+
+```java
+(parameters) -> { statements; }
+```
+
+- **Parameters**: The input parameters for the lambda expression. If there is only one parameter, parentheses can be omitted.
+- **Arrow (`->`)**: Separates the parameters from the body of the lambda.
+- **Body**: A single expression or a block of code. If it's a single expression, the result is automatically returned.
+
+### **Examples**
+1. **No Parameters**:
+   ```java
+   () -> System.out.println("Hello, World!");
+   ```
+
+2. **Single Parameter**:
+   ```java
+   x -> x * x
+   ```
+
+3. **Multiple Parameters**:
+   ```java
+   (x, y) -> x + y
+   ```
+
+4. **Block of Code**:
+   ```java
+   (x, y) -> {
+       int sum = x + y;
+       return sum;
+   }
+   ```
+
+---
+
+### **Use Cases**
+1. **Replacing Anonymous Classes**:
+   - Lambda expressions can replace anonymous classes for functional interfaces.
+
+   ```java
+   // Before Java 8 (using anonymous class)
+   Runnable r = new Runnable() {
+       @Override
+       public void run() {
+           System.out.println("Hello, World!");
+       }
+   };
+
+   // With Lambda Expression
+   Runnable r = () -> System.out.println("Hello, World!");
+   ```
+
+2. **Iterating Collections**:
+   - Use lambda expressions with the `forEach` method to iterate over collections.
+
+   ```java
+   List<String> list = Arrays.asList("Apple", "Banana", "Cherry");
+   list.forEach(item -> System.out.println(item));
+   ```
+
+3. **Stream API**:
+   - Lambda expressions are heavily used with the Stream API for functional-style operations like filtering, mapping, and reducing.
+
+   ```java
+   List<String> filteredList = list.stream()
+       .filter(item -> item.startsWith("A"))
+       .collect(Collectors.toList());
+   ```
+
+4. **Event Handling**:
+   - Lambda expressions can simplify event handling in GUI applications.
+
+   ```java
+   button.addActionListener(e -> System.out.println("Button clicked!"));
+   ```
+
+---
+
+## **2. Functional Interfaces**
+
+A **Functional Interface** is an interface with **exactly one abstract method**. Lambda expressions can be used to provide the implementation for this method.
+
+### **Common Functional Interfaces**
+Java provides several built-in functional interfaces in the `java.util.function` package:
+
+1. **`Predicate<T>`**:
+   - Represents a boolean-valued function.
+   - Abstract method: `boolean test(T t)`.
+
+   ```java
+   Predicate<Integer> isEven = x -> x % 2 == 0;
+   System.out.println(isEven.test(4)); // Output: true
+   ```
+
+2. **`Function<T, R>`**:
+   - Represents a function that takes an argument of type `T` and returns a result of type `R`.
+   - Abstract method: `R apply(T t)`.
+
+   ```java
+   Function<String, Integer> lengthFunction = s -> s.length();
+   System.out.println(lengthFunction.apply("Hello")); // Output: 5
+   ```
+
+3. **`Consumer<T>`**:
+   - Represents an operation that takes an argument of type `T` and returns no result.
+   - Abstract method: `void accept(T t)`.
+
+   ```java
+   Consumer<String> printConsumer = s -> System.out.println(s);
+   printConsumer.accept("Hello, World!");
+   ```
+
+4. **`Supplier<T>`**:
+   - Represents a supplier of results.
+   - Abstract method: `T get()`.
+
+   ```java
+   Supplier<Double> randomSupplier = () -> Math.random();
+   System.out.println(randomSupplier.get());
+   ```
+
+---
+
+### **Custom Functional Interfaces**
+You can create your own functional interfaces by defining an interface with a single abstract method.
+
+```java
+@FunctionalInterface
+interface MyFunctionalInterface {
+    int operate(int a, int b);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyFunctionalInterface add = (a, b) -> a + b;
+        System.out.println(add.operate(5, 3)); // Output: 8
+    }
+}
+```
+
+---
+
+## **3. Method References**
+
+Method references provide a way to refer to methods without invoking them. They are often used as shorthand for lambda expressions.
+
+### **Types of Method References**
+1. **Static Method Reference**:
+   ```java
+   Function<Integer, String> intToString = String::valueOf;
+   System.out.println(intToString.apply(42)); // Output: "42"
+   ```
+
+2. **Instance Method Reference**:
+   ```java
+   List<String> list = Arrays.asList("Apple", "Banana", "Cherry");
+   list.forEach(System.out::println);
+   ```
+
+3. **Constructor Reference**:
+   ```java
+   Supplier<List<String>> listSupplier = ArrayList::new;
+   List<String> newList = listSupplier.get();
+   ```
+
+---
+
+## **4. Example: Combining Lambda Expressions and Functional Interfaces**
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.function.Function;
+import java.util.function.Consumer;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("Apple", "Banana", "Cherry");
+
+        // Predicate: Filter strings starting with "A"
+        Predicate<String> startsWithA = s -> s.startsWith("A");
+        List<String> filteredList = list.stream()
+            .filter(startsWithA)
+            .toList();
+        System.out.println(filteredList); // Output: [Apple]
+
+        // Function: Convert strings to uppercase
+        Function<String, String> toUpperCase = String::toUpperCase;
+        List<String> upperCaseList = list.stream()
+            .map(toUpperCase)
+            .toList();
+        System.out.println(upperCaseList); // Output: [APPLE, BANANA, CHERRY]
+
+        // Consumer: Print each element
+        Consumer<String> printConsumer = System.out::println;
+        list.forEach(printConsumer);
+    }
+}
+```
+
+---
+
+## **Summary**
+
+| Feature                     | Description                                                                 |
+|-----------------------------|-----------------------------------------------------------------------------|
+| **Lambda Syntax**           | `(parameters) -> expression` or `(parameters) -> { statements; }`          |
+| **Functional Interfaces**   | Interfaces with a single abstract method (e.g., `Predicate`, `Function`).   |
+| **Use Cases**               | Replacing anonymous classes, iterating collections, Stream API, etc.        |
+| **Method References**       | Shorthand for lambda expressions (e.g., `System.out::println`).             |
+
+---
+
+
+Stream API :
+-------------------
+The **Stream API** is a powerful feature introduced in Java 8 as part of the `java.util.stream` package. It provides a functional approach to process collections of objects in a declarative way. Streams allow you to perform operations like filtering, mapping, sorting, and reducing on collections with ease. Below are the details about the Stream API, including its purpose, characteristics, and all the methods available in the `Stream` interface.
+
+---
+
+## **What is the Stream API?**
+
+### **Purpose**
+- The Stream API is designed to process sequences of elements (e.g., collections, arrays, or I/O channels) in a functional and declarative style.
+- It enables **parallel processing** of data, making it easier to write efficient and scalable code.
+
+### **Characteristics**
+1. **Not a Data Structure**:
+   - A stream is not a data structure; it does not store data. Instead, it operates on a source (e.g., a collection or array).
+
+2. **Functional in Nature**:
+   - Streams support functional-style operations like `map`, `filter`, and `reduce`.
+
+3. **Lazy Evaluation**:
+   - Intermediate operations (e.g., `filter`, `map`) are lazy and only executed when a terminal operation (e.g., `collect`, `forEach`) is invoked.
+
+4. **Parallel Processing**:
+   - Streams can be processed in parallel using the `parallelStream()` method.
+
+5. **Immutable**:
+   - Streams do not modify the source data; they produce a new stream as a result of operations.
+
+---
+
+## **Stream Pipeline**
+A stream pipeline consists of:
+1. **Source**: The data source (e.g., a collection or array).
+2. **Intermediate Operations**: Operations that transform the stream (e.g., `filter`, `map`).
+3. **Terminal Operation**: An operation that produces a result or side effect (e.g., `collect`, `forEach`).
+
+---
+
+## **All Methods in the `Stream` Interface**
+
+### **1. Intermediate Operations**
+These methods return a new stream and are lazy (not executed until a terminal operation is called).
+
+1. **`filter(Predicate<T> predicate)`**:
+   - Filters elements based on a condition.
+
+   ```java
+   List<String> filtered = list.stream()
+       .filter(s -> s.startsWith("A"))
+       .toList();
+   ```
+
+2. **`map(Function<T, R> mapper)`**:
+   - Transforms each element using the provided function.
+
+   ```java
+   List<Integer> lengths = list.stream()
+       .map(String::length)
+       .toList();
+   ```
+
+3. **`flatMap(Function<T, Stream<R>> mapper)`**:
+   - Flattens nested structures (e.g., `List<List<T>>` to `List<T>`).
+
+   ```java
+   List<String> flatList = listOfLists.stream()
+       .flatMap(List::stream)
+       .toList();
+   ```
+
+4. **`distinct()`**:
+   - Removes duplicate elements.
+
+   ```java
+   List<String> unique = list.stream()
+       .distinct()
+       .toList();
+   ```
+
+5. **`sorted()`**:
+   - Sorts elements in natural order.
+
+   ```java
+   List<String> sorted = list.stream()
+       .sorted()
+       .toList();
+   ```
+
+6. **`sorted(Comparator<T> comparator)`**:
+   - Sorts elements using a custom comparator.
+
+   ```java
+   List<String> sorted = list.stream()
+       .sorted(Comparator.reverseOrder())
+       .toList();
+   ```
+
+7. **`peek(Consumer<T> action)`**:
+   - Performs an action on each element without modifying the stream.
+
+   ```java
+   List<String> result = list.stream()
+       .peek(System.out::println)
+       .toList();
+   ```
+
+8. **`limit(long maxSize)`**:
+   - Limits the stream to a specified number of elements.
+
+   ```java
+   List<String> limited = list.stream()
+       .limit(2)
+       .toList();
+   ```
+
+9. **`skip(long n)`**:
+   - Skips the first `n` elements.
+
+   ```java
+   List<String> skipped = list.stream()
+       .skip(2)
+       .toList();
+   ```
+
+---
+
+### **2. Terminal Operations**
+These methods produce a result or side effect and terminate the stream.
+
+1. **`forEach(Consumer<T> action)`**:
+   - Performs an action on each element.
+
+   ```java
+   list.stream()
+       .forEach(System.out::println);
+   ```
+
+2. **`toList()`**:
+   - Collects elements into a list.
+
+   ```java
+   List<String> result = list.stream()
+       .toList();
+   ```
+
+3. **`collect(Collector<T, A, R> collector)`**:
+   - Collects elements into a collection or other data structure.
+
+   ```java
+   Set<String> set = list.stream()
+       .collect(Collectors.toSet());
+   ```
+
+4. **`reduce(BinaryOperator<T> accumulator)`**:
+   - Reduces elements to a single value.
+
+   ```java
+   Optional<String> reduced = list.stream()
+       .reduce((s1, s2) -> s1 + ", " + s2);
+   ```
+
+5. **`reduce(T identity, BinaryOperator<T> accumulator)`**:
+   - Reduces elements to a single value with an initial identity.
+
+   ```java
+   String concatenated = list.stream()
+       .reduce("", (s1, s2) -> s1 + ", " + s2);
+   ```
+
+6. **`count()`**:
+   - Returns the number of elements in the stream.
+
+   ```java
+   long count = list.stream()
+       .count();
+   ```
+
+7. **`anyMatch(Predicate<T> predicate)`**:
+   - Returns `true` if any element matches the predicate.
+
+   ```java
+   boolean hasA = list.stream()
+       .anyMatch(s -> s.startsWith("A"));
+   ```
+
+8. **`allMatch(Predicate<T> predicate)`**:
+   - Returns `true` if all elements match the predicate.
+
+   ```java
+   boolean allA = list.stream()
+       .allMatch(s -> s.startsWith("A"));
+   ```
+
+9. **`noneMatch(Predicate<T> predicate)`**:
+   - Returns `true` if no elements match the predicate.
+
+   ```java
+   boolean noA = list.stream()
+       .noneMatch(s -> s.startsWith("A"));
+   ```
+
+10. **`findFirst()`**:
+    - Returns the first element of the stream.
+
+    ```java
+    Optional<String> first = list.stream()
+        .findFirst();
+    ```
+
+11. **`findAny()`**:
+    - Returns any element of the stream (useful for parallel streams).
+
+    ```java
+    Optional<String> any = list.stream()
+        .findAny();
+    ```
+
+12. **`min(Comparator<T> comparator)`**:
+    - Returns the minimum element based on the comparator.
+
+    ```java
+    Optional<String> min = list.stream()
+        .min(Comparator.naturalOrder());
+    ```
+
+13. **`max(Comparator<T> comparator)`**:
+    - Returns the maximum element based on the comparator.
+
+    ```java
+    Optional<String> max = list.stream()
+        .max(Comparator.naturalOrder());
+    ```
+
+---
+
+### **3. Short-Circuiting Operations**
+These are terminal operations that may terminate early.
+
+1. **`anyMatch(Predicate<T> predicate)`**:
+   - Stops processing as soon as a match is found.
+
+2. **`allMatch(Predicate<T> predicate)`**:
+   - Stops processing as soon as a non-matching element is found.
+
+3. **`noneMatch(Predicate<T> predicate)`**:
+   - Stops processing as soon as a matching element is found.
+
+4. **`findFirst()`**:
+   - Stops processing after finding the first element.
+
+5. **`findAny()`**:
+   - Stops processing after finding any element.
+
+---
+
+## **Example: Using Stream API**
+
+```java
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("Apple", "Banana", "Cherry", "Avocado");
+
+        // Filter, map, and collect
+        List<String> result = list.stream()
+            .filter(s -> s.startsWith("A"))
+            .map(String::toUpperCase)
+            .collect(Collectors.toList());
+
+        System.out.println(result); // Output: [APPLE, AVOCADO]
+    }
+}
+```
+
+---
+
+## **Summary**
+
+| Category                | Methods                                                                 |
+|-------------------------|-------------------------------------------------------------------------|
+| **Intermediate Ops**    | `filter`, `map`, `flatMap`, `distinct`, `sorted`, `peek`, `limit`, `skip` |
+| **Terminal Ops**        | `forEach`, `toList`, `collect`, `reduce`, `count`, `anyMatch`, `allMatch`, `noneMatch`, `findFirst`, `findAny`, `min`, `max` |
+| **Short-Circuiting Ops**| `anyMatch`, `allMatch`, `noneMatch`, `findFirst`, `findAny`             |
+
+---
+
+Optional Class :
+------------------
+
+The **`Optional`** class was introduced in Java 8 as part of the `java.util` package to help developers avoid `NullPointerException` and write cleaner, more expressive code when dealing with potentially null values. Below are the details about the `Optional` class, including its purpose, key methods, and examples.
+
+---
+
+## **What is the `Optional` Class?**
+
+### **Purpose**
+- The `Optional` class is a container object that may or may not contain a non-null value.
+- It provides a way to handle situations where a value might be absent, reducing the need for explicit null checks and avoiding `NullPointerException`.
+
+### **Key Features**
+1. **Avoids Null Checks**:
+   - Encourages explicit handling of absent values instead of relying on null checks.
+
+2. **Functional-Style Methods**:
+   - Provides methods like `map`, `filter`, and `ifPresent` for functional-style programming.
+
+3. **Immutable**:
+   - Once created, an `Optional` object cannot be modified.
+
+4. **No Direct Access**:
+   - You cannot directly access the value inside an `Optional`; you must use methods like `get()` or `orElse()`.
+
+---
+
+## **Creating an `Optional`**
+
+### **1. `Optional.of(T value)`**
+- Creates an `Optional` with a non-null value.
+- Throws `NullPointerException` if the value is null.
+
+```java
+Optional<String> optional = Optional.of("Hello");
+```
+
+### **2. `Optional.ofNullable(T value)`**
+- Creates an `Optional` with a value that may be null.
+- If the value is null, it returns an empty `Optional`.
+
+```java
+Optional<String> optional = Optional.ofNullable(null); // Returns an empty Optional
+```
+
+### **3. `Optional.empty()`**
+- Creates an empty `Optional`.
+
+```java
+Optional<String> optional = Optional.empty();
+```
+
+---
+
+## **Common Methods in `Optional`**
+
+### **1. `isPresent()`**
+- Returns `true` if the `Optional` contains a non-null value.
+
+```java
+Optional<String> optional = Optional.of("Hello");
+if (optional.isPresent()) {
+    System.out.println("Value is present: " + optional.get());
+}
+```
+
+### **2. `ifPresent(Consumer<T> action)`**
+- Executes the action if the `Optional` contains a non-null value.
+
+```java
+Optional<String> optional = Optional.of("Hello");
+optional.ifPresent(value -> System.out.println("Value: " + value));
+```
+
+### **3. `orElse(T other)`**
+- Returns the value if present; otherwise, returns the specified default value.
+
+```java
+Optional<String> optional = Optional.empty();
+String value = optional.orElse("Default Value");
+System.out.println(value); // Output: Default Value
+```
+
+### **4. `orElseGet(Supplier<T> supplier)`**
+- Returns the value if present; otherwise, invokes the supplier and returns its result.
+
+```java
+Optional<String> optional = Optional.empty();
+String value = optional.orElseGet(() -> "Generated Value");
+System.out.println(value); // Output: Generated Value
+```
+
+### **5. `orElseThrow(Supplier<X> exceptionSupplier)`**
+- Returns the value if present; otherwise, throws an exception provided by the supplier.
+
+```java
+Optional<String> optional = Optional.empty();
+String value = optional.orElseThrow(() -> new RuntimeException("Value not found"));
+```
+
+### **6. `map(Function<T, R> mapper)`**
+- Applies the mapper function to the value if present; otherwise, returns an empty `Optional`.
+
+```java
+Optional<String> optional = Optional.of("Hello");
+Optional<Integer> length = optional.map(String::length);
+System.out.println(length.orElse(0)); // Output: 5
+```
+
+### **7. `flatMap(Function<T, Optional<R>> mapper)`**
+- Similar to `map`, but the mapper function returns an `Optional`.
+
+```java
+Optional<String> optional = Optional.of("Hello");
+Optional<Integer> length = optional.flatMap(s -> Optional.of(s.length()));
+System.out.println(length.orElse(0)); // Output: 5
+```
+
+### **8. `filter(Predicate<T> predicate)`**
+- Returns an `Optional` containing the value if it matches the predicate; otherwise, returns an empty `Optional`.
+
+```java
+Optional<String> optional = Optional.of("Hello");
+Optional<String> filtered = optional.filter(s -> s.length() > 5);
+System.out.println(filtered.isPresent()); // Output: false
+```
+
+---
+
+## **Example: Using `Optional`**
+
+```java
+import java.util.Optional;
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating Optional
+        Optional<String> optional = Optional.ofNullable(getValue());
+
+        // Checking if value is present
+        if (optional.isPresent()) {
+            System.out.println("Value: " + optional.get());
+        } else {
+            System.out.println("Value is absent");
+        }
+
+        // Using ifPresent
+        optional.ifPresent(value -> System.out.println("Value: " + value));
+
+        // Using orElse
+        String value = optional.orElse("Default Value");
+        System.out.println("Value: " + value);
+
+        // Using map
+        Optional<Integer> length = optional.map(String::length);
+        System.out.println("Length: " + length.orElse(0));
+    }
+
+    public static String getValue() {
+        return null; // Simulating a method that might return null
+    }
+}
+```
+
+---
+
+## **Advantages of `Optional`**
+
+1. **Avoids Null Checks**:
+   - Reduces the need for explicit null checks, making code cleaner.
+
+2. **Expressive Code**:
+   - Clearly indicates that a value might be absent.
+
+3. **Functional-Style Programming**:
+   - Supports functional-style operations like `map`, `filter`, and `ifPresent`.
+
+4. **Reduces Bugs**:
+   - Helps avoid `NullPointerException` by encouraging explicit handling of absent values.
+
+---
+
+## **When to Use `Optional`**
+
+- Use `Optional` for return types of methods that might return null.
+- Avoid using `Optional` for fields, method parameters, or collections (use null or empty collections instead).
+
+---
+
+## **Summary**
+
+| Method                     | Description                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| **`of(T value)`**          | Creates an `Optional` with a non-null value.                                |
+| **`ofNullable(T value)`**  | Creates an `Optional` with a value that may be null.                        |
+| **`empty()`**              | Creates an empty `Optional`.                                                |
+| **`isPresent()`**          | Checks if the `Optional` contains a value.                                  |
+| **`ifPresent(Consumer)`**  | Executes an action if the `Optional` contains a value.                      |
+| **`orElse(T other)`**      | Returns the value if present; otherwise, returns the default value.         |
+| **`orElseGet(Supplier)`**  | Returns the value if present; otherwise, invokes the supplier.              |
+| **`orElseThrow(Supplier)`**| Returns the value if present; otherwise, throws an exception.               |
+| **`map(Function)`**        | Transforms the value if present.                                            |
+| **`flatMap(Function)`**    | Transforms the value if present and flattens the result.                    |
+| **`filter(Predicate)`**    | Filters the value if present based on a condition.                          |
+
+---
+
+
+LocalDate and Date :
+-----------------------
+`LocalDate` was introduced in **Java 8** as part of the **java.time** package to address the limitations of the older `java.util.Date` and `java.util.Calendar` classes.  
+
+### **Key Reasons for Introducing `LocalDate`:**
+
+1. **Immutability:**  
+   - `LocalDate` is immutable and thread-safe, making it ideal for concurrent programming.  
+   - Unlike `Date` and `Calendar`, which are mutable and prone to unexpected changes.
+
+2. **Clearer API Design:**  
+   - `LocalDate` provides more meaningful and intuitive method names like `.plusDays()`, `.minusWeeks()`, etc.  
+   - Older classes often required cumbersome code for date manipulation.
+
+3. **Time Zone Independence:**  
+   - `LocalDate` represents **only the date** (year, month, day) without time or time zone information.  
+   - This avoids confusion caused by automatic time zone adjustments in `Date`.
+
+4. **Better Formatting and Parsing:**  
+   - `LocalDate` integrates seamlessly with `DateTimeFormatter`, providing more flexible and readable date formatting.
+
+5. **Improved Validation:**  
+   - Methods like `.isLeapYear()` or `.getDayOfWeek()` simplify common date-related checks.
+
+---
+
+### **Example: Using `LocalDate`**
+```java
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class Main {
+    public static void main(String[] args) {
+        LocalDate today = LocalDate.now();
+        System.out.println("Today: " + today);
+
+        LocalDate futureDate = today.plusDays(10);
+        System.out.println("10 Days Later: " + futureDate);
+
+        LocalDate parsedDate = LocalDate.parse("2025-03-20", DateTimeFormatter.ISO_DATE);
+        System.out.println("Parsed Date: " + parsedDate);
+
+        System.out.println("Leap Year? " + today.isLeapYear());
+        System.out.println("Day of the Week: " + today.getDayOfWeek());
+    }
+}
+```
+
+**Output:**  
+```
+Today: 2025-03-08  
+10 Days Later: 2025-03-18  
+Parsed Date: 2025-03-20  
+Leap Year? false  
+Day of the Week: SATURDAY  
+```
+
+---
+
+### **Key Methods in `LocalDate`:**
+| Method                  | Description                     |
+|-------------------------|---------------------------------|
+| `now()`                  | Gets the current date.          |
+| `plusDays(int days)`     | Adds days to the date.          |
+| `minusMonths(int months)`| Subtracts months from the date. |
+| `isLeapYear()`           | Checks if the year is a leap year. |
+| `getDayOfWeek()`         | Returns the day of the week.     |
+| `format(DateTimeFormatter formatter)` | Formats the date. |
+
+---
+
+### **Why Not Use `java.util.Date` or `Calendar`?**
+- `Date` stores both date and time, often causing confusion.  
+- `Calendar` is verbose and error-prone.  
+- `LocalDate` offers cleaner syntax, better readability, and safer handling of date logic.
+
 
