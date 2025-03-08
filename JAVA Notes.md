@@ -1326,31 +1326,1078 @@ Collections in Java are part of the **Java Collections Framework (JCF)**, which 
    
 4. **Map** (Key-Value pairs, unique keys)  
    - Implementations: `HashMap`, `LinkedHashMap`, `TreeMap`, `Hashtable`, `ConcurrentHashMap`
+   
 
 
-Here’s a detailed table summarizing the key aspects of Java Collections:
+`ArrayList`, `LinkedList`, `Vector`, `Stack`, and `CopyOnWriteArrayList` :
+-------------------------------------------------------------------------------
 
-| **Category**         | **Interface/Class**       | **Description**                                                                 | **Ordered** | **Sorted** | **Allows Duplicates** | **Allows Null** | **Thread-Safe** | **Common Implementations**                     |
-|----------------------|---------------------------|---------------------------------------------------------------------------------|-------------|------------|------------------------|-----------------|-----------------|------------------------------------------------|
-| **List**             | `List`                   | Ordered collection of elements.                                                 | Yes         | No         | Yes                    | Yes             | No              | `ArrayList`, `LinkedList`, `Vector`            |
-|                      | `ArrayList`              | Resizable array implementation of `List`.                                       | Yes         | No         | Yes                    | Yes             | No              | -                                              |
-|                      | `LinkedList`             | Doubly-linked list implementation of `List`.                                    | Yes         | No         | Yes                    | Yes             | No              | -                                              |
-|                      | `Vector`                 | Synchronized (thread-safe) resizable array implementation of `List`.            | Yes         | No         | Yes                    | Yes             | Yes             | -                                              |
-| **Set**              | `Set`                    | Collection of unique elements.                                                  | No          | No         | No                     | Yes (1 null)    | No              | `HashSet`, `LinkedHashSet`, `TreeSet`          |
-|                      | `HashSet`                | Hash table implementation of `Set`.                                             | No          | No         | No                     | Yes             | No              | -                                              |
-|                      | `LinkedHashSet`          | `HashSet` with predictable iteration order (insertion order).                   | Yes         | No         | No                     | Yes             | No              | -                                              |
-|                      | `TreeSet`                | Red-Black tree implementation of `Set`. Sorted by natural order or comparator.  | Yes         | Yes        | No                     | No              | No              | -                                              |
-| **Queue**            | `Queue`                  | Collection designed for holding elements prior to processing.                   | Yes         | No         | Yes                    | Yes             | No              | `LinkedList`, `PriorityQueue`, `ArrayDeque`    |
-|                      | `PriorityQueue`          | Priority heap implementation of `Queue`. Sorted by natural order or comparator. | Yes         | Yes        | Yes                    | No              | No              | -                                              |
-|                      | `ArrayDeque`             | Resizable array implementation of `Deque`.                                      | Yes         | No         | Yes                    | Yes             | No              | -                                              |
-| **Deque**            | `Deque`                  | Double-ended queue, supports element insertion/removal at both ends.            | Yes         | No         | Yes                    | Yes             | No              | `ArrayDeque`, `LinkedList`                     |
-| **Map**              | `Map`                    | Collection of key-value pairs. Keys are unique.                                 | No          | No         | No (keys)              | Yes (1 null key)| No              | `HashMap`, `LinkedHashMap`, `TreeMap`          |
-|                      | `HashMap`                | Hash table implementation of `Map`.                                             | No          | No         | No (keys)              | Yes             | No              | -                                              |
-|                      | `LinkedHashMap`          | `HashMap` with predictable iteration order (insertion/access order).            | Yes         | No         | No (keys)              | Yes             | No              | -                                              |
-|                      | `TreeMap`                | Red-Black tree implementation of `Map`. Sorted by natural order or comparator.  | Yes         | Yes        | No (keys)              | No              | No              | -                                              |
-| **Thread-Safe**      | `Collections.synchronizedX`| Utility methods to create synchronized versions of collections.                 | Depends     | Depends    | Depends                | Depends         | Yes             | `synchronizedList`, `synchronizedSet`, etc.    |
-|                      | `ConcurrentHashMap`      | Thread-safe implementation of `Map`.                                            | No          | No         | No (keys)              | No              | Yes             | -                                              |
-|                      | `CopyOnWriteArrayList`   | Thread-safe implementation of `List`.                                           | Yes         | No         | Yes                    | Yes             | Yes             | -                                              |
-|                      | `CopyOnWriteArraySet`    | Thread-safe implementation of `Set`.                                            | No          | No         | No                     | Yes             | Yes             | -                                              |
+
+Below are the details of `ArrayList`, `LinkedList`, `Vector`, `Stack`, and `CopyOnWriteArrayList`, including their **internal implementations**, key features, and use cases.
+
+---
+
+## **1. ArrayList**
+
+### **Key Features of ArrayList**
+1. **Dynamic Resizing**:
+   - `ArrayList` is a resizable array that grows dynamically as elements are added.
+
+2. **Ordered Collection**:
+   - Maintains the insertion order of elements.
+
+3. **Allows Duplicates**:
+   - Can store duplicate elements.
+
+4. **Allows `null` Values**:
+   - Can store `null` values.
+
+5. **Not Synchronized**:
+   - `ArrayList` is not thread-safe. For thread-safe operations, use `Collections.synchronizedList(new ArrayList<>())`.
+
+6. **Fast Random Access**:
+   - Provides constant-time (`O(1)`) access to elements using indices.
+
+---
+
+### **Internal Implementation**
+- Internally, `ArrayList` uses a **dynamic array** to store elements.
+- When the array reaches its capacity and a new element is added, the `ArrayList` creates a new array with a larger size (typically 1.5 times the current size) and copies all elements from the old array to the new one.
+
+---
+
+### **Example Usage**
+```java
+import java.util.ArrayList;
+
+public class ArrayListExample {
+    public static void main(String[] args) {
+        // Create an ArrayList
+        ArrayList<String> list = new ArrayList<>();
+
+        // Add elements
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+
+        // Access elements
+        System.out.println("Element at index 1: " + list.get(1)); // Output: Banana
+
+        // Remove elements
+        list.remove("Cherry");
+
+        // Iterate over the list
+        for (String fruit : list) {
+            System.out.println(fruit);
+        }
+    }
+}
+```
+
+---
+
+## **2. LinkedList**
+
+### **Key Features of LinkedList**
+1. **Doubly Linked List**:
+   - `LinkedList` uses a doubly linked list to store elements.
+
+2. **Ordered Collection**:
+   - Maintains the insertion order of elements.
+
+3. **Allows Duplicates**:
+   - Can store duplicate elements.
+
+4. **Allows `null` Values**:
+   - Can store `null` values.
+
+5. **Not Synchronized**:
+   - `LinkedList` is not thread-safe. For thread-safe operations, use `Collections.synchronizedList(new LinkedList<>())`.
+
+6. **Efficient Insertions/Deletions**:
+   - Provides constant-time (`O(1)`) insertions and deletions at both ends.
+
+---
+
+### **Internal Implementation**
+- Internally, `LinkedList` uses a **doubly linked list**.
+- Each node in the list contains:
+  - The actual data (element).
+  - A reference to the previous node.
+  - A reference to the next node.
+
+---
+
+### **Example Usage**
+```java
+import java.util.LinkedList;
+
+public class LinkedListExample {
+    public static void main(String[] args) {
+        // Create a LinkedList
+        LinkedList<String> list = new LinkedList<>();
+
+        // Add elements
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+
+        // Access elements
+        System.out.println("First element: " + list.getFirst()); // Output: Apple
+
+        // Remove elements
+        list.removeLast();
+
+        // Iterate over the list
+        for (String fruit : list) {
+            System.out.println(fruit);
+        }
+    }
+}
+```
+
+---
+
+## **3. Vector**
+
+### **Key Features of Vector**
+1. **Dynamic Resizing**:
+   - `Vector` is a resizable array that grows dynamically as elements are added.
+
+2. **Ordered Collection**:
+   - Maintains the insertion order of elements.
+
+3. **Allows Duplicates**:
+   - Can store duplicate elements.
+
+4. **Allows `null` Values**:
+   - Can store `null` values.
+
+5. **Synchronized**:
+   - `Vector` is thread-safe, making it suitable for multi-threaded environments.
+
+6. **Legacy Class**:
+   - `Vector` is a legacy class from Java 1.0.
+
+---
+
+### **Internal Implementation**
+- Internally, `Vector` uses a **dynamic array** to store elements.
+- When the array reaches its capacity and a new element is added, the `Vector` creates a new array with a larger size (typically double the current size) and copies all elements from the old array to the new one.
+
+---
+
+### **Example Usage**
+```java
+import java.util.Vector;
+
+public class VectorExample {
+    public static void main(String[] args) {
+        // Create a Vector
+        Vector<String> vector = new Vector<>();
+
+        // Add elements
+        vector.add("Apple");
+        vector.add("Banana");
+        vector.add("Cherry");
+
+        // Access elements
+        System.out.println("Element at index 1: " + vector.get(1)); // Output: Banana
+
+        // Remove elements
+        vector.remove("Cherry");
+
+        // Iterate over the vector
+        for (String fruit : vector) {
+            System.out.println(fruit);
+        }
+    }
+}
+```
+
+---
+
+## **4. Stack**
+
+### **Key Features of Stack**
+1. **LIFO Order**:
+   - `Stack` is a Last-In-First-Out (LIFO) data structure.
+
+2. **Extends Vector**:
+   - `Stack` extends the `Vector` class and inherits its methods.
+
+3. **Synchronized**:
+   - `Stack` is thread-safe, making it suitable for multi-threaded environments.
+
+4. **Legacy Class**:
+   - `Stack` is a legacy class from Java 1.0.
+
+---
+
+### **Internal Implementation**
+- Internally, `Stack` uses a **dynamic array** (inherited from `Vector`) to store elements.
+- The `push` and `pop` operations are implemented using the array.
+
+---
+
+### **Example Usage**
+```java
+import java.util.Stack;
+
+public class StackExample {
+    public static void main(String[] args) {
+        // Create a Stack
+        Stack<String> stack = new Stack<>();
+
+        // Push elements
+        stack.push("Apple");
+        stack.push("Banana");
+        stack.push("Cherry");
+
+        // Access the top element
+        System.out.println("Top element: " + stack.peek()); // Output: Cherry
+
+        // Pop elements
+        while (!stack.isEmpty()) {
+            System.out.println(stack.pop());
+        }
+    }
+}
+```
+
+---
+
+## **5. CopyOnWriteArrayList**
+
+### **Key Features of CopyOnWriteArrayList**
+1. **Thread-Safe**:
+   - `CopyOnWriteArrayList` is a thread-safe variant of `ArrayList`.
+
+2. **Copy-on-Write Mechanism**:
+   - Whenever the list is modified, a new copy of the underlying array is created.
+
+3. **No Locking for Reads**:
+   - Read operations do not require locking, making them very fast.
+
+4. **Fail-Safe Iterators**:
+   - Iterators do not throw `ConcurrentModificationException`.
+
+---
+
+### **Internal Implementation**
+- Internally, `CopyOnWriteArrayList` uses a **volatile array** to store elements.
+- When a modification is made, a new copy of the array is created, and the reference to the array is updated.
+
+---
+
+### **Example Usage**
+```java
+import java.util.concurrent.CopyOnWriteArrayList;
+
+public class CopyOnWriteArrayListExample {
+    public static void main(String[] args) {
+        // Create a CopyOnWriteArrayList
+        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+
+        // Add elements
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
+
+        // Access elements
+        System.out.println("Element at index 1: " + list.get(1)); // Output: Banana
+
+        // Iterate over the list
+        for (String fruit : list) {
+            System.out.println(fruit);
+        }
+    }
+}
+```
+
+---
+
+### **Comparison of ArrayList, LinkedList, Vector, Stack, and CopyOnWriteArrayList**
+
+| Feature                | ArrayList          | LinkedList         | Vector             | Stack              | CopyOnWriteArrayList |
+|------------------------|--------------------|--------------------|--------------------|--------------------|-----------------------|
+| **Internal Structure** | Dynamic Array      | Doubly Linked List | Dynamic Array      | Dynamic Array      | Volatile Array        |
+| **Order**              | Insertion Order    | Insertion Order    | Insertion Order    | LIFO Order         | Insertion Order       |
+| **Thread-Safety**      | Not Thread-Safe    | Not Thread-Safe    | Thread-Safe        | Thread-Safe        | Thread-Safe           |
+| **Null Values**        | Allowed            | Allowed            | Allowed            | Allowed            | Allowed               |
+| **Performance**        | Fast Random Access | Fast Insertions    | Slower than ArrayList | Slower than Vector | Fast Reads            |
+
+---
+
+
+
+`HashSet`, `LinkedHashSet`, and `TreeSet` :
+-------------------------------------------------
+
+
+Below are the details of `HashSet`, `LinkedHashSet`, and `TreeSet`, which are implementations of the `Set` interface in Java. Each of these classes has unique characteristics and use cases.
+
+---
+
+## **1. HashSet**
+
+### **Key Features of HashSet**
+1. **Unordered Collection**:
+   - `HashSet` does not maintain any order of elements. The elements are stored based on their hash code.
+
+2. **No Duplicates**:
+   - `HashSet` does not allow duplicate elements. If you try to add a duplicate, it will simply ignore the operation.
+
+3. **Allows `null` Values**:
+   - `HashSet` can store one `null` value.
+
+4. **Backed by a HashMap**:
+   - Internally, `HashSet` uses a `HashMap` to store its elements. The elements are stored as keys in the `HashMap`, and a dummy object (`PRESENT`) is used as the value.
+
+5. **Not Synchronized**:
+   - `HashSet` is not thread-safe. For thread-safe operations, use `Collections.synchronizedSet(new HashSet<>())`.
+
+6. **Fast Operations**:
+   - `HashSet` provides constant-time performance (`O(1)`) for basic operations like `add`, `remove`, and `contains`, assuming a good hash function.
+
+---
+
+### **Internal Implementation**
+- `HashSet` uses a `HashMap` internally.
+- Elements are stored as keys in the `HashMap`, and a dummy object (`PRESENT`) is used as the value.
+
+---
+
+### **Common Methods in HashSet**
+1. **Adding Elements**:
+   - `add(E e)`: Adds an element to the set if it is not already present.
+
+2. **Removing Elements**:
+   - `remove(Object o)`: Removes the specified element from the set.
+
+3. **Checking for Elements**:
+   - `contains(Object o)`: Checks if the set contains the specified element.
+
+4. **Size and Capacity**:
+   - `size()`: Returns the number of elements in the set.
+   - `isEmpty()`: Checks if the set is empty.
+
+5. **Iterating**:
+   - `iterator()`: Returns an iterator over the elements in the set.
+
+6. **Clearing the Set**:
+   - `clear()`: Removes all elements from the set.
+
+---
+
+### **Example Usage**
+```java
+import java.util.HashSet;
+
+public class HashSetExample {
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> fruits = new HashSet<>();
+
+        // Add elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+
+        // Attempt to add a duplicate
+        fruits.add("Apple"); // Ignored
+
+        // Check if an element exists
+        System.out.println("Contains Banana: " + fruits.contains("Banana")); // Output: true
+
+        // Remove an element
+        fruits.remove("Cherry");
+
+        // Iterate over the set
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+    }
+}
+```
+
+---
+
+## **2. LinkedHashSet**
+
+### **Key Features of LinkedHashSet**
+1. **Ordered Collection**:
+   - `LinkedHashSet` maintains the insertion order of elements. It uses a linked list to preserve the order.
+
+2. **No Duplicates**:
+   - Like `HashSet`, `LinkedHashSet` does not allow duplicate elements.
+
+3. **Allows `null` Values**:
+   - `LinkedHashSet` can store one `null` value.
+
+4. **Backed by a LinkedHashMap**:
+   - Internally, `LinkedHashSet` uses a `LinkedHashMap` to store its elements.
+
+5. **Not Synchronized**:
+   - `LinkedHashSet` is not thread-safe. For thread-safe operations, use `Collections.synchronizedSet(new LinkedHashSet<>())`.
+
+6. **Slightly Slower than HashSet**:
+   - Due to the maintenance of the linked list, `LinkedHashSet` has slightly slower performance than `HashSet`.
+
+---
+
+### **Example Usage**
+```java
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetExample {
+    public static void main(String[] args) {
+        // Create a LinkedHashSet
+        LinkedHashSet<String> fruits = new LinkedHashSet<>();
+
+        // Add elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+
+        // Iterate over the set (maintains insertion order)
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+    }
+}
+```
+
+---
+
+## **3. TreeSet**
+
+### **Key Features of TreeSet**
+1. **Sorted Collection**:
+   - `TreeSet` stores elements in a sorted order (natural ordering or custom ordering using a `Comparator`).
+
+2. **No Duplicates**:
+   - `TreeSet` does not allow duplicate elements.
+
+3. **Does Not Allow `null` Values**:
+   - `TreeSet` does not allow `null` values (throws `NullPointerException`).
+
+4. **Backed by a TreeMap**:
+   - Internally, `TreeSet` uses a `TreeMap` to store its elements.
+
+5. **Not Synchronized**:
+   - `TreeSet` is not thread-safe. For thread-safe operations, use `Collections.synchronizedSet(new TreeSet<>())`.
+
+6. **Slower Operations**:
+   - `TreeSet` provides logarithmic-time performance (`O(log n)`) for basic operations like `add`, `remove`, and `contains`.
+
+---
+
+### **Example Usage**
+```java
+import java.util.TreeSet;
+
+public class TreeSetExample {
+    public static void main(String[] args) {
+        // Create a TreeSet
+        TreeSet<String> fruits = new TreeSet<>();
+
+        // Add elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+
+        // Iterate over the set (sorted order)
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+
+        // First and last elements
+        System.out.println("First: " + fruits.first()); // Output: Apple
+        System.out.println("Last: " + fruits.last());  // Output: Cherry
+    }
+}
+```
+
+---
+
+### **Comparison of HashSet, LinkedHashSet, and TreeSet**
+
+| Feature                | HashSet          | LinkedHashSet     | TreeSet           |
+|------------------------|------------------|-------------------|-------------------|
+| **Order**              | Unordered        | Insertion Order   | Sorted Order      |
+| **Duplicates**         | Not Allowed      | Not Allowed       | Not Allowed       |
+| **Null Values**        | Allowed          | Allowed           | Not Allowed       |
+| **Internal Structure** | HashMap          | LinkedHashMap     | TreeMap           |
+| **Performance**        | O(1) for basics  | Slightly slower   | O(log n) for basics |
+| **Thread-Safety**      | Not Thread-Safe  | Not Thread-Safe   | Not Thread-Safe   |
+
+---
+
+### **When to Use Each**
+1. **HashSet**:
+   - When you need a fast, unordered collection with no duplicates.
+   - Example: Storing unique usernames.
+
+2. **LinkedHashSet**:
+   - When you need to maintain insertion order while avoiding duplicates.
+   - Example: Caching with FIFO order.
+
+3. **TreeSet**:
+   - When you need a sorted collection with no duplicates.
+   - Example: Storing a leaderboard in sorted order.
+
+---
+
+`PriorityQueue`, `ArrayDeque`, and `ConcurrentLinkedQueue` :
+-------------------------------------------------------------
+
+Below are the details of `PriorityQueue`, `ArrayDeque`, and `ConcurrentLinkedQueue`, including their **internal implementations**, key features, and use cases.
+
+---
+
+## **1. PriorityQueue**
+
+### **Key Features of PriorityQueue**
+1. **Unbounded Queue**:
+   - `PriorityQueue` is an unbounded queue that grows dynamically.
+
+2. **Orders Elements**:
+   - Elements are ordered based on their natural ordering (if they implement `Comparable`) or by a custom `Comparator`.
+
+3. **No `null` Values**:
+   - `PriorityQueue` does not allow `null` values.
+
+4. **Not Thread-Safe**:
+   - `PriorityQueue` is not thread-safe. For thread-safe operations, use `PriorityBlockingQueue`.
+
+5. **Min-Heap by Default**:
+   - By default, `PriorityQueue` is a min-heap, meaning the smallest element is at the head of the queue.
+
+6. **Efficient Operations**:
+   - Offers `O(log n)` time complexity for `add` and `remove` operations.
+   - Offers `O(1)` time complexity for `peek` and `size` operations.
+
+---
+
+### **Internal Implementation**
+- Internally, `PriorityQueue` uses a **binary heap** data structure (specifically, a min-heap or max-heap depending on the comparator).
+- The elements are stored in an **array** where:
+  - The root of the heap is at index `0`.
+  - For any element at index `i`:
+    - Its left child is at index `2i + 1`.
+    - Its right child is at index `2i + 2`.
+    - Its parent is at index `(i - 1) / 2`.
+
+---
+
+### **Common Methods in PriorityQueue**
+1. **Adding Elements**:
+   - `add(E e)`: Adds an element to the queue.
+   - `offer(E e)`: Adds an element to the queue (returns `true` if successful).
+
+2. **Removing Elements**:
+   - `remove()`: Removes and returns the head of the queue (throws an exception if the queue is empty).
+   - `poll()`: Removes and returns the head of the queue (returns `null` if the queue is empty).
+
+3. **Accessing Elements**:
+   - `peek()`: Retrieves, but does not remove, the head of the queue (returns `null` if the queue is empty).
+   - `element()`: Retrieves, but does not remove, the head of the queue (throws an exception if the queue is empty).
+
+4. **Size and Capacity**:
+   - `size()`: Returns the number of elements in the queue.
+   - `isEmpty()`: Checks if the queue is empty.
+
+---
+
+### **Example Usage**
+```java
+import java.util.PriorityQueue;
+
+public class PriorityQueueExample {
+    public static void main(String[] args) {
+        // Create a PriorityQueue
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        // Add elements
+        pq.add(10);
+        pq.add(5);
+        pq.add(20);
+
+        // Access the head of the queue
+        System.out.println("Head of the queue: " + pq.peek()); // Output: 5
+
+        // Remove elements
+        while (!pq.isEmpty()) {
+            System.out.println(pq.poll());
+        }
+    }
+}
+```
+
+---
+
+## **2. ArrayDeque**
+
+### **Key Features of ArrayDeque**
+1. **Double-Ended Queue**:
+   - `ArrayDeque` supports operations at both ends (head and tail) of the queue.
+
+2. **Resizable Array**:
+   - It uses a resizable array to store elements, allowing it to grow dynamically.
+
+3. **No Capacity Restrictions**:
+   - Unlike `LinkedList`, `ArrayDeque` does not have capacity restrictions (except for memory limits).
+
+4. **Faster than LinkedList**:
+   - `ArrayDeque` is generally faster than `LinkedList` for queue operations.
+
+5. **Not Thread-Safe**:
+   - `ArrayDeque` is not thread-safe. For thread-safe operations, use external synchronization.
+
+6. **No `null` Values**:
+   - `ArrayDeque` does not allow `null` values.
+
+---
+
+### **Internal Implementation**
+- Internally, `ArrayDeque` uses a **circular array** (also called a ring buffer).
+- The array dynamically resizes when it runs out of space (usually doubles in size).
+- Two pointers, `head` and `tail`, are used to keep track of the start and end of the queue.
+
+---
+
+### **Common Methods in ArrayDeque**
+1. **Adding Elements**:
+   - `addFirst(E e)`: Adds an element to the head of the queue.
+   - `addLast(E e)`: Adds an element to the tail of the queue.
+   - `offerFirst(E e)`: Adds an element to the head of the queue (returns `true` if successful).
+   - `offerLast(E e)`: Adds an element to the tail of the queue (returns `true` if successful).
+
+2. **Removing Elements**:
+   - `removeFirst()`: Removes and returns the head of the queue (throws an exception if the queue is empty).
+   - `removeLast()`: Removes and returns the tail of the queue (throws an exception if the queue is empty).
+   - `pollFirst()`: Removes and returns the head of the queue (returns `null` if the queue is empty).
+   - `pollLast()`: Removes and returns the tail of the queue (returns `null` if the queue is empty).
+
+3. **Accessing Elements**:
+   - `getFirst()`: Retrieves, but does not remove, the head of the queue (throws an exception if the queue is empty).
+   - `getLast()`: Retrieves, but does not remove, the tail of the queue (throws an exception if the queue is empty).
+   - `peekFirst()`: Retrieves, but does not remove, the head of the queue (returns `null` if the queue is empty).
+   - `peekLast()`: Retrieves, but does not remove, the tail of the queue (returns `null` if the queue is empty).
+
+4. **Size and Capacity**:
+   - `size()`: Returns the number of elements in the queue.
+   - `isEmpty()`: Checks if the queue is empty.
+
+---
+
+### **Example Usage**
+```java
+import java.util.ArrayDeque;
+
+public class ArrayDequeExample {
+    public static void main(String[] args) {
+        // Create an ArrayDeque
+        ArrayDeque<Integer> deque = new ArrayDeque<>();
+
+        // Add elements
+        deque.addFirst(10);
+        deque.addLast(20);
+        deque.addFirst(5);
+
+        // Access elements
+        System.out.println("First element: " + deque.getFirst()); // Output: 5
+        System.out.println("Last element: " + deque.getLast());   // Output: 20
+
+        // Remove elements
+        while (!deque.isEmpty()) {
+            System.out.println(deque.pollFirst());
+        }
+    }
+}
+```
+
+---
+
+## **3. ConcurrentLinkedQueue**
+
+### **Key Features of ConcurrentLinkedQueue**
+1. **Thread-Safe**:
+   - `ConcurrentLinkedQueue` is a thread-safe implementation of a queue, suitable for multi-threaded environments.
+
+2. **Unbounded Queue**:
+   - It is an unbounded queue that grows dynamically.
+
+3. **Non-Blocking**:
+   - Uses non-blocking algorithms (CAS - Compare and Swap) for thread safety, making it highly scalable.
+
+4. **No `null` Values**:
+   - `ConcurrentLinkedQueue` does not allow `null` values.
+
+5. **FIFO Order**:
+   - Elements are stored in First-In-First-Out (FIFO) order.
+
+6. **Iterators are Weakly Consistent**:
+   - Iterators do not throw `ConcurrentModificationException` but may not reflect the latest changes.
+
+---
+
+### **Internal Implementation**
+- Internally, `ConcurrentLinkedQueue` uses a **linked list** data structure.
+- Each node in the linked list contains:
+  - The actual data (element).
+  - A reference to the next node.
+- Thread safety is achieved using **CAS (Compare and Swap)** operations, which avoid locking.
+
+---
+
+### **Common Methods in ConcurrentLinkedQueue**
+1. **Adding Elements**:
+   - `add(E e)`: Adds an element to the tail of the queue.
+   - `offer(E e)`: Adds an element to the tail of the queue (returns `true` if successful).
+
+2. **Removing Elements**:
+   - `remove()`: Removes and returns the head of the queue (throws an exception if the queue is empty).
+   - `poll()`: Removes and returns the head of the queue (returns `null` if the queue is empty).
+
+3. **Accessing Elements**:
+   - `peek()`: Retrieves, but does not remove, the head of the queue (returns `null` if the queue is empty).
+   - `element()`: Retrieves, but does not remove, the head of the queue (throws an exception if the queue is empty).
+
+4. **Size and Capacity**:
+   - `size()`: Returns the number of elements in the queue (may be inaccurate in concurrent scenarios).
+   - `isEmpty()`: Checks if the queue is empty.
+
+---
+
+### **Example Usage**
+```java
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+public class ConcurrentLinkedQueueExample {
+    public static void main(String[] args) {
+        // Create a ConcurrentLinkedQueue
+        ConcurrentLinkedQueue<Integer> queue = new ConcurrentLinkedQueue<>();
+
+        // Add elements
+        queue.add(10);
+        queue.add(20);
+        queue.add(30);
+
+        // Access the head of the queue
+        System.out.println("Head of the queue: " + queue.peek()); // Output: 10
+
+        // Remove elements
+        while (!queue.isEmpty()) {
+            System.out.println(queue.poll());
+        }
+    }
+}
+```
+
+---
+
+### **Comparison of PriorityQueue, ArrayDeque, and ConcurrentLinkedQueue**
+
+| Feature                | PriorityQueue      | ArrayDeque         | ConcurrentLinkedQueue |
+|------------------------|--------------------|--------------------|-----------------------|
+| **Order**              | Sorted Order       | FIFO Order         | FIFO Order            |
+| **Thread-Safety**      | Not Thread-Safe    | Not Thread-Safe    | Thread-Safe           |
+| **Null Values**        | Not Allowed        | Not Allowed        | Not Allowed           |
+| **Internal Structure** | Binary Heap        | Circular Array     | Linked List           |
+| **Performance**        | O(log n) for adds  | O(1) for basics    | O(1) for basics       |
+| **Use Case**           | Priority-based     | Double-ended queue | Multi-threaded queue  |
+
+---
+
+
+`HashMap`, `LinkedHashMap`, `TreeMap`, `Hashtable`, and `ConcurrentHashMap` :
+---------------------------------------------------------------------------------
+
+Below are the details of `HashMap`, `LinkedHashMap`, `TreeMap`, `Hashtable`, and `ConcurrentHashMap`, including their **internal implementations**, key features, and use cases.
+
+---
+
+## **1. HashMap**
+
+### **Key Features of HashMap**
+1. **Key-Value Pairs**:
+   - Stores data in key-value pairs.
+
+2. **No Order**:
+   - Does not maintain any order of keys or values.
+
+3. **Allows `null` Keys and Values**:
+   - Can store one `null` key and multiple `null` values.
+
+4. **Not Synchronized**:
+   - `HashMap` is not thread-safe. For thread-safe operations, use `ConcurrentHashMap` or `Collections.synchronizedMap(new HashMap<>())`.
+
+5. **Fast Operations**:
+   - Provides constant-time (`O(1)`) performance for basic operations (`get` and `put`), assuming a good hash function.
+
+---
+
+### **Internal Implementation**
+- Internally, `HashMap` uses an **array of buckets** (also called a hash table).
+- Each bucket is a linked list or a tree (in Java 8+ for handling collisions).
+- When a key-value pair is added:
+  1. The `hashCode()` of the key is computed.
+  2. The index in the array is determined using `hashCode % array_size`.
+  3. The key-value pair is stored in the bucket at the computed index.
+- In case of collisions (same index for different keys), a linked list or tree is used to store multiple entries.
+
+---
+
+### **Example Usage**
+```java
+import java.util.HashMap;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        // Create a HashMap
+        HashMap<String, Integer> map = new HashMap<>();
+
+        // Add key-value pairs
+        map.put("Apple", 10);
+        map.put("Banana", 20);
+        map.put("Cherry", 30);
+
+        // Access values
+        System.out.println("Value for Banana: " + map.get("Banana")); // Output: 20
+
+        // Remove a key-value pair
+        map.remove("Cherry");
+
+        // Iterate over the map
+        for (String key : map.keySet()) {
+            System.out.println(key + " -> " + map.get(key));
+        }
+    }
+}
+```
+
+---
+
+## **2. LinkedHashMap**
+
+### **Key Features of LinkedHashMap**
+1. **Key-Value Pairs**:
+   - Stores data in key-value pairs.
+
+2. **Maintains Insertion Order**:
+   - Maintains the insertion order of keys using a doubly linked list.
+
+3. **Allows `null` Keys and Values**:
+   - Can store one `null` key and multiple `null` values.
+
+4. **Not Synchronized**:
+   - `LinkedHashMap` is not thread-safe. For thread-safe operations, use `Collections.synchronizedMap(new LinkedHashMap<>())`.
+
+5. **Slightly Slower than HashMap**:
+   - Due to the maintenance of the linked list, `LinkedHashMap` has slightly slower performance than `HashMap`.
+
+---
+
+### **Internal Implementation**
+- Internally, `LinkedHashMap` extends `HashMap` and uses a **doubly linked list** to maintain the insertion order of keys.
+- The linked list connects all entries in the order they were inserted.
+
+---
+
+### **Example Usage**
+```java
+import java.util.LinkedHashMap;
+
+public class LinkedHashMapExample {
+    public static void main(String[] args) {
+        // Create a LinkedHashMap
+        LinkedHashMap<String, Integer> map = new LinkedHashMap<>();
+
+        // Add key-value pairs
+        map.put("Apple", 10);
+        map.put("Banana", 20);
+        map.put("Cherry", 30);
+
+        // Iterate over the map (maintains insertion order)
+        for (String key : map.keySet()) {
+            System.out.println(key + " -> " + map.get(key));
+        }
+    }
+}
+```
+
+---
+
+## **3. TreeMap**
+
+### **Key Features of TreeMap**
+1. **Key-Value Pairs**:
+   - Stores data in key-value pairs.
+
+2. **Sorted Order**:
+   - Maintains keys in sorted order (natural ordering or custom ordering using a `Comparator`).
+
+3. **No `null` Keys**:
+   - Does not allow `null` keys (throws `NullPointerException`).
+
+4. **Not Synchronized**:
+   - `TreeMap` is not thread-safe. For thread-safe operations, use `Collections.synchronizedMap(new TreeMap<>())`.
+
+5. **Slower Operations**:
+   - Provides logarithmic-time (`O(log n)`) performance for basic operations (`get` and `put`).
+
+---
+
+### **Internal Implementation**
+- Internally, `TreeMap` uses a **Red-Black Tree** (a self-balancing binary search tree).
+- The tree maintains keys in sorted order, ensuring efficient retrieval and insertion.
+
+---
+
+### **Example Usage**
+```java
+import java.util.TreeMap;
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+        // Create a TreeMap
+        TreeMap<String, Integer> map = new TreeMap<>();
+
+        // Add key-value pairs
+        map.put("Apple", 10);
+        map.put("Banana", 20);
+        map.put("Cherry", 30);
+
+        // Iterate over the map (sorted order)
+        for (String key : map.keySet()) {
+            System.out.println(key + " -> " + map.get(key));
+        }
+    }
+}
+```
+
+---
+
+## **4. Hashtable**
+
+### **Key Features of Hashtable**
+1. **Key-Value Pairs**:
+   - Stores data in key-value pairs.
+
+2. **No Order**:
+   - Does not maintain any order of keys or values.
+
+3. **No `null` Keys or Values**:
+   - Does not allow `null` keys or values (throws `NullPointerException`).
+
+4. **Synchronized**:
+   - `Hashtable` is thread-safe, making it suitable for multi-threaded environments.
+
+5. **Legacy Class**:
+   - `Hashtable` is a legacy class from Java 1.0.
+
+---
+
+### **Internal Implementation**
+- Internally, `Hashtable` uses an **array of buckets** (similar to `HashMap`).
+- Each bucket is a linked list to handle collisions.
+- Synchronization is achieved using locks, which can lead to performance overhead.
+
+---
+
+### **Example Usage**
+```java
+import java.util.Hashtable;
+
+public class HashtableExample {
+    public static void main(String[] args) {
+        // Create a Hashtable
+        Hashtable<String, Integer> table = new Hashtable<>();
+
+        // Add key-value pairs
+        table.put("Apple", 10);
+        table.put("Banana", 20);
+        table.put("Cherry", 30);
+
+        // Access values
+        System.out.println("Value for Banana: " + table.get("Banana")); // Output: 20
+
+        // Iterate over the table
+        for (String key : table.keySet()) {
+            System.out.println(key + " -> " + table.get(key));
+        }
+    }
+}
+```
+
+---
+
+## **5. ConcurrentHashMap**
+
+### **Key Features of ConcurrentHashMap**
+1. **Key-Value Pairs**:
+   - Stores data in key-value pairs.
+
+2. **No Order**:
+   - Does not maintain any order of keys or values.
+
+3. **No `null` Keys or Values**:
+   - Does not allow `null` keys or values (throws `NullPointerException`).
+
+4. **Thread-Safe**:
+   - `ConcurrentHashMap` is thread-safe and highly scalable.
+
+5. **Non-Blocking**:
+   - Uses fine-grained locking (lock striping) and CAS (Compare and Swap) for thread safety.
+
+---
+
+### **Internal Implementation**
+- Internally, `ConcurrentHashMap` uses an **array of segments** (in Java 7) or **array of buckets** (in Java 8+).
+- In Java 8+, it uses a **hash table with linked lists or trees** for collision handling.
+- Thread safety is achieved using **fine-grained locking** and **CAS operations**.
+
+---
+
+### **Example Usage**
+```java
+import java.util.concurrent.ConcurrentHashMap;
+
+public class ConcurrentHashMapExample {
+    public static void main(String[] args) {
+        // Create a ConcurrentHashMap
+        ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+
+        // Add key-value pairs
+        map.put("Apple", 10);
+        map.put("Banana", 20);
+        map.put("Cherry", 30);
+
+        // Access values
+        System.out.println("Value for Banana: " + map.get("Banana")); // Output: 20
+
+        // Iterate over the map
+        for (String key : map.keySet()) {
+            System.out.println(key + " -> " + map.get(key));
+        }
+    }
+}
+```
+
+---
+
+### **Comparison of HashMap, LinkedHashMap, TreeMap, Hashtable, and ConcurrentHashMap**
+
+| Feature                | HashMap          | LinkedHashMap     | TreeMap           | Hashtable         | ConcurrentHashMap   |
+|------------------------|------------------|-------------------|-------------------|-------------------|---------------------|
+| **Order**              | No Order         | Insertion Order   | Sorted Order      | No Order          | No Order            |
+| **Null Keys/Values**   | Allowed          | Allowed           | No Null Keys      | Not Allowed       | Not Allowed         |
+| **Thread-Safety**      | Not Thread-Safe  | Not Thread-Safe   | Not Thread-Safe   | Thread-Safe       | Thread-Safe         |
+| **Internal Structure** | Hash Table       | Hash Table + List | Red-Black Tree    | Hash Table        | Hash Table + Locks  |
+| **Performance**        | O(1) for basics  | Slightly Slower   | O(log n) for basics | Slower than HashMap | Highly Scalable     |
+
+---
 
 
