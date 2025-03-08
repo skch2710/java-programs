@@ -1322,8 +1322,35 @@ Collections in Java are part of the **Java Collections Framework (JCF)**, which 
    - Implementations: `HashSet`, `LinkedHashSet`, `TreeSet`
    
 3. **Queue** (FIFO ordering)  
-   - Implementations: `PriorityQueue`, `ArrayDeque`, ConcurrentLinkedQueue, `LinkedList` (acts as Queue)
+   - Implementations: `PriorityQueue`, `ArrayDeque`, `ConcurrentLinkedQueue`, `LinkedList` (acts as Queue)
    
 4. **Map** (Key-Value pairs, unique keys)  
    - Implementations: `HashMap`, `LinkedHashMap`, `TreeMap`, `Hashtable`, `ConcurrentHashMap`
+
+
+Here’s a detailed table summarizing the key aspects of Java Collections:
+
+| **Category**         | **Interface/Class**       | **Description**                                                                 | **Ordered** | **Sorted** | **Allows Duplicates** | **Allows Null** | **Thread-Safe** | **Common Implementations**                     |
+|----------------------|---------------------------|---------------------------------------------------------------------------------|-------------|------------|------------------------|-----------------|-----------------|------------------------------------------------|
+| **List**             | `List`                   | Ordered collection of elements.                                                 | Yes         | No         | Yes                    | Yes             | No              | `ArrayList`, `LinkedList`, `Vector`            |
+|                      | `ArrayList`              | Resizable array implementation of `List`.                                       | Yes         | No         | Yes                    | Yes             | No              | -                                              |
+|                      | `LinkedList`             | Doubly-linked list implementation of `List`.                                    | Yes         | No         | Yes                    | Yes             | No              | -                                              |
+|                      | `Vector`                 | Synchronized (thread-safe) resizable array implementation of `List`.            | Yes         | No         | Yes                    | Yes             | Yes             | -                                              |
+| **Set**              | `Set`                    | Collection of unique elements.                                                  | No          | No         | No                     | Yes (1 null)    | No              | `HashSet`, `LinkedHashSet`, `TreeSet`          |
+|                      | `HashSet`                | Hash table implementation of `Set`.                                             | No          | No         | No                     | Yes             | No              | -                                              |
+|                      | `LinkedHashSet`          | `HashSet` with predictable iteration order (insertion order).                   | Yes         | No         | No                     | Yes             | No              | -                                              |
+|                      | `TreeSet`                | Red-Black tree implementation of `Set`. Sorted by natural order or comparator.  | Yes         | Yes        | No                     | No              | No              | -                                              |
+| **Queue**            | `Queue`                  | Collection designed for holding elements prior to processing.                   | Yes         | No         | Yes                    | Yes             | No              | `LinkedList`, `PriorityQueue`, `ArrayDeque`    |
+|                      | `PriorityQueue`          | Priority heap implementation of `Queue`. Sorted by natural order or comparator. | Yes         | Yes        | Yes                    | No              | No              | -                                              |
+|                      | `ArrayDeque`             | Resizable array implementation of `Deque`.                                      | Yes         | No         | Yes                    | Yes             | No              | -                                              |
+| **Deque**            | `Deque`                  | Double-ended queue, supports element insertion/removal at both ends.            | Yes         | No         | Yes                    | Yes             | No              | `ArrayDeque`, `LinkedList`                     |
+| **Map**              | `Map`                    | Collection of key-value pairs. Keys are unique.                                 | No          | No         | No (keys)              | Yes (1 null key)| No              | `HashMap`, `LinkedHashMap`, `TreeMap`          |
+|                      | `HashMap`                | Hash table implementation of `Map`.                                             | No          | No         | No (keys)              | Yes             | No              | -                                              |
+|                      | `LinkedHashMap`          | `HashMap` with predictable iteration order (insertion/access order).            | Yes         | No         | No (keys)              | Yes             | No              | -                                              |
+|                      | `TreeMap`                | Red-Black tree implementation of `Map`. Sorted by natural order or comparator.  | Yes         | Yes        | No (keys)              | No              | No              | -                                              |
+| **Thread-Safe**      | `Collections.synchronizedX`| Utility methods to create synchronized versions of collections.                 | Depends     | Depends    | Depends                | Depends         | Yes             | `synchronizedList`, `synchronizedSet`, etc.    |
+|                      | `ConcurrentHashMap`      | Thread-safe implementation of `Map`.                                            | No          | No         | No (keys)              | No              | Yes             | -                                              |
+|                      | `CopyOnWriteArrayList`   | Thread-safe implementation of `List`.                                           | Yes         | No         | Yes                    | Yes             | Yes             | -                                              |
+|                      | `CopyOnWriteArraySet`    | Thread-safe implementation of `Set`.                                            | No          | No         | No                     | Yes             | Yes             | -                                              |
+
 
