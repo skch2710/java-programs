@@ -398,6 +398,38 @@ System.out.println(sb); // Output: Hello World
 ✔ Use **StringBuilder** if modifications are frequent but **no thread safety** is needed (faster than StringBuffer).  
 
 
+**mutable** objects can be changed after creation, 
+while **immutable** objects cannot be modified once created.
+
+### **Mutable Objects**
+- Their state (fields) can be changed after creation.
+- Examples:
+  - `StringBuilder`
+  - `ArrayList`
+  - `HashMap`
+
+**Example:**
+```java
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World"); // Modifies the original object
+System.out.println(sb); // Output: Hello World
+```
+
+### **Immutable Objects**
+- Their state cannot be changed after creation.
+- Any modification creates a new object.
+- Examples:
+  - `String`
+  - `Integer`
+  - `LocalDate`
+
+**Example:**
+```java
+String s = "Hello";
+s = s.concat(" World"); // Creates a new object
+System.out.println(s); // Output: Hello World
+```
+
 ### **String Comparison in Java (`==`, `equals()`, `compareTo()`)**  :
 -----------------------------------------------------------------------
 
@@ -1308,6 +1340,53 @@ public class OOPExample {
 ✔ **Abstraction** → Hiding implementation details (Abstract Classes & Interfaces).  
 ✔ **Association** → Objects relating to each other (Aggregation & Composition).  
 
+
+ Shallow Copy And Deep Copy :
+ ---------------------------------
+
+- **Shallow Copy**: Copies only the reference of objects, not the actual objects. Changes to the original object's referenced objects affect the copied object.  
+- **Deep Copy**: Creates a new independent copy of the object and all objects it references. Changes to the original object do not affect the copied object.  
+
+### Example:
+**Shallow Copy**:
+```java
+class Person implements Cloneable {
+    String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone(); // Shallow copy
+    }
+}
+
+Person p1 = new Person("John");
+Person p2 = (Person) p1.clone(); 
+p2.name = "Doe"; // Affects p1.name too (if reference type)
+```
+
+**Deep Copy**:
+```java
+class Person implements Cloneable {
+    String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new Person(this.name); // Deep copy
+    }
+}
+
+Person p1 = new Person("John");
+Person p2 = (Person) p1.clone(); 
+p2.name = "Doe"; // Doesn't affect p1.name
+```
 
 Java Collections :
 ----------------------
