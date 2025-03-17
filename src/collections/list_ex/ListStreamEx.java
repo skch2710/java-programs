@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -52,6 +53,11 @@ public class ListStreamEx {
 //				.reversed();//java21
 		
 		System.out.println(numDistinct);
+		
+		Map<Boolean, List<Test>> collect = listTest.stream().
+		collect(Collectors.partitioningBy(test -> test.getMail().equals("th")));
+		
+		System.out.println(collect);
 
 	}
 
