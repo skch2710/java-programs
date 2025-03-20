@@ -1216,6 +1216,65 @@ Object-Oriented Programming (OOP) is a programming paradigm based on **objects**
 
 ---
 
+
+OOPS concept "Definition" and "Use Case" :
+---------------------------------------------
+
+---
+
+### Encapsulation
+- **Definition**: 
+  - Bundling data and methods into a single unit (class).
+  - Restricting direct access using access modifiers (e.g., private fields).
+- **Use Case**: 
+  - **Example**: In a Spring Boot e-commerce app, a `Customer` entity encapsulates sensitive data like `email`.
+    - Private field: `private String email`.
+    - Public getter: `public String getEmail()`.
+    - Public setter with validation: `public void setEmail(String email) { if (email.contains("@")) this.email = email; }`.
+  - Ensures email format is valid before setting and prevents direct manipulation.
+
+---
+
+### Inheritance
+- **Definition**: 
+  - Mechanism where a class inherits properties and methods from another class.
+  - Establishes an "is-a" relationship.
+- **Use Case**: 
+  - **Example**: In a Spring Boot banking app, a base `Account` class is extended by `SavingsAccount`.
+    - `Account`: `protected double balance; public double getBalance()`.
+    - `SavingsAccount extends Account`: Adds `private double interestRate`.
+  - Reuses `balance` and adds interest-specific logic, mapped to the database with JPA.
+
+---
+
+### Polymorphism
+- **Definition**: 
+  - Ability of different classes to be treated as instances of a common superclass/interface.
+  - Achieved via method overriding (runtime) or overloading (compile-time).
+- **Use Case**: 
+  - **Example**: In a Spring Boot notification system, `NotificationService` interface with `sendNotification()`.
+    - `EmailNotificationService`: `sendNotification()` sends emails.
+    - `SmsNotificationService`: `sendNotification()` sends SMS.
+    - Controller: `@Autowired NotificationService notifier` uses any implementation.
+  - Allows switching between email/SMS without changing controller code.
+
+---
+
+### Abstraction
+- **Definition**: 
+  - Hiding implementation details, exposing only essential features.
+  - Implemented using abstract classes or interfaces.
+- **Use Case**: 
+  - **Example**: In a Spring Boot order system, `PaymentProcessor` interface with `processPayment()`.
+    - `CreditCardPaymentProcessor`: Implements payment via credit card API.
+    - `OrderService`: `@Autowired PaymentProcessor paymentProcessor` calls `processPayment()`.
+  - Hides payment gateway details, making it easy to add new payment methods.
+
+---
+
+
+
+
 ### **Example Code **  
 
 ```java
