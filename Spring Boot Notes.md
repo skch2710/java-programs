@@ -28,6 +28,7 @@ Apache Kafka :
 - Kafka assigns the message to a partition based on:  
    - A specified key (messages with the same key go to the same partition).  
    - Round-robin distribution if no key is provided.  
+- A Kafka producer using **KafkaTemplate**.
 
 ### 2. **Storing Data (Broker)**
 - Kafka stores messages in a **commit log** in the order they arrive.  
@@ -38,7 +39,8 @@ Apache Kafka :
 - Consumers poll Kafka brokers for new messages.  
 - Kafka delivers messages in order within a partition.  
 - Consumers track offsets to avoid processing the same message twice.  
-- Kafka supports **at-least-once** and **exactly-once** delivery guarantees. 
+- Kafka supports **at-least-once** and **exactly-once** delivery guarantees.
+- A Kafka consumer using **@KafkaListener**
 
 
 
