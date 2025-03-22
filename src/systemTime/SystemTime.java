@@ -5,10 +5,16 @@ import java.util.concurrent.TimeUnit;
 
 public class SystemTime {
 	
+	public static void logTime(long milliSec) {
+		System.out.println("Milli : " + milliSec);
+		System.out.println("Sec : " + (milliSec/1000.00));
+		System.out.println("Min : " + ((milliSec/1000.00)/60));
+	}
+	
 	public static void main(String[] args) throws Exception {
 		
 		long start = System.currentTimeMillis();
-//		Thread.sleep(Duration.ofMillis(2000));
+		Thread.sleep(Duration.ofMillis(2260));
 		
 		long end = System.currentTimeMillis();
 		
@@ -16,7 +22,7 @@ public class SystemTime {
 		
 		System.out.println(totalTime);
 		
-		System.out.println(totalTime/1000.000);
+		logTime(totalTime);
 		
 		long seconds = TimeUnit.MILLISECONDS.toSeconds(totalTime);
 
