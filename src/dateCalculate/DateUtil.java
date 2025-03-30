@@ -2,8 +2,10 @@ package dateCalculate;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -29,6 +31,24 @@ public class DateUtil {
 	 * MMMM dd, yyyy
 	 * yyyy-MM-dd h:mm a -- 2023-08-01 7:50 AM 
 	 */
+	
+	public static void main(String[] args) {
+		LocalDateTime dateTime = LocalDateTime.now();
+		
+		LocalTime time = LocalTime.now();
+		
+		System.out.println(dateTime.getDayOfWeek() == DayOfWeek.SUNDAY);
+		
+		System.out.println(dateTime.getHour());
+		
+		System.out.println(dateTime.getMinute());
+		
+		System.out.println(time.isAfter(LocalTime.of(16, 29)));
+		
+		System.out.println(time.isBefore(LocalTime.of(17, 01)));
+		
+		System.out.println(LocalTime.of(17, 01));
+	}
 
 	public static String dateToString(LocalDateTime date, String format) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
