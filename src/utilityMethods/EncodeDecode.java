@@ -7,7 +7,7 @@ public class EncodeDecode {
 
 	public static void main(String[] args) {
 		
-		String encoded = new String(Base64.getEncoder().encode("SathishKumarCh27".getBytes()));
+		String encoded = new String(Base64.getEncoder().encode("Sathish_Ch@2710#".getBytes()));
 		
 		System.out.println(encoded);
 		

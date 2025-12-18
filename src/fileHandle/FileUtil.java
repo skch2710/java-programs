@@ -106,8 +106,8 @@ public class FileUtil {
     
 	public static void main(String[] args) {
 		
-		String inFilePath = "C://Users//HP//Downloads//LPDS.txt";
-		String outFilePath = "C://Users//HP//Downloads//LPDS.zip";
+		String inFilePath = "C://Users//HP//Desktop//FS.txt";
+		String outFilePath = "C://Users//HP//Desktop//FS.zip";
 		
 		readTextFile(inFilePath,outFilePath);
 		

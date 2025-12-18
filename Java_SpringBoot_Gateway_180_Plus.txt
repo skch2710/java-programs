@@ -1,0 +1,712 @@
+
+JAVA + ADVANCED JAVA + SPRING BOOT + API GATEWAY
+INTERVIEW QUESTIONS & ANSWERS
+(180+ QUESTIONS | 2–3 LINE EXPLANATIONS | REAL INTERVIEW READY)
+
+================================================
+CORE JAVA (1–30)
+================================================
+
+1. What is Java?
+Java is an object-oriented, platform-independent programming language.
+It runs on JVM, enabling write-once-run-anywhere capability.
+
+2. Why Java is platform independent?
+Java compiles code into bytecode.
+JVM converts bytecode into OS-specific instructions.
+
+3. What is JVM?
+JVM executes Java bytecode and manages memory.
+It handles garbage collection and runtime optimizations.
+
+4. JDK vs JRE vs JVM?
+JDK is for development, JRE is for runtime.
+JVM executes bytecode.
+
+5. What is OOP?
+OOP is based on objects and classes.
+It improves modularity and reusability.
+
+6. What is encapsulation?
+Hides internal data using private fields.
+Access is controlled via methods.
+
+7. What is inheritance?
+Allows one class to reuse another.
+Promotes code reuse.
+
+8. What is polymorphism?
+Same method behaves differently.
+Achieved using overloading and overriding.
+
+9. What is abstraction?
+Hides implementation details.
+Shows only essential behavior.
+
+10. Interface vs abstract class?
+Interface supports multiple inheritance.
+Abstract class supports state and constructors.
+
+11. What is constructor?
+Initializes object state.
+Called during object creation.
+
+12. Can constructor be private?
+Yes, to restrict object creation.
+Used in Singleton pattern.
+
+13. What is static keyword?
+Belongs to class, not object.
+Shared across instances.
+
+14. Why main method is static?
+JVM calls it without object creation.
+It is entry point.
+
+15. What is final keyword?
+Prevents modification.
+Used with variables, methods, and classes.
+
+16. Why String is immutable?
+Improves security and performance.
+Avoids accidental modification.
+
+17. String vs StringBuilder vs StringBuffer?
+String is immutable.
+StringBuilder is fast, StringBuffer is thread-safe.
+
+18. What is String pool?
+Memory area for string literals.
+Avoids duplicate strings.
+
+19. What is Collection framework?
+Provides List, Set, Map.
+Simplifies data handling.
+
+20. List vs Set?
+List allows duplicates.
+Set does not.
+
+21. ArrayList vs LinkedList?
+ArrayList is fast for access.
+LinkedList is fast for insert/delete.
+
+22. HashMap vs ConcurrentHashMap?
+HashMap is not thread-safe.
+ConcurrentHashMap supports concurrency.
+
+23. What is exception?
+Abnormal runtime event.
+Disrupts normal flow.
+
+24. Checked vs unchecked exception?
+Checked at compile time.
+Unchecked at runtime.
+
+25. try-catch-finally?
+Handles exceptions.
+finally always executes.
+
+26. What is thread?
+Smallest unit of execution.
+Enables concurrency.
+
+27. Runnable vs Thread?
+Runnable preferred.
+Supports multiple inheritance.
+
+28. What is synchronization?
+Controls shared resource access.
+Prevents race condition.
+
+29. What is deadlock?
+Threads wait indefinitely.
+Resources never released.
+
+30. What is connection pooling?
+Reuse DB connections.
+Improves performance.
+
+================================================
+ADVANCED JAVA (31–50)
+================================================
+
+31. What is JDBC?
+Java API to connect databases.
+Executes SQL queries.
+
+32. JDBC components?
+Driver, Connection, Statement, ResultSet.
+Manages DB interaction.
+
+33. What is PreparedStatement?
+Precompiled SQL statement.
+Prevents SQL injection.
+
+34. What is batch processing?
+Executes multiple SQL statements together.
+Improves performance.
+
+35. What is Servlet?
+Server-side Java component.
+Handles HTTP requests.
+
+36. Servlet lifecycle?
+init → service → destroy.
+Managed by container.
+
+37. What is Filter?
+Intercepts request/response.
+Used for logging and security.
+
+38. What is Listener?
+Listens to lifecycle events.
+Used for session tracking.
+
+39. What is JSP?
+Java Server Pages.
+Used for view rendering.
+
+40. JSP vs Servlet?
+JSP is view-focused.
+Servlet handles logic.
+
+41. What is MVC pattern?
+Separates Model, View, Controller.
+Improves maintainability.
+
+42. What is DAO pattern?
+Separates DB logic.
+Improves abstraction.
+
+43. What is DTO?
+Transfers data between layers.
+Avoids exposing entities.
+
+44. What is Singleton pattern?
+Ensures single instance.
+Used for shared resources.
+
+45. What is Factory pattern?
+Creates objects without exposing logic.
+Improves flexibility.
+
+46. What is Builder pattern?
+Constructs complex objects.
+Improves readability.
+
+47. What is immutability?
+Object state cannot change.
+Improves thread safety.
+
+48. What is serialization?
+Converts object to byte stream.
+Used for persistence.
+
+49. transient keyword?
+Excludes field from serialization.
+Used for sensitive data.
+
+50. What is cloning?
+Creates copy of object.
+Implements Cloneable.
+
+================================================
+SPRING CORE (51–80)
+================================================
+
+51. What is Spring framework?
+Lightweight enterprise framework.
+Reduces boilerplate code.
+
+52. What is IoC?
+Spring manages object creation.
+Reduces tight coupling.
+
+53. What is Dependency Injection?
+Dependencies are injected.
+Improves testability.
+
+54. Types of DI?
+Constructor, setter, field.
+Constructor preferred.
+
+55. What is Bean?
+Object managed by Spring.
+Created in IoC container.
+
+56. Bean lifecycle?
+Instantiate → populate → init → destroy.
+Managed by Spring.
+
+57. @Component vs @Service?
+@Service is semantic.
+Both create beans.
+
+58. @Autowired usage?
+Injects dependencies automatically.
+Uses constructor by default.
+
+59. @Qualifier?
+Resolves multiple bean conflict.
+Specifies exact bean.
+
+60. @Primary?
+Marks default bean.
+Used when multiple beans exist.
+
+61. What is Spring Boot?
+Simplifies Spring configuration.
+Provides auto-configuration.
+
+62. Why Spring Boot?
+Less configuration.
+Faster development.
+
+63. What is auto-configuration?
+Configures beans automatically.
+Based on classpath.
+
+64. Starter dependencies?
+Predefined dependency sets.
+Simplify setup.
+
+65. Embedded server?
+Tomcat/Jetty included.
+No external server needed.
+
+66. application.properties?
+Configures app settings.
+Supports profiles.
+
+67. Spring profiles?
+Different environment configs.
+Activated at runtime.
+
+68. @Configuration?
+Defines configuration class.
+Creates beans.
+
+69. @Bean?
+Defines bean manually.
+Used in config class.
+
+70. @Value?
+Injects property values.
+Reads from config.
+
+71. What is Spring MVC?
+Web framework.
+Implements MVC pattern.
+
+72. @RestController?
+Returns JSON response.
+Used for REST APIs.
+
+73. @RequestMapping?
+Maps URLs to methods.
+Supports all HTTP verbs.
+
+74. @GetMapping?
+Handles GET requests.
+Shortcut for RequestMapping.
+
+75. @RequestBody?
+Binds request JSON.
+Used in REST APIs.
+
+76. @PathVariable?
+Extracts URI value.
+Used in dynamic URLs.
+
+77. @RequestParam?
+Reads query parameter.
+Optional or required.
+
+78. What is validation?
+Ensures input correctness.
+Uses @Valid.
+
+79. @ControllerAdvice?
+Global exception handling.
+Centralizes error logic.
+
+80. ResponseEntity?
+Wraps HTTP response.
+Controls status and body.
+
+================================================
+SPRING DATA JPA (81–110)
+================================================
+
+81. What is JPA?
+ORM specification.
+Maps objects to tables.
+
+82. Hibernate?
+JPA implementation.
+Handles persistence.
+
+83. Entity?
+Represents DB table.
+Annotated with @Entity.
+
+84. @Id?
+Primary key.
+Uniquely identifies row.
+
+85. @GeneratedValue?
+Auto-generates ID.
+Supports strategies.
+
+86. Lazy vs Eager fetch?
+Lazy loads on demand.
+Eager loads immediately.
+
+87. What is cascade?
+Propagates operations.
+Used in relationships.
+
+88. OneToMany?
+One parent multiple children.
+Mapped with annotations.
+
+89. ManyToOne?
+Many children one parent.
+Common relationship.
+
+90. @JoinColumn?
+Defines FK column.
+Links tables.
+
+91. JpaRepository?
+Provides CRUD + pagination.
+Extends CrudRepository.
+
+92. PagingAndSortingRepository?
+Supports pagination.
+Less features than JPA repo.
+
+93. What is pagination?
+Fetch limited records.
+Improves performance.
+
+94. Pageable?
+Controls page and size.
+Used in repository.
+
+95. Sorting?
+Orders query result.
+Supports ASC/DESC.
+
+96. Custom query?
+Defined using @Query.
+Supports JPQL.
+
+97. Native query?
+Uses SQL directly.
+Database-specific.
+
+98. Projection?
+Fetch selected fields.
+Improves performance.
+
+99. Transaction?
+Ensures ACID property.
+Managed by @Transactional.
+
+100. Rollback?
+Undo changes on failure.
+Maintains consistency.
+
+================================================
+SPRING SECURITY + GATEWAY (111–150)
+================================================
+
+111. What is Spring Security?
+Authentication and authorization framework.
+Secures applications.
+
+112. Authentication?
+Verifies identity.
+Login process.
+
+113. Authorization?
+Checks permissions.
+Role-based access.
+
+114. JWT authentication?
+Stateless token-based security.
+Used in REST APIs.
+
+115. JWT structure?
+Header, Payload, Signature.
+Encoded token.
+
+116. How JWT validated?
+Using filters.
+Checked per request.
+
+117. What is SecurityFilterChain?
+Defines security rules.
+Replaces WebSecurityConfigurerAdapter.
+
+118. What is API Gateway?
+Single entry point.
+Routes requests.
+
+119. Why Gateway?
+Centralized security and routing.
+Simplifies client calls.
+
+120. Spring Cloud Gateway?
+Reactive API gateway.
+Built on WebFlux.
+
+121. Route definition?
+Maps path to service.
+Configured in YAML.
+
+122. What is filter?
+Intercepts request/response.
+Pre and post processing.
+
+123. Global filter?
+Applies to all routes.
+Used for auth.
+
+124. Route filter?
+Applies to specific route.
+Custom logic.
+
+125. Rate limiting?
+Limits API calls.
+Prevents abuse.
+
+126. Circuit breaker?
+Stops failing calls.
+Improves resilience.
+
+127. Gateway vs Load Balancer?
+Gateway handles logic.
+LB only distributes load.
+
+128. JWT in Gateway?
+Validated before routing.
+Blocks unauthorized calls.
+
+129. API versioning?
+Supports backward compatibility.
+URI or header based.
+
+130. Retry mechanism?
+Retries failed calls.
+Configured in gateway.
+
+================================================
+MICROSERVICES & ARCHITECTURE (151–180)
+================================================
+
+131. Monolith?
+Single deployable unit.
+Hard to scale.
+
+132. Microservices?
+Independent services.
+Easier scaling.
+
+133. Service discovery?
+Find services dynamically.
+Eureka used.
+
+134. Config server?
+Central config management.
+Avoid duplication.
+
+135. Feign client?
+Simplifies REST calls.
+Declarative client.
+
+136. WebClient?
+Non-blocking HTTP client.
+Reactive support.
+
+137. RestTemplate?
+Blocking HTTP client.
+Legacy approach.
+
+138. Async processing?
+Non-blocking execution.
+Improves throughput.
+
+139. @Async?
+Executes method asynchronously.
+Uses thread pool.
+
+140. Caching?
+Stores frequent data.
+Improves performance.
+
+141. @EnableCaching?
+Enables caching.
+Uses cache providers.
+
+142. Redis usage?
+Distributed cache.
+High performance.
+
+143. Logging best practice?
+Use SLF4J.
+Avoid println.
+
+144. Centralized logging?
+Aggregates logs.
+ELK stack.
+
+145. Monitoring?
+Tracks health.
+Prometheus + Grafana.
+
+146. Actuator?
+Provides metrics and health.
+Production monitoring.
+
+147. Health check?
+Checks service status.
+Used by orchestrators.
+
+148. Docker usage?
+Containerizes app.
+Ensures consistency.
+
+149. Kubernetes?
+Orchestrates containers.
+Auto-scaling support.
+
+150. CI/CD?
+Automates build and deploy.
+Ensures faster delivery.
+
+151. Blue-green deployment?
+Two environments.
+Zero downtime.
+
+152. Canary deployment?
+Gradual rollout.
+Risk reduction.
+
+153. API documentation?
+Swagger/OpenAPI.
+Improves collaboration.
+
+154. Version compatibility?
+Backward support.
+Avoid breaking changes.
+
+155. Handling failures?
+Retry + fallback.
+Graceful degradation.
+
+156. Circuit breaker states?
+Closed, Open, Half-open.
+Controls traffic.
+
+157. Bulkhead pattern?
+Isolates failures.
+Protects system.
+
+158. Idempotent APIs?
+Same result on retry.
+Important for retries.
+
+159. Security at scale?
+Central auth.
+Token validation.
+
+160. Interview expectation?
+Strong fundamentals.
+Real-world decisions.
+
+161. System design focus?
+Scalability and reliability.
+Trade-off analysis.
+
+162. Data consistency?
+Eventual consistency.
+Used in microservices.
+
+163. Message queue?
+Async communication.
+Kafka/RabbitMQ.
+
+164. Event-driven architecture?
+Loose coupling.
+Scalable systems.
+
+165. Saga pattern?
+Distributed transaction.
+Manages consistency.
+
+166. Compensating transaction?
+Rollback logic.
+Used in saga.
+
+167. Database per service?
+Isolated schema.
+Avoid tight coupling.
+
+168. API timeout?
+Avoid long waits.
+Fail fast.
+
+169. Load testing?
+Checks performance.
+JMeter/Gatling.
+
+170. Security testing?
+Detect vulnerabilities.
+Pen testing.
+
+171. OAuth2?
+Authorization framework.
+Used with JWT.
+
+172. Keycloak?
+Auth server.
+Manages identity.
+
+173. Single Sign-On?
+One login multiple apps.
+Improves UX.
+
+174. Multi-tenant architecture?
+Multiple customers.
+Shared resources.
+
+175. Horizontal scaling?
+Add instances.
+Improves capacity.
+
+176. Vertical scaling?
+Increase resources.
+Limited scalability.
+
+177. Fault tolerance?
+System survives failures.
+High availability.
+
+178. High availability?
+Minimal downtime.
+Redundant services.
+
+179. Disaster recovery?
+Backup and restore.
+Business continuity.
+
+180. What makes a senior engineer?
+Design thinking.
+Clear trade-offs.
+
+================================================
+END OF FILE (180+ QUESTIONS)
+================================================
