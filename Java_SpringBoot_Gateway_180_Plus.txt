@@ -24,7 +24,7 @@ JDK is for development, JRE is for runtime.
 JVM executes bytecode.
 
 5. What is OOP?
-OOP is based on objects and classes.
+Object-Oriented Programming (OOP) is based on objects and classes.
 It improves modularity and reusability.
 
 6. What is encapsulation?
