@@ -1,0 +1,144 @@
+McAfee 6 months:
+
+https://promos.mcafee.com/en-US/Affiliates/773/Lp/276multi.aspx
+http://adf.ly/vCdWp
+https://home.mcafee.com/secure/Redeemcard/Ecards.aspx?affid=0&pkgid=276%2c277&cid=64244&pir=1
+
+Hide folder:
+
+cls
+ @ECHO OFF
+ title My Folder
+ if EXIST "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" goto UNLOCK
+ if NOT EXIST Secure goto MDLOCKER
+ :CONFIRM
+ echo Are you sure you want to lock the folder(Y/N)
+ set/p "cho=>"
+ if %cho%==Y goto LOCK
+ if %cho%==y goto LOCK
+ if %cho%==n goto END
+ if %cho%==N goto END
+ echo Invalid choice.
+ goto CONFIRM
+ :LOCK
+ ren Secure "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+ attrib +h +s "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+ echo Folder locked
+ goto End
+ :UNLOCK
+ echo Enter the Password to unlock folder
+ set/p "pass=>"
+ if NOT %pass%== Chitti484@ goto FAIL
+ attrib -h -s "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}"
+ ren "Control Panel.{21EC2020-3AEA-1069-A2DD-08002B30309D}" Secure
+ echo Folder Unlocked successfully
+ goto End
+ :FAIL
+ echo Invalid password
+ goto end
+ :MDLOCKER
+ md Secure
+ echo Secure created successfully
+ goto End
+ :End
+
+MS Offfice pro plus 2017 key: MP94X-DB2QP-R9822-QQHP7-XPFMJ
+
+.Net Command Prompt: 
+Dism /online /enable-feature /featurename:NetFx3 /All /Source:H:\sources\sxs /LimitAccess
+
+windows 10 Activation:
+
+1.Open a elevated command prompt as admmin and execute
+slmgr /ipk "W269N-WFGWX-YVC9B-4J6C9-T83GX"
+
+2.Now execute this:
+ slmgr /skms kms.digiboy.ir or  slmgr /skms kms.xspace.in 
+If the above command does not work try replacing "kms.digiboy.ir" with"kms.msguides.com"
+
+3.Finally run this command:
+slmgr /ato
+
+Now Windows 10 should be activated. 
+
+KMS Client Setup Keys  :
+Windows 10 Professional
+W269N-WFGWX-YVC9B-4J6C9-T83GX
+
+Windows 10 Professional N
+MH37W-N47XK-V7XM9-C7227-GCQG9
+
+Windows 10 Enterprise 
+NPPR9-FWDCX-D2C8J-H872K-2YT43
+
+Windows 10 Enterprise N 
+DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4
+
+Windows 10 Education 
+NW6C2-QMPVW-D7KKK-3GKT6-VCFB2
+
+Windows 10 Education N 
+2WH4N-8QGBV-H22JP-CT43Q-MDWWJ
+
+Windows 10 Enterprise 2015 LTSB
+WNMTR-4C88C-JK8YV-HQ7T2-76DF9
+
+Windows 10 Enterprise 2015 LTSB N 
+2F77B-TNFGY-69QQF-B8YKP-D69TJ
+
+Windows 10 Home N
+4CPRK-NM3K3-X6XXQ-RXX86-WXCHW
+
+Windows 10 Home Single Language
+BT79Q-G7N6G-PGBYW-4YWX6-6F4BT
+
+Windows 10 Home Connected (CoreConnected) 
+GVYN6-BGJDK-RVPMY-YCX4G-D3V2V
+
+
+Typing Master v7.1.0 key:
+Name : IcyCool
+Key : E5XQWKF-XYE3-YRCK-3PPC24K
+
+VMware keys:
+GY7NK-69ED5-48EDY-8XN79-PG2C6
+
+UV3D8-27E9N-085HZ-CZXZE-N38V4
+
+VU35A-87ZE3-48E9P-C7Y7X-ZG884
+
+ZA15R-AMXD7-088CP-JWXGV-PY2W4  / ZA15R-AMXD7-O88CP-JWXGV-PY2W4
+
+YC3XK-OVG4Q-M88VZ-WMQ7Z-PUUC8
+
+clean temp .cmd file:
+
+@echo off
+del /s /f /q c:\windows\temp\*.*
+rd /s /q c:\windows\temp
+md c:\windows\temp
+del /s /f /q C:\WINDOWS\Prefetch
+del /s /f /q %temp%\*.*
+rd /s /q %temp%
+md %temp%
+deltree /y c:\windows\tempor~1
+deltree /y c:\windows\temp
+deltree /y c:\windows\tmp
+deltree /y c:\windows\ff*.tmp
+deltree /y c:\windows\prefetch
+deltree /y c:\windows\history
+deltree /y c:\windows\cookies
+deltree /y c:\windows\recent
+deltree /y c:\windows\spool\printers
+cls
+
+wondershare video converter ultimate:
+Licensed E-mail:   hermann.deken25@gmx.de
+Registration Code: 8FA4DA3FB320820A210E921ADAAF702C
+
+
+4K video downloader , code blocks ,idm , MKVtoolkit , refuse , 
+photoshop cc , adobe illustrator , lightroom ,premier pro, Indesign,anu script 7.0,
+after effect,pscc,pagemaker,google input tools
+visual studio, vmware,winrar,
+portable: OBS, chrome ,firefox, ms office, vlc, ThopTV
