@@ -199,3 +199,14 @@ Apache Kafka :
 
 
 *******/////////*************///////////**************/////////////////*************
+
+
+Redis Cache :
+-------------
+
+| Template                      | Application Type | Key     | Value   | Return Type                       | Recommended Use                                       |
+| ----------------------------- | ---------------- | ------- | ------- | --------------------------------- | ----------------------------------------------------- |
+| `StringRedisTemplate`         | Spring MVC       | String  | String  | `String`, `Boolean`, `Long`, etc. | ⭐ Most common for OTPs, JWTs, sessions, rate limiting |
+| `RedisTemplate<K,V>`          | Spring MVC       | Generic | Generic | Java Objects                      | Store POJOs, Lists, Maps                              |
+| `ReactiveStringRedisTemplate` | Spring WebFlux   | String  | String  | `Mono` / `Flux`                   | Reactive string operations                            |
+| `ReactiveRedisTemplate<K,V>`  | Spring WebFlux   | Generic | Generic | `Mono` / `Flux`                   | Reactive object operations                            |
